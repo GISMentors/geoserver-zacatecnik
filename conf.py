@@ -3,41 +3,34 @@
 import sys
 import os
 
-sys.path.append(os.path.join('..', 'sphinx-template'))
+sys.path.insert(0, os.path.join('..', 'sphinx-template'))
 from utils import get_month_year, get_year
 
 # -- General configuration ------------------------------------------------
 
 # General information about the project.
-project = u'Školení GeoServer'
-copyright = u'2014-%d Jan Růžička (GISMentors)' % get_year()
+project = u'Školení GeoServer pro začátečníky'
+copyright = u'2016-%d, Jan Růžička  (GISMentors.eu)' % get_year()
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = '0.1'
+version = '0.9'
 # The full version, including alpha/beta/rc tags.
-release = '%s alpha' % version
+release = '%sbeta' % version
 
 # -- Options for HTML output ----------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'skoleni-geoserver'
+htmlhelp_basename = 'skoleni-geoserver-zacatecnik'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
 html_title = project
 
 # -- Options for LaTeX output ---------------------------------------------
-
-latex_elements = {
-# Additional stuff for the LaTeX preamble.
-    'preamble': "".join([]),
-    'releasename': u'verze',
-    'date': '%s %s' % get_month_year(),
-}
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
@@ -67,9 +60,7 @@ texinfo_documents = [
      'Miscellaneous'),
     ]
 
-html_favicon = "images/favicon.ico"
-
 from conf_base import *
 
-todo_include_todos = True
+todo_include_todos = False
 html_use_index = True
