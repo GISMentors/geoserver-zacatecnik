@@ -6,47 +6,42 @@
 Nastavení dlaždic
 -----------------
 
-Rastrová vrstva se definuje pomocí popisu dat. Seznam vrstev získáme pomocí
-odkazu `Layers` v sekci `Data`. V seznamu vrstev vidíme u každé vrstvy její typ, 
-úložiště a souřadnicový systém. Pokud následně zvolíme vrstvu `Img_Sample`
-dostáváme se ke konfiguraci rastrové vrstvy.
+Nastavení dlaždic je poměrně rozsáhlé, ale pro začátečníka není zas tak složité.
+Komplikace mohou nastat v případě, že potřebujete např. nastavit vlastní
+souřadnicové systémy pro generování dlaždic. Základní nastavení získáme pomocí
+odkazu `Caching Defaults` v sekci `Tile Caching`. 
 
 
-Identifikace
-============
+Provided Services
+=================
 
-V rámci identifikace je povinné zadat pouze název vrstvy. Vhodné je ale uvést i popis vrstvy
-a abstrakt vrstvy. Název vrstvy (name) je technickou identifikací vrstvy. Popis (`title`) a `abstrakt` je
-určen ke čtení lidskému uživateli služby.
+V rámci sekce `Provided Services` je možné povolit nebo zakázat jendotlivé protokoly,
+pomocí který jsou distribuovány dlaždice ke klientovi. Zajímavá je možnost 
+`Enable direct integration with GeoServer WMS`, která umožňuje zazanmenávat cache v případě
+práce s WMS. Výhodou je pak zrychlení funkce WMS služby. 
 
-.. note:: Povinné položky jsou označeny červeným kolečkem. Položky, které je vhodné doplnit jsou označeny zeleným kolečkem.
+.. figure:: images/servicest.png
 
-.. figure:: images/rdata1.png
-
-   Identifikace rastrové vrstvy.
+   Seznam služeb a integrace s WMS.
    
-Další metadata a souřadnicové systémy
-=====================================
+Formáty
+=======
    
-V další části popisu vrstvy je vhodné uvést klíčová slova, popisující data
-a pokud je to možné, pak link na metadata dle normy ISO nebo FGDC.
+V sekci `Default Tile Image Formats for` je možno pro různé zdroje definovat formáty, ve kterých
+se boud dlaždice generovat. 
 
-Povinně je nutné uvést deklarovaný souřadnicový systém (`Declared SRS`).
-Tento se specifikuje s využitím databáze `EPSG`. Např. systém WGS84 má kód `EPSG:4326`.
+.. figure:: images/formatst.png
 
-.. figure:: images/rdata2.png
-
-   Další metadata a souřadnicové systémy.
+   Formáty dlaždic.
    
-Ohraničující obdélník
-=====================
+Výchozí Gridsety
+================
    
-V další části popisu vrstvy je nutné uvést ohraničující obdélník (`BBOX`) vrstvy.
-BBOX musí být uveden jak v deklarovaném `SRS` tak v `Lat/Lon` souřadnicích.
-K vytvoření pomohou odkazy `Compute from data` a `Compute from native bounds`.
+Také je možné nastavit výchozí Gridsety a jejich parametry. Obvykle si však vystačíme s již 
+předpřipravenými Gridsety pro WGS84 a Google Mercator. 
 
-.. figure:: images/rdata3.png
+.. figure:: images/gridsetst.png
 
-   BBOX
+   Gridsety
 
 
