@@ -56,4 +56,30 @@ Relativní cesta začíná v adresáři `data_dir`.
    
 .. note:: Začátečníkům se doporučuje používat pouze relativní cesty, zapsané pomocí funkce dostupné pod tlačítkem `Browse`.
 
+Úložiště PostGIS
+================
+
+Často využívaným úložištěm je databáze PostgreSQL/PostGIS. Přidání nového
+úložiště je možné buď jako PostGIS nebo PostGIS (JNDI). 
+.. note:: Varianta JNDI vyžaduje konfiguraci na úrovni aplikačního serveru a pro 
+začátečníky není vhodná. Navíc testy ukázaly, že je připojení přes JNDI o něco pomalejší. 
+Vhodné je v případě, že již organizace JNDI běžně využívá.
+
+.. figure:: images/storepostgis1.png
+
+   PostGIS úložiště.
+   
+Základní konfigurace úložiště je poměrně jednoduchá. Povinné položky jsou již předvyplněny a 
+hodnoty obvykle vyhovují požadavkům. Nutné je pouze úložiště pojmenovat `Data Source Name` a 
+správně uvést název databáze `database`, uživatele `user` a heslo `passwd` do databáze.
+Někdy je potřeba změnit jméno serveru `host`, kde databázový server běží a někdy port `port` na kterém naslouchá.
+
+.. note:: Povinné položky jsou označeny červeným kolečkem. Položky, které je vhodné doplnit jsou označeny zeleným kolečkem.
+
+.. figure:: images/storepostgis2.png
+
+   Definice PostGIS úložiště.
+   
+
+
 
