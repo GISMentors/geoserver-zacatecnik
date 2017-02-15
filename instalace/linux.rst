@@ -33,6 +33,15 @@ Instalace v terminálu, předpokládá zadání pouze jednoho příkazu.
 
       sudo apt-get install openjdk-7-jre
 
+.. note:: Na Ubuntu 16.04 už není open-7-jre v standardním repozitáři.
+
+   .. code-block:: bash
+
+      sudo add-apt-repository ppa:openjdk-r/ppa
+      sudo apt-get update
+      sudo apt-get install openjdk-7-jre  
+      
+
 Instalace GeoServer
 ===================
 
