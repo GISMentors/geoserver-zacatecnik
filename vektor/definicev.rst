@@ -42,6 +42,8 @@ Tento se specifikuje s využitím databáze `EPSG`. Např. systém `WGS84` má k
 .. figure:: images/data2.png
 
    Další metadata a souřadnicové systémy.
+
+.. note:: Standardní souřadnicový systém pro Českou republiku je `S-JTSK / Krovak East North (EPSG:5514)`. Tento souřadnicový systém není obsažený v Geoserveru, ale můžeme si ho přidat. A ne jen `EPSG:5514`, ale i jiné souřadnicové systémy. Ve složce `data_dir/user_projections` je soubor `epsg.properties`, který otevřeme v textovém editore. Na stránce `epsg.io <http://epsg.io/>`_ si najdeme definici vybraného souřadnicového systému pro Geoserver. Text vykopírujeme a přidáme ho do souboru `epsg.properties`. Změna se projeví po restartování Geoserveru.
    
 Ohraničující obdélník
 =====================
@@ -53,6 +55,45 @@ K vytvoření pomohou odkazy `Compute from data` a `Compute from native bounds`.
 .. figure:: images/data3.png
 
    BBOX
+
+Přidání nové vrstvy z úložiště ESRI Shapefile
+=============================================
+
+Klikneme na `Add a new resource` a vybereme si úložiště z kterého chceme přidat vrstvu. Geoserver nám ponoukne seznam vrstev, které můžeme přidat. Vrstvy, které nebyli ještě použité mají ve sloupci `Action` napsané `Publish`. Po kliknutí se dostaneme do okna Edit Layer, které bylo popsané na začátku této kapitoly.
+
+.. figure:: images/new_layer_shp.png
+
+   Přidání nove vrstvy z uložiště ESRI Shapefile 
+
+.. note:: Každá vrstva může být publikovaná jenom raz. Když klikneme na `Publish again` tak přepíšeme už vypublikovanou vrstvu.
+
+Přidání nové vrstvy z úložiště PostGIS
+=============================================
+
+Po kliknutí na `Add a new resource` a výběre úložiště z, kterého chceme přidat vrstvu, máme u PostGIS úložiště dvě možnosti. První možnost je stejná jako u ESRI Shapefile úložiště přes Publish. Druhá možnost je publikovat vytvořený SQL pohled. Tuto možnost získáme po kliknutí na Configure new SQL view... . 
+
+View Name 
+^^^^^^^^^^
+Jméno publikované vrstvy
+
+SQL statement
+^^^^^^^^^^^^^
+Místo na napsání SQL dotazu. Na konci dotazu nepíšeme znak ‚;‘
+
+SQL view parameters
+^^^^^^^^^^^^^^^^^^^
+Slouží na definování možností filtrování.
+
+Attributes
+^^^^^^^^^
+Zde se nám po kliknutí na Refresh zobrazí seznam atributů. U sloupce s geometrii můžeme určit souřadnicový systém. Taky tady zadefinujeme, který atribut je identifikátor.
+
+Po kliknutí na Save se dostaneme na okno Edit Layer.
+
+.. figure:: images/new_layer_postgis.png
+
+   Přidání nove vrstvy z uložiště PostGIS 
+
 
 Úkoly
 =====
