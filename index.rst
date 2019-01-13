@@ -86,6 +86,7 @@ serveru GeoServer novou funkcionalitu či podporu pro další formáty či služ
    vektor/index
    rastr/index
    dlazdice/index
+   inspire/index
 
 *******
 Dodatky
