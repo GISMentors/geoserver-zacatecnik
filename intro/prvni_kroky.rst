@@ -104,6 +104,8 @@ Konfigurační soubor se nachází v GEOSERVER_ROOT/webapps/geoserver/WEB-INF/we
 
 Na konec souboru před značku </web-app> vložíme následující tři řádky.
 
-<session-config>
-	<tracking-mode>COOKIE</tracking-mode>
-</session-config>
+.. code-block:: xml
+
+  <session-config>
+  	<tracking-mode>COOKIE</tracking-mode>
+  </session-config>

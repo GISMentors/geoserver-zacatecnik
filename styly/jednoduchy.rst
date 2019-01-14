@@ -20,7 +20,7 @@ Základní styl
 Velmi jednoduchý styl je styl použitý pro vrstvu `sf:archsites`. Jedná se o styl `point`.
 Styl si zobrazíme pomocí sekce `Data`, volba `Styles` a vybereme styl `point`.
 
-.. figure:: images/point2.png
+.. figure:: images/point.png
 
    Styl point
    
