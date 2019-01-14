@@ -31,15 +31,15 @@ Instalace v terminálu, předpokládá zadání pouze jednoho příkazu.
                
    .. code-block:: bash
 
-      sudo apt-get install openjdk-7-jre
+      sudo apt-get install openjdk-8-jre
 
-.. note:: Na Ubuntu 16.04 už není open-7-jre v standardním repozitáři.
+.. note:: Je možné, že JRE nebude v repozitáři. Pak je nutné repozitář přidat.
 
    .. code-block:: bash
 
       sudo add-apt-repository ppa:openjdk-r/ppa
       sudo apt-get update
-      sudo apt-get install openjdk-7-jre  
+      sudo apt-get install openjdk-8-jre  
       
 
 Instalace GeoServer
@@ -49,8 +49,16 @@ Pro účely školení a seznamování se s nástrojem GeoServer je vhodná varia
 `Platform Independent Binary`. Jedná se o ZIP archiv, který je možné rozbalit kdekoli
 na disk. Nedoporučují se adresáře s diakritikou a mezerami.
 
-Následně je nutné upravit spouštěč serveru, tak aby věděl, kde je k dispozici `JRE`.
-Přesuneme se do adresáře bin rozbaleného serveru. Zjistíme kde se nachází `JRE`.
+Rozbalení archivu by obvykle již mělo stačit pro spuštění serveru. V případě starších verzí 
+ nebo v případě nestandardních cest je nutné specifikovat umístění JRE 
+(viz Řešení problémů s instalací).
+
+Řešení problémů s instalací
+===========================
+
+V případě problémů se spuštěním je nutné upravit spouštěč serveru, tak aby věděl, 
+kde je k dispozici `JRE`. Přesuneme se do adresáře bin rozbaleného serveru. 
+Zjistíme kde se nachází `JRE`.
 Upravíme spouštěč startup.sh přidáním informace o umístění `JAVA_HOME`.
 
 .. raw:: latex
@@ -61,10 +69,10 @@ Upravíme spouštěč startup.sh přidáním informace o umístění `JAVA_HOME`
                
    .. code-block:: bash
 
-      cd geoserver-2.8.3/bin
+      cd geoserver-2.14.1/bin
 	  locate jvm
 	  vim startup.sh
-	  JAVA_HOME=/usr/lib/jvm/java-7-openjre-amd64
+	  JAVA_HOME=/usr/lib/jvm/java-8-openjre-amd64
 
    
 Další možnosti instalace

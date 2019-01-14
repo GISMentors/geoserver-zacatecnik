@@ -88,3 +88,22 @@ systém spuštěn.
    Vrstva sf:archsites.
 
 .. note:: Toto ověření je vhodné realizovat vždy po restartu serveru.
+
+Možné problémy a jejich řešení
+==============================
+
+Obvyklým problémem je nespuštění serveru s chybovou hláškou
+HTTP ERROR 500. Caused by: org.springframework.security.web.firewall.RequestRejectedException
+
+.. figure:: images/error500.png
+
+   Chyba 500.
+
+Řešením je úprava konfigurace serveru jetty. Řeší se přidáním XML elementu do konfigurace.
+Konfigurační soubor se nachází v GEOSERVER_ROOT/webapps/geoserver/WEB-INF/web.xml
+
+Na konec souboru před značku </web-app> vložíme následující tři řádky.
+
+<session-config>
+	<tracking-mode>COOKIE</tracking-mode>
+</session-config>

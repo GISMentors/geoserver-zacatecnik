@@ -45,7 +45,7 @@ uživatelského rozhraní pro administraci systému a sada cvičných dat, kter�
    Text školení je dostupný i v tisknutelné formě `PDF
    <./skoleni-geoserver-zacatecnik.pdf>`_.
    
-.. important:: Školení je zaměřeno na aktuální verzi `GeoServer 2.8.3 
+.. important:: Školení je zaměřeno na aktuální verzi `GeoServer 2.14.1 
                <http://geoserver.org/release/stable/>`_. V
                jiných verzích není zaručena funkčnost uvedených příkladů. 
 
