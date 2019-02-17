@@ -17,7 +17,7 @@ Styly je možné také vytvářet v nástrojích jako je AtlasStyler, QGIS, Open
 Základní bodoví styl
 ====================
 
-Velmi jednoduchý bodový styl je styl použitý pro vrstvu `sf:archsites`. Jedná se o styl `point`.
+Velmi jednoduchý bodoví styl je styl použitý pro vrstvu `sf:archsites`. Jedná se o styl `point`.
 Styl si zobrazíme pomocí sekce `Data`, volba `Styles` a vybereme styl `point`.
 
 .. figure:: images/point.png
@@ -185,6 +185,22 @@ Stroke
 ^^^^^^
 Slouží k nastavění zobrazení hranice polygonu. Nastavuje se stejně jako stylu linie.
 
+Popisky
+=========
+Další ze základní možností stylování je vytvoření popisku. Popisky můžeme vytvářet pro všechny typy vrstev. 
+
+TextSymbolizer
+^^^^^^^^^^^^^^
+Slouží k vzkreslení popisků. Základními parametrama pro `TextSymbolizer` jsou `Label` a `Fill`
+
+Label
+^^^^^
+Slouží k zadefinování atribůtu, z kterého se čerpají data pro popisky
+
+Fill
+^^^^
+Slouží k nastavění barvy popisku.
+ 
 
 Úkoly
 =====

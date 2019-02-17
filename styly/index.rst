@@ -8,6 +8,7 @@ Styly
    administrace
    jednoduchy
    externi
+   slozity
    kartogram
 
 
