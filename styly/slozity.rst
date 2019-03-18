@@ -1,21 +1,21 @@
 .. index::
-   single: Složitější stylování
+   single: Komplexní stylování
 
 .. _slozity:
 
 
-Složitější stylování
+Komplexní stylování
 --------------------
 
 SLD nám umožňuje vytvářet i složitější stylováni. 
  - linie s outlinou
  - stylování na základě zoomu
- - stylování na základě atributů
+ - stylování na základě atributu
 
-Línie s outlinou
-================
+Línie s okrajem
+===============
 
-SLD nemá možnost stylovat linii s outlinou. Vykreslíme ji tak, že přes sebe nakreslíme dvě linie. Spodní linie má větší šířku jako vrchní. 
+SLD nemá možnost stylovat linii s okrajem. Vykreslíme ji tak, že přes sebe nakreslíme dvě linie. Spodní linie má šírku větší jako vrchní. 
 
 .. code-block:: xml
 
@@ -121,7 +121,7 @@ V příkladě stylování pro železnici jsme použili i parametr pro přerušov
 Stylování na základě zoomu
 ==========================
 
-SLD dále můžeme nastavit různý styl pro různý zoom. Slouží na to parametr `MaxScaleDenominator` a `MinScaleDenominator`. MaxScaleDenominator určuje zoom, po který zoom se styl zobrazuje a MinScaleDenominator určuje, od kterého zoomu se styl zobrazuje.
+V SLD dále můžeme nastavit různý styl pro různý zoom. Slouží na to parametry `MaxScaleDenominator` a `MinScaleDenominator`. Tyto dva parametri určují rozmezí v kterém se použije definice stylu. 
 
 .. code-block:: xml
 
@@ -190,6 +190,11 @@ SLD dále můžeme nastavit různý styl pro různý zoom. Slouží na to parame
    </StyledLayerDescriptor>
 
 V zoomech 0 až 8000 se body zobrazí červenou barvou, v zoomech 8000 až 16000 se body zobrazí zelenou a v zoomech větších jako 16000 jsou body modré.
+
+Stylování na základě atributu
+=============================
+
+Stylování na základě atributu si ukážeme na příkladě kartogramu v další kapitole. 
 
 
 
