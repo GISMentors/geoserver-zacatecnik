@@ -7,6 +7,7 @@ První kroky
 
    ../instalace/index
    prvni_kroky
+   administrace
    wms
    wfs
 
