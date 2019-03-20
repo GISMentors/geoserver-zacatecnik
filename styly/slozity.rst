@@ -10,7 +10,6 @@ Komplexní stylování
 SLD nám umožňuje vytvářet i složitější stylováni. 
  - linie s outlinou
  - stylování na základě zoomu
- - stylování na základě atributu
 
 Línie s okrajem
 ===============
@@ -35,12 +34,12 @@ SLD nemá možnost stylovat linii s okrajem. Vykreslíme ji tak, že přes sebe 
            <Rule>
              <Name>rule1</Name>
              <Title>Cerna linie</Title>
-             <Abstract>A solid black line with a 2 pixel width</Abstract>
+             <Abstract>A solid black line with a 4 pixel width</Abstract>
              <LineSymbolizer>
                <Stroke>
                  <CssParameter name="stroke">#000000</CssParameter>
                  <CssParameter name="stroke-width">
-                  <ogc:Literal>2</ogc:Literal>
+                  <ogc:Literal>4</ogc:Literal>
                  </CssParameter>
                </Stroke>
              </LineSymbolizer>
@@ -50,12 +49,12 @@ SLD nemá možnost stylovat linii s okrajem. Vykreslíme ji tak, že přes sebe 
            <Rule>
              <Name>rule2</Name>
              <Title>Blue Line</Title>
-             <Abstract>A solid blue line with a 1 pixel width</Abstract>
+             <Abstract>A solid red line with a 0.5 pixel width</Abstract>
              <LineSymbolizer>
                <Stroke>
-                 <CssParameter name="stroke">#003EBA</CssParameter>
+                 <CssParameter name="stroke">#ff0000</CssParameter>
                  <CssParameter name="stroke-width">
-                  <ogc:Literal>1</ogc:Literal>
+                  <ogc:Literal>0.5</ogc:Literal>
                  </CssParameter>
                </Stroke>
              </LineSymbolizer>
@@ -64,6 +63,10 @@ SLD nemá možnost stylovat linii s okrajem. Vykreslíme ji tak, že přes sebe 
        </UserStyle>
      </NamedLayer>
    </StyledLayerDescriptor>
+
+.. figure:: images/okraj.png
+
+   Línie s okrajem
 
 Stejným způsobem můžeme vykreslit i linií typickou pro železnici
 
@@ -100,7 +103,7 @@ Stejným způsobem můžeme vykreslit i linií typickou pro železnici
            <Rule>
              <Name>rule2</Name>
              <Title>Blue Line</Title>
-             <Abstract>A solid blue line with a 1 pixel width</Abstract>
+             <Abstract>A dash white line with a 1 pixel width</Abstract>
              <LineSymbolizer>
                <Stroke>
                  <CssParameter name="stroke">#FFFFFF</CssParameter>
@@ -115,6 +118,10 @@ Stejným způsobem můžeme vykreslit i linií typickou pro železnici
        </UserStyle>
      </NamedLayer>
    </StyledLayerDescriptor> 
+
+.. figure:: images/zeleznice.png
+
+   Styl pro železnici
 
 V příkladě stylování pro železnici jsme použili i parametr pro přerušovanou čáru. Je to parametr `stroke-dasharray`. První číslo určuje délku dílku v barvě a druhé číslo určí délku mezery. 
 
@@ -191,10 +198,7 @@ V SLD dále můžeme nastavit různý styl pro různý zoom. Slouží na to para
 
 V zoomech 0 až 8000 se body zobrazí červenou barvou, v zoomech 8000 až 16000 se body zobrazí zelenou a v zoomech větších jako 16000 jsou body modré.
 
-Stylování na základě atributu
-=============================
 
-Stylování na základě atributu si ukážeme na příkladě kartogramu v další kapitole. 
 
 
 

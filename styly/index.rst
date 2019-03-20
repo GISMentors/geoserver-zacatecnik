@@ -9,7 +9,7 @@ Styly
    externi
    slozity
    kartogram
-   qgis
+
 
 
 

@@ -70,6 +70,10 @@ Style je možné přímo editovat. Před uložením změn je vhodné použít tl
      </NamedLayer>
    </StyledLayerDescriptor>
 
+.. figure:: images/circle.png
+
+   Styl circle
+
 Rule
 ^^^^
 Hlavní částí stylu jsou pravidla (`Rule`). V naší ukázce je pouze jedno pravidlo.
@@ -122,6 +126,10 @@ Podobně jednoduchý styl jako je pro bodovou vrstvu `point` je pro liniovou vrs
      </NamedLayer>
    </StyledLayerDescriptor>
 
+.. figure:: images/polyline.png
+
+   Styl simple_streams
+
 LineSymbolizer
 ^^^^^^^^^^^^^^
 Podobně jako PointSymbolizer slouží k vykreslení bodu, tak LineSymbolizer slouží k vykreslení linie. Místo grafiky se zde definuje tah (`Stroke`)
@@ -173,6 +181,10 @@ Jednoduchý polygonový styl je `polygon`.
      </NamedLayer>
    </StyledLayerDescriptor>
 
+.. figure:: images/polygone.png
+
+   Styl polygone
+
 PolygonSymbolizer
 ^^^^^^^^^^^^^^^^^
 Podobně jako PointSymbolizer slouží k vykreslení bodu, tak PolygonSymbolizer slouží k vykreslení polygonu. Polygon se vykresluje pomocí dvou parametrů. `Fill` a `Stroke`. 
@@ -189,6 +201,82 @@ Popisky
 =========
 Další ze základní možností stylování je vytvoření popisku. Popisky můžeme vytvářet pro všechny typy vrstev. 
 
+.. code-block:: xml
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<StyledLayerDescriptor version="1.0.0"
+	  xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd" 
+	  xmlns="http://www.opengis.net/sld"
+	  xmlns:ogc="http://www.opengis.net/ogc" 
+	  xmlns:xlink="http://www.w3.org/1999/xlink" 
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	  <NamedLayer>
+	    <Name>capitals</Name>
+	    <UserStyle>
+	      <Name>capitals</Name>
+	      <Title>Capital cities</Title>
+	      <FeatureTypeStyle>
+		<Rule>
+		  <Title>Capitals</Title>
+		<TextSymbolizer>
+		  <Label>
+		    <ogc:PropertyName>CITY_NAME</ogc:PropertyName>
+		  </Label>
+		  <Font>
+		    <CssParameter name="font-family">Times New Roman</CssParameter>
+		    <CssParameter name="font-style">bold</CssParameter>
+		    <CssParameter name="font-size">14</CssParameter>
+		  </Font>
+		  <LabelPlacement>
+		    <PointPlacement>
+		      <AnchorPoint>
+		        <AnchorPointX>0</AnchorPointX>
+		        <AnchorPointY>0</AnchorPointY>
+		      </AnchorPoint>
+		      <Displacement>
+		        <DisplacementX>10</DisplacementX>
+		        <DisplacementY>0</DisplacementY>
+		      </Displacement>
+		    </PointPlacement>
+		  </LabelPlacement>
+		  </TextSymbolizer>
+		  <PointSymbolizer>
+		    <Graphic>
+		      <Mark>
+		        <WellKnownName>circle</WellKnownName>
+		        <Fill>
+		          <CssParameter name="fill">
+		            <ogc:Literal>#FFFFFF</ogc:Literal>
+		          </CssParameter>
+		        </Fill>
+		        <Stroke>
+		          <CssParameter name="stroke">
+		            <ogc:Literal>#000000</ogc:Literal>
+		          </CssParameter>
+		          <CssParameter name="stroke-width">
+		            <ogc:Literal>2</ogc:Literal>
+		          </CssParameter>
+		        </Stroke>
+		      </Mark>
+		      <Opacity>
+		        <ogc:Literal>1.0</ogc:Literal>
+		      </Opacity>
+		      <Size>
+		        <ogc:Literal>6</ogc:Literal>
+		      </Size>
+
+		    </Graphic>
+		  </PointSymbolizer>
+		</Rule>
+	      </FeatureTypeStyle>
+	    </UserStyle>
+	  </NamedLayer>
+	</StyledLayerDescriptor>
+
+.. figure:: images/label.png
+
+   Styl label
+
 TextSymbolizer
 ^^^^^^^^^^^^^^
 Slouží k vzkreslení popisků. Základními parametrama pro `TextSymbolizer` jsou `Label` a `Fill`
@@ -200,7 +288,14 @@ Slouží k zadefinování atribůtu, z kterého se čerpají data pro popisky
 Fill
 ^^^^
 Slouží k nastavění barvy popisku.
- 
+
+AnchorPoint
+^^^^^^^^^^^ 
+Určuje pozici popisku. 
+
+Displacement
+^^^^^^^^^^^^
+Určuje odsayení popisku.
 
 Úkoly
 =====
