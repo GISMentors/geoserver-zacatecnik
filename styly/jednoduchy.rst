@@ -14,6 +14,9 @@ www editoru přímo v administraci nástroje GeoServer.
 
 Styly je možné také vytvářet v nástrojích jako je AtlasStyler, QGIS, OpenJUMP nebo uDIG.
 
+.. note:: Pro získání kompatibilních stylů z QGISu je potrební použít QGIS 3.0 nebo novější a GeoServer 2.13.x nebo novější. 
+
+
 Základní bodoví styl
 ====================
 
