@@ -10,7 +10,7 @@
 Docker
 ------
 
-Docker slouží k izolaci aplikací do konternejů. Konternej obsahuje pouze aplikaci a soubory k nim. Neobsahuje operační systém. V této kapitole si ukážeme jak nainstalovat Docker v Ububtu 18.04 a rozchodit v něm GeoServer.
+Docker slouží k izolaci aplikací do kontejnerů. Kontejner obsahuje pouze aplikaci a soubory k ní. Neobsahuje operační systém. V této kapitole si ukážeme jak nainstalovat Docker v Ububtu 18.04 a rozchodit v něm GeoServer.
 
 Instalace Docker
 ================
@@ -25,7 +25,7 @@ Instalace Docker
 	sudo apt install docker-ce
 	sudo systemctl status docker
 
-Po úspešné instalaci příkaz vypíše :
+Po úspěšné instalaci příkaz vypíše :
 
 Výstup
 ======             
@@ -41,7 +41,7 @@ Výstup
            	    ├─10096 /usr/bin/dockerd -H fd://
           	    └─10113 docker-containerd --config /var/run/docker/containerd/containerd.toml
 
-Dále je vhodné přidat ssvého uživatele do skupiny docker aby spouštění příkazů Dockeru nevyžadovali SUDO
+Dále je vhodné přidat svého uživatele do skupiny docker aby spouštění příkazů Dockeru nevyžadovali SUDO
 
 .. code-block:: bash
 
@@ -54,9 +54,9 @@ ${USER} nahradíme svým uživatelem.
 Instalace kontejneru pro GeoServer
 ==================================
 
-Když už máme naistalovaný Docker přistopíme k instalaci konterneju pro GeoServer. 
+Když už máme nainstalovaný Docker přistoupíme k instalaci kontejneru pro GeoServer. 
 
-Stažení konterneru
+Stažení kontejneru
 ==================
 
 .. code-block:: bash
@@ -69,13 +69,13 @@ Stažení konterneru
 
 	docker run -d -p 8080:8080 -v /path/to/local/data_dir:/var/local/geoserver -v /path/to/local/exts_dir:/var/local/geoserver-exts --name=geoserver oscarfonts/geoserver:2.14.1
 
--p slouží určení portu. První část určuje port na, kterém beží Geoserver
--v slouží k nastavění umístnění data_dir a exts_dir
---name zadefinuje název kontajneru 
+-p slouží určení portu. První část určuje port na, kterém běží Geoserver
+-v slouží k nastavění umístnění data_dir a exts_dir. Adresáře si můžeme zvolit libovolně. 
+--name zadefinuje název kontejneru 
 
 V adresáři `data_dir` jsou uložené data pro GeoServer a v adresáři `exts_dir` jsou uložené pluginy.
 
-Příkazy pro zpuštení a zastavění kontajneru
+Příkazy pro spuštění a zastavění kontejneru
 ===========================================
 
 .. code-block:: bash
