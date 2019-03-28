@@ -24,6 +24,7 @@ návody pro instalaci na všech dostupních platformách jsou dostupné `v dokum
 
    linux.rst
    windows.rst
+   docker.rst
 
 
 
