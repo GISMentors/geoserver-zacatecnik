@@ -70,7 +70,9 @@ Stažení kontejneru
 	docker run -d -p 8080:8080 -v /path/to/local/data_dir:/var/local/geoserver -v /path/to/local/exts_dir:/var/local/geoserver-exts --name=geoserver oscarfonts/geoserver:2.14.1
 
 -p slouží určení portu. První část určuje port na, kterém běží Geoserver
+
 -v slouží k nastavění umístnění data_dir a exts_dir. Adresáře si můžeme zvolit libovolně. 
+
 --name zadefinuje název kontejneru 
 
 V adresáři `data_dir` jsou uložené data pro GeoServer a v adresáři `exts_dir` jsou uložené pluginy.
