@@ -49,30 +49,28 @@ Pro účely školení a seznamování se s nástrojem GeoServer je vhodná varia
 `Platform Independent Binary`. Jedná se o ZIP archiv, který je možné rozbalit kdekoli
 na disk. Nedoporučují se adresáře s diakritikou a mezerami.
 
-Rozbalení archivu by obvykle již mělo stačit pro spuštění serveru. V případě starších verzí 
- nebo v případě nestandardních cest je nutné specifikovat umístění JRE 
-(viz Řešení problémů s instalací).
+Rozbalení archivu by obvykle již mělo stačit pro spuštění serveru. V
+případě starších verzí nebo v případě nestandardních cest je nutné
+specifikovat umístění JRE (viz Řešení problémů s instalací).
 
 Řešení problémů s instalací
 ===========================
 
-V případě problémů se spuštěním je nutné upravit spouštěč serveru, tak aby věděl, 
-kde je k dispozici `JRE`. Přesuneme se do adresáře bin rozbaleného serveru. 
-Zjistíme kde se nachází `JRE`.
-Upravíme spouštěč startup.sh přidáním informace o umístění `JAVA_HOME`.
+V případě problémů se spuštěním je nutné upravit spouštěč serveru, tak
+aby věděl, kde je k dispozici `JRE`. Přesuneme se do adresáře bin
+rozbaleného serveru.  Zjistíme kde se nachází `JRE`.  Upravíme
+spouštěč :file:`startup.sh` přidáním informace o umístění
+``JAVA_HOME``.
 
 .. raw:: latex
  
 	 \newpage
 
-.. notecmd:: Instalace GeoServer
-               
-   .. code-block:: bash
+V souboru :file:`geoserver-2.14.1/bin/startup.sh` nastavíme cestu k instalaci Javy, např.
 
-      cd geoserver-2.14.1/bin
-	  locate jvm
-	  vim startup.sh
-	  JAVA_HOME=/usr/lib/jvm/java-8-openjre-amd64
+.. code:: bash
+
+   JAVA_HOME=/usr/lib/jvm/java-8-openjre-amd64
 
    
 Další možnosti instalace

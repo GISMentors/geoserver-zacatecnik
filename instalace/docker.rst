@@ -10,25 +10,29 @@
 Docker
 ------
 
-Docker slouží k izolaci aplikací do kontejnerů. Kontejner obsahuje pouze aplikaci a soubory k ní. Neobsahuje operační systém. V této kapitole si ukážeme jak nainstalovat Docker v Ububtu 18.04 a rozchodit v něm GeoServer.
+Docker slouží k izolaci aplikací do kontejnerů. Kontejner obsahuje
+pouze aplikaci a soubory k ní. Neobsahuje operační systém. V této
+kapitole si ukážeme, jak nainstalovat Docker v Ubuntu 18.04 a v něm
+zprovoznit GeoServer.
 
 Instalace Docker
 ================
                
 .. code-block:: bash
       
-	sudo apt update
 	sudo apt install apt-transport-https ca-certificates curl software-properties-common
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 	sudo apt update
 	sudo apt install docker-ce
-	sudo systemctl status docker
 
-Po úspěšné instalaci příkaz vypíše :
+Po úspěšné instalaci příkaz vypíše:
 
-Výstup
-======             
+.. code-block:: bash
+
+   sudo systemctl status docker
+                
+
 .. code-block:: bash
 
 	● docker.service - Docker Application Container Engine
@@ -41,44 +45,55 @@ Výstup
            	    ├─10096 /usr/bin/dockerd -H fd://
           	    └─10113 docker-containerd --config /var/run/docker/containerd/containerd.toml
 
-Dále je vhodné přidat svého uživatele do skupiny docker aby spouštění příkazů Dockeru nevyžadovali SUDO
+.. tip::                    
+   Dále je vhodné přidat běžného uživatele do skupiny ``docker``, aby
+   spouštění příkazů Dockeru nevyžadovalo práva ``sudo``.
 
-.. code-block:: bash
+   .. code-block:: bash
 
 	sudo usermod -aG docker ${USER}
 	su - ${USER}
 	id -nG
-
-${USER} nahradíme svým uživatelem.
-
+   
 Instalace kontejneru pro GeoServer
 ==================================
 
-Když už máme nainstalovaný Docker přistoupíme k instalaci kontejneru pro GeoServer. 
+Když už máme nainstalovaný Docker, přistoupíme k instalaci kontejneru
+pro GeoServer.
 
-Stažení kontejneru
-==================
+Stažení a spuštení kontejneru
+=============================
 
 .. code-block:: bash
 
 	docker pull oscarfonts/geoserver:2.14.1
 
-`:2.14.1` slouží k nastavení verze GeoServeru. Když to spustíme bez `:2.14.1` tak se nainstaluje do Dockeru nejnovější verze GeoServeru.
+``:2.14.1`` slouží k nastavení verze GeoServeru. Pokud verzi
+vynecháme, tak se nainstaluje do Dockeru nejnovější verze GeoServeru.
+
+Spuštění Docker kontejneru:
 
 .. code-block:: bash
 
-	docker run -d -p 8080:8080 -v /path/to/local/data_dir:/var/local/geoserver -v /path/to/local/exts_dir:/var/local/geoserver-exts --name=geoserver oscarfonts/geoserver:2.14.1
+	docker run -d -p 8080:8080 -v /opt/geoserver/data_dir:/var/local/geoserver \
+        -v /opt/geoserver/exts_dir:/var/local/geoserver-exts \
+        --name=geoserver oscarfonts/geoserver:2.14.1
 
--p slouží určení portu. První část určuje port na, kterém běží Geoserver
+* ``-p`` slouží k určení portu. První část určuje port, na kterém je
+  Geoserver posléze dostupný.
 
--v slouží k nastavění umístnění data_dir a exts_dir. Adresáře si můžeme zvolit libovolně. 
+* ``-v`` slouží k nastavění umístnění :file:`data_dir` a
+  :file:`exts_dir`. Adresáře :file:`/opt/geoserver` jsou umístěny na
+  lokálním disku, můžeme je zvolit libovolně.
 
---name zadefinuje název kontejneru 
+* ``--name`` určí název kontejneru
 
-V adresáři `data_dir` jsou uložené data pro GeoServer a v adresáři `exts_dir` jsou uložené pluginy.
+.. note::
+   V adresáři :file:`data_dir` jsou uložené data pro GeoServer a v
+   adresáři :file:`exts_dir` jsou uložené pluginy.
 
-Příkazy pro spuštění a zastavění kontejneru
-===========================================
+Příkazy pro správu kontejneru
+=============================
 
 .. code-block:: bash
 
