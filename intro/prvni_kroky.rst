@@ -1,9 +1,9 @@
 Úvod do systému GeoServer
 -------------------------
 
-Po úspěšné instalaci systému GeoServer (dle návodu pro :doc:`GNU/Linux
-<../instalace/linux>` nebo :doc:`MS Windows <../instalace/windows>`)
-je možné jej spustit a začít okamžitě pracovat.
+Po úspěšné instalaci systému GeoServer (dle návodu
+:doc:`../instalace/index`) je možné jej spustit a začít okamžitě
+pracovat.
 
 .. index::
    single: spuštění GeoServer
@@ -11,16 +11,20 @@ je možné jej spustit a začít okamžitě pracovat.
 Spuštění systému GeoServer
 ==========================
 
-Úspěšně nainstalovaný systém by měl být spustitelný z příkazové řádky 
-pomocí příkazu bash startup.sh (pro Linux)
-nebo spuštěním dávkového souboru startup.bat (pro Windows).
-V obou případech čekáme až server naběhne zcela.
+Úspěšně nainstalovaný mapový server by měl být spustitelný z příkazové
+řádky pomocí příkazu :file:`startup.sh` (pro Linux) nebo spuštěním
+dávkového souboru :file:`startup.bat` (pro Windows).  V obou případech
+čekáme až server naběhne zcela.
+
+.. note:: Tento krok není nutný při instalaci GeoServeru v rámci
+   :doc:`../instalace/docker`. V tomto případě je GeoServer
+   automaticky spuštěn při startu kontejneru.
 
 .. notecmd:: Spuštění GeoServer
              
    .. code-block:: bash
 		
-      bash startup.sh
+      ./startup.sh
 
 .. raw:: latex
 
@@ -31,30 +35,28 @@ V obou případech čekáme až server naběhne zcela.
    Spuštění systému GeoServer v Ubuntu.
 
 Server je spuštěn v okamžiku, kdy se objeví informační hláška:
-`INFO:  Started SelectChannelConnector@0.0.0.0:8080`
+``INFO:  Started SelectChannelConnector@0.0.0.0:8080``.
 
 
 Možné problémy a jejich řešení
 ==============================
 
-Obvyklým problémem je nespuštění serveru s chybovou hláškou
-Address already in use. To znamená, že na portu `8080`, kde
-se server startuje, již něco běží.
+Obvyklým problémem je nespuštění serveru s chybovou hláškou ``Address
+already in use``. To znamená, že na portu `8080`, kde se server
+startuje, již něco běží.
 
-V takovém případě je nutné změnit port pro start serveru.
-Toto se dělá v souboru `etc/jetty.xml` nahrazením portu `8080`
-jiným číslem např. `25000`. U portu s čísly většími než `20000`
-se dá očekávat, že jsou volné.
-
-.. note:: V případě, že toto nepomůže je problém složitější a je nutné kontaktovat lektora.
+V takovém případě je nutné změnit port pro start serveru.  Toto se
+dělá v souboru :file:`etc/jetty.xml` nahrazením portu `8080` jiným
+číslem např. `25000`. U portu s čísly většími než `20000` se dá
+očekávat, že jsou volné.
 
 Ověření běhu
 ============
 
-Informační hláška INFO:  Started SelectChannelConnector@0.0.0.0:8080
-bohužel nemusí znamenat, že server běží. Toto je nutné ověřit.
-Ověření se dělá přes WWW prohlížeč zadáním adresy:
-http://localhost:8080/geoserver/
+Informační hláška ``INFO: Started
+SelectChannelConnector@0.0.0.0:8080`` bohužel nemusí znamenat, že
+server běží. Toto je nutné ověřit. Ověření prodeme ve webovém
+prohlížeči zadáním adresy: http://localhost:8080/geoserver/
 
 .. note:: V případě, že jste změnili port, je nutné i zde zadat jiné číslo portu než 8080.
 
@@ -63,7 +65,8 @@ http://localhost:8080/geoserver/
 	 \newpage
 
 .. figure:: images/welcome.png
-
+   :class: middle
+           
    Ověření spuštění systému GeoServer.
 
 V případě, že se objeví uvítací obrazovka je systém pravděpodobně spuštěn.
@@ -76,7 +79,8 @@ systém spuštěn.
 	 \newpage
 
 .. figure:: images/layer-preview.png
-
+   :class: middle
+           
    Ověření spuštění systému GeoServer pomocí vizualizace vrstvy geodat.
    
 .. raw:: latex
@@ -92,17 +96,19 @@ systém spuštěn.
 Možné problémy a jejich řešení
 ==============================
 
-Obvyklým problémem je nespuštění serveru s chybovou hláškou
-HTTP ERROR 500. Caused by: org.springframework.security.web.firewall.RequestRejectedException
+Obvyklým problémem je nespuštění serveru s chybovou hláškou ``HTTP
+ERROR 500. Caused by:
+org.springframework.security.web.firewall.RequestRejectedException``.
 
 .. figure:: images/error500.png
 
    Chyba 500.
 
-Řešením je úprava konfigurace serveru jetty. Řeší se přidáním XML elementu do konfigurace.
-Konfigurační soubor se nachází v GEOSERVER_ROOT/webapps/geoserver/WEB-INF/web.xml
+Řešením je úprava konfigurace serveru jetty. Řeší se přidáním XML
+elementu do konfigurace.  Konfigurační soubor se nachází v
+:file:`webapps/geoserver/WEB-INF/web.xml`.
 
-Na konec souboru před značku </web-app> vložíme následující tři řádky.
+Na konec souboru před značku ``</web-app>`` vložíme následující tři řádky.
 
 .. code-block:: xml
 
