@@ -92,6 +92,8 @@ Spuštění Docker kontejneru:
    V adresáři :file:`data_dir` jsou uložené data pro GeoServer a v
    adresáři :file:`exts_dir` jsou uložené pluginy.
 
+Instance Geoserveru je posléze dostupná na adrese http://localhost:8080/geoserver/web/
+
 Příkazy pro správu kontejneru
 =============================
 
