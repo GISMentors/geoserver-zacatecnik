@@ -82,6 +82,7 @@ Místo na napsání SQL dotazu. Na konci dotazu nepíšeme znak ;
 Například můžeme sestavit pohled, který vybere parcely v základní sídelní jednotce v Praze nazvané Baba skódem 129470.
 
 .. code-block:: sql
+
   SELECT p.geom, p.zpusobyvyuzitipozemku 
   FROM ruian_praha.parcely p 
   JOIN ruian_praha.zsj z 
