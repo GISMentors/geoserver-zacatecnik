@@ -94,6 +94,11 @@ Po kliknutí na Save se dostaneme na okno Edit Layer.
 
    Přidání nove vrstvy z uložiště PostGIS 
 
+S-JTSK
+======
+Opakovaně se můžete v různých verzích GeoServeru setkat s problémy při publikování geodat v prostorovém referenčním systému S-JTSK označeném kódem EPSG:5514. V případě, že GeoServer ne vypočítá korektně souřadnice ohraničujícího obdélníka pro Lat/Lon, případně chybně identifikuje souřadnicový systém, je možné přepsat jeho definici.
+
+Přepsání se realizuje pomocí deklarace v souboru :download:`epsg_overrides.properties <images/epsg_overrides.properties>`. Tento soubor se umisťuje do adresáře user_projections. Pro aktivování je nutné server restartovat.
 
 Úkoly
 =====
