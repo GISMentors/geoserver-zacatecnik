@@ -66,7 +66,7 @@ spouštěč :file:`startup.sh` přidáním informace o umístění
  
 	 \newpage
 
-V souboru :file:`geoserver-2.14.1/bin/startup.sh` nastavíme cestu k instalaci Javy, např.
+V souboru :file:`geoserver-2.14.1/bin/startup.sh` nastavíme cestu k instalaci JRE, např.
 
 .. code:: bash
 

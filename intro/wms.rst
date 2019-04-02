@@ -90,6 +90,8 @@ Format
 ^^^^^^
 Formát výstupního souboru.
 
+.. note:: V rámci sekce Demos je řada velmi pěkných příkladů. V případě času se na některé podíváme.
+
 Úkoly
 =====
 

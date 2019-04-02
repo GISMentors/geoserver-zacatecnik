@@ -79,7 +79,7 @@ SQL statement
 ^^^^^^^^^^^^^
 Místo na napsání SQL dotazu. Na konci dotazu nepíšeme znak ;
 
-Například můžeme sestavit pohled, který vybere parcely v základní sídelní jednotce v Praze nazvané Baba skódem 129470.
+Například můžeme sestavit pohled, který vybere parcely v základní sídelní jednotce v Praze nazvané Baba s kódem 129470.
 
 .. code-block:: sql
 

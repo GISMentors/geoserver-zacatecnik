@@ -122,3 +122,5 @@ popis dat (pomocí zavolání operace `DescribeFeatureType`). Samotný obsah je 
 ale obvykle, tak jako v našem případě jsou jednoduché. Tedy sestávají z jednoho objektu (`sf:archsites`),
 který je reprezentován jednou geometrií (`sf:the_geom`) a sadou dalších atributů (`sf:cat`, `sf:str1`).
 
+.. note:: V rámci sekce Demos je řada velmi pěkných příkladů. V případě času se na některé podíváme.
+

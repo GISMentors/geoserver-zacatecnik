@@ -10,7 +10,7 @@ různé operační systémy. V současnosti jsou oficiálně podporovány
 :wikipedia:`MS Windows`, :wikipedia:`Mac OSX`, :wikipedia:`GNU/Linux`.
 V tomto dokumentu je detailně popsán postup instalace pro dvě
 nejrozšířenější platformy - *MS Windows* a *GNU/Linux*. Dále je
-doplněna možnost instalace před kontejnerizační platformu
+doplněna možnost instalace s využitím platformy
 :wikipedia:`Docker <Docker (software)>`. Kompletní návody pro
 instalaci na všech dostupních platformách jsou dostupné `v oficiální
 dokumentaci GeoServeru

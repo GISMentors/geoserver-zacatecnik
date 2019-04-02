@@ -82,15 +82,15 @@ Spuštění Docker kontejneru:
 * ``-p`` slouží k určení portu. První část určuje port, na kterém je
   Geoserver posléze dostupný.
 
-* ``-v`` slouží k nastavění umístnění :file:`data_dir` a
+* ``-v`` slouží k nastavení umístnění :file:`data_dir` a
   :file:`exts_dir`. Adresáře :file:`/opt/geoserver` jsou umístěny na
   lokálním disku, můžeme je zvolit libovolně.
 
 * ``--name`` určí název kontejneru
 
 .. note::
-   V adresáři :file:`data_dir` jsou uložené data pro GeoServer a v
-   adresáři :file:`exts_dir` jsou uložené pluginy.
+   V adresáři :file:`data_dir` jsou uložena data pro GeoServer a v
+   adresáři :file:`exts_dir` jsou uloženy pluginy (rozšíření).
 
 Instance Geoserveru je posléze dostupná na adrese http://localhost:8080/geoserver/web/
 
