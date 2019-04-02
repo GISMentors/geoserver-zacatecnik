@@ -50,3 +50,5 @@ Toto vyplnění se pak projeví v metadatech služby.
 .. figure:: images/inspire4.png
 
    Sekce metadat dle INSPIRE pro WFS (WCS).
+
+.. note: Podrobně je užití extenze vysvětleno např na <https://geoserver.geo-solutions.it/educational/en/inspire/inspire_ext.html>
