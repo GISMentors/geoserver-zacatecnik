@@ -18,7 +18,7 @@ Nastavení generování
 ====================
 
 Nastavení generování můžeme volit několik možností. Pokud máme více jader může se hodit zvolit více úloh
-`Number of tasks to use`. Můžeme volit úrovně přiblížení na data (0 - celý svět, 15 - část obce) `Zoom start` a `Zoom end`.  Můžeme zvolit také jiný styl pro vykreselní `Modifiable Parameters`. Také můžeme omezit generování na výbrané území `Bounding box`. V neposlední řadě můžeme zvolti Gridset `Grid Set`. Také můžeme volit zda chceme jen vygenerovat chybějící dlaždice nebo kompletně přegeneovat můžeme zvolit v možnosti `Type of operation`.
+`Number of tasks to use`. Můžeme volit úrovně přiblížení na data (0 - celý svět, 15 - část obce) `Zoom start` a `Zoom end`.  Můžeme zvolit také jiný styl pro vykreselní `Modifiable Parameters`. Také můžeme omezit generování na výbrané území `Bounding box`. V neposlední řadě můžeme zvolit `Grid Set`. Také můžeme volit zda chceme jen vygenerovat chybějící dlaždice nebo kompletně přegeneovat můžeme zvolit v možnosti `Type of operation`.
 
 .. figure:: images/spustenit.png
 

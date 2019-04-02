@@ -15,9 +15,9 @@ odkazu `Caching Defaults` v sekci `Tile Caching`.
 Provided Services
 =================
 
-V rámci sekce `Provided Services` je možné povolit nebo zakázat jendotlivé protokoly,
-pomocí který jsou distribuovány dlaždice ke klientovi. Zajímavá je možnost 
-`Enable direct integration with GeoServer WMS`, která umožňuje zazanmenávat cache v případě
+V rámci sekce `Provided Services` je možné povolit nebo zakázat jednotlivé protokoly,
+pomocí kterých jsou distribuovány dlaždice ke klientovi. Zajímavá je možnost 
+`Enable direct integration with GeoServer WMS`, která umožňuje zaznamenávat cache v případě
 práce s WMS. Výhodou je pak zrychlení funkce WMS služby. 
 
 .. figure:: images/servicest.png

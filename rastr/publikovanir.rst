@@ -6,7 +6,7 @@
 Publikování rastru
 ------------------
 
-V rámci publikování vektorových dat můžete ještě na dalších kartách nastavovat
+V rámci publikování rastrových dat můžete ještě na dalších kartách nastavovat
 jakým způsobem budou data prezentována.
 
 Publishing
