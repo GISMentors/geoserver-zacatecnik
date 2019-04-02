@@ -79,6 +79,17 @@ SQL statement
 ^^^^^^^^^^^^^
 Místo na napsání SQL dotazu. Na konci dotazu nepíšeme znak ;
 
+Například můžeme sestavit pohled, který vybere parcely v základní sídelní jednotce v Praze nazvané Baba skódem 129470.
+
+.. code-block:: sql
+  SELECT p.geom, p.zpusobyvyuzitipozemku 
+  FROM ruian_praha.parcely p 
+  JOIN ruian_praha.zsj z 
+  ON ST_Intersects(p.geom, z.geom) 
+  WHERE z.kod = 129470
+
+.. note:: Pohledy je také možno parametrizovat a vytvářet tak dynamicky výstupy z databáze včetně animací. Tomu se věnuje školení pro pokročilé.
+
 SQL view parameters
 ^^^^^^^^^^^^^^^^^^^
 Slouží na definování možností filtrování.
