@@ -43,7 +43,6 @@ Tento se specifikuje s využitím databáze `EPSG`. Např. systém `WGS84` má k
 
    Další metadata a souřadnicové systémy.
 
-.. note:: Standardní souřadnicový systém pro Českou republiku je `S-JTSK / Krovak East North (EPSG:5514)`. Tento souřadnicový systém není obsažený v Geoserveru, ale můžeme si ho přidat. A ne jen `EPSG:5514`, ale i jiné souřadnicové systémy. Ve složce `data_dir/user_projections` je soubor `epsg.properties`, který otevřeme v textovém editore. Na stránce `epsg.io <http://epsg.io/>`_ si najdeme definici vybraného souřadnicového systému pro Geoserver. Text vykopírujeme a přidáme ho do souboru `epsg.properties`. Změna se projeví po restartování Geoserveru.
    
 Ohraničující obdélník
 =====================
@@ -59,13 +58,13 @@ K vytvoření pomohou odkazy `Compute from data` a `Compute from native bounds`.
 Přidání nové vrstvy z úložiště ESRI Shapefile
 =============================================
 
-Klikneme na `Add a new resource` a vybereme si úložiště z kterého chceme přidat vrstvu. Geoserver nám ponoukne seznam vrstev, které můžeme přidat. Vrstvy, které nebyli ještě použité mají ve sloupci `Action` napsané `Publish`. Po kliknutí se dostaneme do okna Edit Layer, které bylo popsané na začátku této kapitoly.
+Klikneme na `Add a new resource` a vybereme si úložiště z kterého chceme přidat vrstvu. Geoserver nám nabídne seznam vrstev, které můžeme přidat. Vrstvy, které nebyly ještě použité mají ve sloupci `Action` napsané `Publish`. Po kliknutí se dostaneme do okna Edit Layer, které bylo popsané na začátku této kapitoly.
 
 .. figure:: images/new_layer_shp.png
 
-   Přidání nove vrstvy z uložiště ESRI Shapefile 
+   Přidání nové vrstvy z úložiště ESRI Shapefile 
 
-.. note:: Každá vrstva může být publikovaná jenom raz. Když klikneme na `Publish again` tak přepíšeme už vypublikovanou vrstvu.
+.. note:: Každá vrstva může být publikovaná jenom jednou. Když klikneme na `Publish again` tak přepíšeme už vypublikovanou vrstvu.
 
 Přidání nové vrstvy z úložiště PostGIS
 =============================================
@@ -78,7 +77,7 @@ Jméno publikované vrstvy
 
 SQL statement
 ^^^^^^^^^^^^^
-Místo na napsání SQL dotazu. Na konci dotazu nepíšeme znak ‚;‘
+Místo na napsání SQL dotazu. Na konci dotazu nepíšeme znak ;
 
 SQL view parameters
 ^^^^^^^^^^^^^^^^^^^
@@ -96,9 +95,11 @@ Po kliknutí na Save se dostaneme na okno Edit Layer.
 
 S-JTSK
 ======
-Opakovaně se můžete v různých verzích GeoServeru setkat s problémy při publikování geodat v prostorovém referenčním systému S-JTSK označeném kódem EPSG:5514. V případě, že GeoServer ne vypočítá korektně souřadnice ohraničujícího obdélníka pro Lat/Lon, případně chybně identifikuje souřadnicový systém, je možné přepsat jeho definici.
+Opakovaně se můžete v různých verzích GeoServeru setkat s problémy při publikování geodat v prostorovém referenčním systému S-JTSK označeném kódem EPSG:5514. V případě, že GeoServer nevypočítá korektně souřadnice ohraničujícího obdélníka pro Lat/Lon, případně chybně identifikuje souřadnicový systém, je možné přepsat jeho definici.
 
 Přepsání se realizuje pomocí deklarace v souboru :download:`epsg_overrides.properties <images/epsg_overrides.properties>`. Tento soubor se umisťuje do adresáře user_projections. Pro aktivování je nutné server restartovat.
+ 
+.. note:: Pokud chceme přidat systém, který není nakonfigurován, pak deklaraci umisťujeme do souboru `epsg.properties`. Na stránce `epsg.io <http://epsg.io/>`_ si najdeme definici vybraného souřadnicového systému pro Geoserver. Text vykopírujeme a přidáme ho do souboru `epsg.properties`. Změna se projeví po restartování Geoserveru.
 
 Úkoly
 =====
