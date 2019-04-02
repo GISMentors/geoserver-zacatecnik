@@ -14,20 +14,20 @@ www editoru přímo v administraci nástroje GeoServer.
 
 Styly je možné také vytvářet v nástrojích jako je AtlasStyler, QGIS, OpenJUMP nebo uDIG.
 
-.. note:: Pro získání kompatibilních stylů z QGISu je potrební použít QGIS 3.0 nebo novější a GeoServer 2.13.x nebo novější. 
+.. note:: Pro získání kompatibilních stylů z QGISu je nutné použít QGIS 3.0 nebo novější a GeoServer 2.13.x nebo novější. 
 
 
-Základní bodoví styl
+Základní bodový styl
 ====================
 
-Velmi jednoduchý bodoví styl je styl použitý pro vrstvu `sf:archsites`. Jedná se o styl `point`.
+Velmi jednoduchý bodový styl je styl použitý pro vrstvu `sf:archsites`. Jedná se o styl `point`.
 Styl si zobrazíme pomocí sekce `Data`, volba `Styles` a vybereme styl `point`.
 
 .. figure:: images/point.png
 
    Styl point
    
-Style je možné přímo editovat. Před uložením změn je vhodné použít tlačítko `Validate`, které nám ověří zda máme správnou syntax.
+Styl je možné přímo editovat. Před uložením změn je vhodné použít tlačítko `Validate`, které nám ověří zda máme správnou syntaxi.
 
 .. figure:: images/point2.png
 
@@ -93,7 +93,7 @@ Mark
 V našem případě jde o grafiku definovanou pomocí `WellKnownName` a `Fill`. `WellKnownName` udává symbol 
 a `Fill` barvu výplně symbolu.
 
-Základní linioví styl
+Základní liniový styl
 =====================
 
 Podobně jednoduchý styl jako je pro bodovou vrstvu `point` je pro liniovou vrstvu styl `simple_streams`. Používá ho vrstva `sf:streams`. 
@@ -101,9 +101,12 @@ Podobně jednoduchý styl jako je pro bodovou vrstvu `point` je pro liniovou vrs
 .. code-block:: xml
 
    <?xml version="1.0" encoding="UTF-8"?>
-   <StyledLayerDescriptor version="1.0.0" xmlns="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc"
-     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd">
+   <StyledLayerDescriptor version="1.0.0" xmlns="http://www.opengis.net/sld" 
+      xmlns:ogc="http://www.opengis.net/ogc"
+     xmlns:xlink="http://www.w3.org/1999/xlink" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.opengis.net/sld 
+      http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd">
      <NamedLayer>
        <Name>Simple Streams</Name>
        <UserStyle>
@@ -135,13 +138,13 @@ Podobně jednoduchý styl jako je pro bodovou vrstvu `point` je pro liniovou vrs
 
 LineSymbolizer
 ^^^^^^^^^^^^^^
-Podobně jako PointSymbolizer slouží k vykreslení bodu, tak LineSymbolizer slouží k vykreslení linie. Místo grafiky se zde definuje tah (`Stroke`)
+Podobně jako PointSymbolizer slouží k vykreslení bodu, tak LineSymbolizer slouží k vykreslení linie. Místo grafiky se zde definuje tah (`Stroke`).
 
 Stroke
 ^^^^^^^^^^^^^^
 V našem případe definujeme tah pomocí dvou parametrů. Jeden je `stroke`, který určuje barvu a druhý je `stroke-width` který určuje šírku linie.
 
-Základní polygonoví styl
+Základní polygonový styl
 ========================
 
 Jednoduchý polygonový styl je `polygon`.
@@ -194,21 +197,22 @@ Podobně jako PointSymbolizer slouží k vykreslení bodu, tak PolygonSymbolizer
 
 Fill
 ^^^^
-Slouží k nastavění výplně polygonu.
+Slouží k nastavení výplně polygonu.
 
 Stroke
 ^^^^^^
-Slouží k nastavění zobrazení hranice polygonu. Nastavuje se stejně jako stylu linie.
+Slouží k nastavení zobrazení hranice polygonu. Nastavuje se stejně jako stylu linie.
 
 Popisky
 =========
-Další ze základní možností stylování je vytvoření popisku. Popisky můžeme vytvářet pro všechny typy vrstev. 
+Další ze základních možností stylování je vytvoření popisku. Popisky můžeme vytvářet pro všechny typy vrstev. 
 
 .. code-block:: xml
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<StyledLayerDescriptor version="1.0.0"
-	  xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd" 
+	  xsi:schemaLocation="http://www.opengis.net/sld 
+    http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd" 
 	  xmlns="http://www.opengis.net/sld"
 	  xmlns:ogc="http://www.opengis.net/ogc" 
 	  xmlns:xlink="http://www.w3.org/1999/xlink" 
@@ -298,7 +302,7 @@ Určuje pozici popisku.
 
 Displacement
 ^^^^^^^^^^^^
-Určuje odsayení popisku.
+Určuje odsazení popisku.
 
 Úkoly
 =====

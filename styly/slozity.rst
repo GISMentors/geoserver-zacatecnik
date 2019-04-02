@@ -8,13 +8,13 @@ Komplexní stylování
 --------------------
 
 SLD nám umožňuje vytvářet i složitější stylováni. 
- - linie s outlinou
- - stylování na základě zoomu
+ - linie s okrajem
+ - stylování na základě měřítka
 
 Línie s okrajem
 ===============
 
-SLD nemá možnost stylovat linii s okrajem. Vykreslíme ji tak, že přes sebe nakreslíme dvě linie. Spodní linie má šírku větší jako vrchní. 
+SLD nemá možnost stylovat linii s okrajem. Vykreslíme ji tak, že přes sebe nakreslíme dvě linie. Dolní linie má šírku větší než horní. 
 
 .. code-block:: xml
 
@@ -68,7 +68,7 @@ SLD nemá možnost stylovat linii s okrajem. Vykreslíme ji tak, že přes sebe 
 
    Línie s okrajem
 
-Stejným způsobem můžeme vykreslit i linií typickou pro železnici
+Stejným způsobem můžeme vykreslit i linii typickou pro železnici
 
 .. code-block:: xml
 
@@ -123,12 +123,12 @@ Stejným způsobem můžeme vykreslit i linií typickou pro železnici
 
    Styl pro železnici
 
-V příkladě stylování pro železnici jsme použili i parametr pro přerušovanou čáru. Je to parametr `stroke-dasharray`. První číslo určuje délku dílku v barvě a druhé číslo určí délku mezery. 
+V příkladě stylování pro železnici jsme použili i parametr pro přerušovanou čáru. Je to parametr `stroke-dasharray`. První číslo určuje délku dílku v barvě a druhé číslo určuje délku mezery. 
 
-Stylování na základě zoomu
-==========================
+Stylování na základě měřítka
+============================
 
-V SLD dále můžeme nastavit různý styl pro různý zoom. Slouží na to parametry `MaxScaleDenominator` a `MinScaleDenominator`. Tyto dva parametri určují rozmezí v kterém se použije definice stylu. 
+V SLD dále můžeme nastavit různý styl pro různé měřítko. Slouží na to parametry `MaxScaleDenominator` a `MinScaleDenominator`. Tyto dva parametry určují rozmezí v kterém se použije definice stylu. 
 
 .. code-block:: xml
 
@@ -196,7 +196,7 @@ V SLD dále můžeme nastavit různý styl pro různý zoom. Slouží na to para
      </NamedLayer>
    </StyledLayerDescriptor>
 
-V zoomech 0 až 8000 se body zobrazí červenou barvou, v zoomech 8000 až 16000 se body zobrazí zelenou a v zoomech větších jako 16000 jsou body modré.
+V měřítkách 1:0 až 1:8000 se body zobrazí červenou barvou, v měřítkách 1:8000 až 1:16000 se body zobrazí zelenou a v zoomech větších než 1:16000 jsou body modré.
 
 
 
