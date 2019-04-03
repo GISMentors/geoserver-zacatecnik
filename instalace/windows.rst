@@ -13,10 +13,11 @@ Jako osvědčený způsob se jeví využití platformně nezávislého balíčku
 Platformně nezávislý balíček
 ============================
 
-Pro účely školení a seznamování se s nástrojem GeoServer je 
-vhodná varianta `Platform Independent Binary`. 
-Jedná se o ZIP archiv, který je možné rozbalit kdekoli
-na disk. Nedoporučují se adresáře s diakritikou a mezerami.
+Pro účely školení a seznamování se s nástrojem GeoServer je vhodná
+varianta *Platform Independent Binary*
+(http://geoserver.org/download/).  Jedná se o zip archiv,
+který je možné rozbalit kdekoli na disk. Nedoporučují se adresáře s
+diakritikou a mezerami.
 
 
 Další možnosti instalace
