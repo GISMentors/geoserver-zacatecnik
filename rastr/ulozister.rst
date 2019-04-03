@@ -32,9 +32,9 @@ Relativní cesta začíná v adresáři `data_dir`.
 
 Úložiště GeoTIFF
 ===================
-Dalším často používaným formátem pro rastrové data je GeoTIFF. Na rozdíl od souboru s doplňkovým souborem typu `WorldFile` je informace o polohe zapsaná přímo do souboru `TIFF`.
+Dalším často používaným formátem pro rastrové data je GeoTIFF. Na rozdíl od souboru s doplňkovým souborem typu `WorldFile` je informace o poloze zapsaná přímo do souboru `TIFF`.
 
-Ukázkovím uložištěm pro GeoTIFF je `sfdem`. Všechno nastavění je stejné jako pro `WorldImage`
+Ukázkovým uložištěm pro GeoTIFF je `sfdem`. Všechno nastavění je stejné jako pro `WorldImage`
 
 .. figure:: images/bstores.png
 
