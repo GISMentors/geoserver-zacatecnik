@@ -6,13 +6,13 @@
 Instalace rozšíření INSPIRE
 ---------------------------
 
-Rozšíření INSPIRE se instaluje stejně jako jiná rozšíření. 
-Instalace je jednoduchá, stačí stáhnout archiv ze stránek GeoServeru a
-rozbalit obsah archivu na správné místo. 
+Rozšíření INSPIRE se instaluje stejně jako jiná rozšíření. Instalace
+je jednoduchá. Stačí stáhnout archiv ze `stránek GeoServeru
+<http://geoserver.org/release/maintain/>`__
+(:menuselection:`Extensions --> Miscellaneous --> INSPIRE`) a rozbalit
+jeho obsah na správné místo.
 
-Archiv obsahuje jeden soubor ve formátu JAR, který je potřeba nakopírovat do
-GEOSERVER_ROOT/WEB-INF/lib
+Archiv obsahuje jeden soubor ve formátu JAR, který je potřeba
+nakopírovat do :file:`webapps/geoserver/WEB-INF/lib`.
 
 Pak je nutné server restartovat.
-
-
