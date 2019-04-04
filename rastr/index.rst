@@ -8,6 +8,7 @@ Rastr
    ulozister
    definicer
    publikovanir
+   rstyle
 
 
 

@@ -1,7 +1,7 @@
 .. index::
    single: Instalace rozšíření INSPIRE
 
-.. _definicer:
+.. _instalacei:
 
 Instalace rozšíření INSPIRE
 ---------------------------

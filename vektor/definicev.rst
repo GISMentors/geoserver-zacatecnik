@@ -96,7 +96,7 @@ SQL view parameters
 Slouží na definování možností filtrování.
 
 Attributes
-^^^^^^^^^
+^^^^^^^^^^
 Zde se nám po kliknutí na Refresh zobrazí seznam atributů. U sloupce s geometrii můžeme určit souřadnicový systém. Taky tady zadefinujeme, který atribut je identifikátor.
 
 Po kliknutí na Save se dostaneme na okno Edit Layer.

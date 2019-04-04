@@ -1,7 +1,7 @@
 .. index::
    single: Nastavení rozšíření INSPIRE
 
-.. _definicer:
+.. _nastavenii:
 
 Nastavení rozšíření INSPIRE
 ---------------------------

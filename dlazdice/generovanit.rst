@@ -1,7 +1,7 @@
 .. index::
    single: Generování dlaždic
 
-.. _definicer:
+.. _generovanit:
 
 Generování dlaždic
 ------------------
