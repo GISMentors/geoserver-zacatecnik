@@ -128,7 +128,7 @@ V příkladě stylování pro železnici jsme použili i parametr pro přerušov
 Stylování na základě měřítka
 ============================
 
-V SLD dále můžeme nastavit různý styl pro různé měřítko. Slouží na to parametry `MaxScaleDenominator` a `MinScaleDenominator`. Tyto dva parametry určují rozmezí v kterém se použije definice stylu. 
+V SLD dále můžeme nastavit různý styl pro různé měřítko. Slouží na to parametry `MaxScaleDenominator` a `MinScaleDenominator`. Tyto dva parametry určují rozmezí v kterém se použije definice stylu. Ukažeme si to na vrstvě `poi`
 
 .. code-block:: xml
 
