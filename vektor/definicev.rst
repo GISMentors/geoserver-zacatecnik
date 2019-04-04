@@ -116,8 +116,9 @@ Přepsání se realizuje pomocí deklarace v souboru :download:`epsg_overrides.p
 Úkoly
 =====
 
-Vypublikujte vrstvu kraje_pseudo ze zdroje FreeGeodataCZ<http://geo.fsv.cvut.cz/data/grasswikicz/freegeodatacz/aktualni/cr-shp-wgs84-0.3.3.zip>.
-Vrstvu nakopírujte do adresáře data_dir/data/cr-shp-wgs84. 
+Vypublikujte vrstvu :map:`kraje` z `datové sady GISMentors
+<http://training.gismentors.eu/geodata/qgis/data.zip>`__. Vrstvu
+nakopírujte do adresáře :file:`data_dir/data/gismentors`.
 
 .. note:: Tento adresář neexistuje, musíte jej vytvořit.
 
