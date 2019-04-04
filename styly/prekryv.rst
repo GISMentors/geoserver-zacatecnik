@@ -11,7 +11,7 @@ Může se nám stát, že máme vrstvu kde u překrývajících se prvků potře
 Stylování přes Rule
 ====================
 
-V kapitole Kartogram jsme měli ukázaný styl population, kde jsme v jednom FeatureTypeStyle měli několik Rule. Tohle může použít v případě, že nám nezáleží na pořadí vykreslování. Ukážeme si zde dva jednoduché styly. Rozdíl je v tom, že v prvním style je v prvním Rule filtr na hodnotu 1 a v druhém na hodnotu 2.
+V kapitole Kartogram jsme měli ukázaný styl `population`, kde jsme v jednom `FeatureTypeStyle` měli několik `Rule`. Tohle může použít v případě, že nám nezáleží na pořadí vykreslování. Ukážeme si zde dva jednoduché styly. Rozdíl je v tom, že v prvním style je v prvním `Rule` filtr na hodnotu 1 a v druhém na hodnotu 2.
 
 Styl 1
 ^^^^^^
@@ -156,7 +156,7 @@ Styl 2
 Stylování přes různé FeatureTypeStyle
 =====================================
 
-Teď si ukážeme na stejné vrstvě případ, kde každé pravidlo Rule dáme do samostatného FeatureTypeStyle. V tomto případě, když přehodíme FeatureTypeStyle, tak se nám zobrazí prvky jinak překryté. 
+Teď si ukážeme na stejné vrstvě případ, kde každé pravidlo `Rule` dáme do samostatného `FeatureTypeStyle`. V tomto případě, když přehodíme `FeatureTypeStyle`, tak se nám zobrazí prvky jinak překryté. 
 
 Styl 1
 ^^^^^^
