@@ -1,10 +1,10 @@
 .. index::
-   single: Publikování rastru
+   single: Publikování rastrových dat
 
 .. _publikovanir:
 
-Publikování rastru
-------------------
+Publikování rastrových dat
+--------------------------
 
 V rámci publikování rastrových dat můžete ještě na dalších kartách nastavovat
 jakým způsobem budou data prezentována.
@@ -16,7 +16,7 @@ Karta `Publishing` nabízí nastavení implicitního stylu a seznamu doporučova
 alternativních stylů. 
 
 Dále je zde možné definovat parametry pro službu `WCS (Web Coverage Service)`.
-V první části např. podporované souřadnicové systémy a metodu převzorkování rastru.
+V první části např. podporované souřadnicové systémy a metodu převzorkování rastrových dat.
 
 .. figure:: images/rpub1.png
 

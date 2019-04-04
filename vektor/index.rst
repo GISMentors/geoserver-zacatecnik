@@ -1,6 +1,6 @@
-******
-Vektor
-******
+**************
+Vektorová data
+**************
 
 .. toctree::
    :maxdepth: 2

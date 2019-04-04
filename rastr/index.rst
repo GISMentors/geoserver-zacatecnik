@@ -1,6 +1,6 @@
-*****
-Rastr
-*****
+*************
+Rastrová data
+*************
 
 .. toctree::
    :maxdepth: 2

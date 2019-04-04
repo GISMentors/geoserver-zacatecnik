@@ -1,10 +1,10 @@
 .. index::
-   single: Definice rastru
+   single: Definice rastrových dat
 
 .. _definicer:
 
-Definice rastru
----------------
+Definice rastrových dat
+-----------------------
 
 Rastrová vrstva se definuje pomocí popisu dat. Seznam vrstev získáme pomocí
 odkazu `Layers` v sekci `Data`. V seznamu vrstev vidíme u každé vrstvy její typ, 

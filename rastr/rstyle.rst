@@ -1,16 +1,17 @@
 .. index::
-   single: Stylování rastrů
+   single: Stylování rastrových dat
 
 .. _rstyle:
 
-Stylování rastrů
----------------------
-V kapitole Stylování jsme se věnovali stylování vektorů. Stylování rastrů si přebereme teď. 
+Stylování rastrových dat
+------------------------
+
+V kapitole Stylování jsme se věnovali stylování vektorových dat. Stylování rastrových dat si přebereme teď. 
 
 Jednoduchý styl
 ===============
 
-Styl `raster` je jednoduchý styl, v kterém pro rastr nastavujeme jenom transparentnost. 
+Styl `raster` je jednoduchý styl, v kterém pro rastrová data nastavujeme jenom transparentnost. 
 
 .. code-block:: xml
 
@@ -47,12 +48,12 @@ Styl `raster` je jednoduchý styl, v kterém pro rastr nastavujeme jenom transpa
 RasterSymbolizer
 ^^^^^^^^^^^^^^^^
 
-`RasterSymbolizer` slouží k vykreslování rastrů. 
+`RasterSymbolizer` slouží k vykreslování rastrových dat. 
 
 Opacity
 ^^^^^^^
 
-V `Opacity` nastavuje transparentnost rastru. Hodnoty pro `Opacity` jsou od 0 do 1, kde 0 je úplně transparentní a 1 není transparentní vůbec. 
+V `Opacity` nastavuje transparentnost rastrové vrstvy. Hodnoty pro `Opacity` jsou od 0 do 1, kde 0 je úplně transparentní a 1 není transparentní vůbec. 
 
 Styl pro DEM
 ============
@@ -94,7 +95,7 @@ Styl pro DEM
 ColorMap
 ^^^^^^^^
 
-`ColorMap` slouží k nastavění stylu pro hodnoty rastru.`ColorMapEntry color` určuje jakou barvou se má rozpětí hodnot vykreslit, `quantity` určuje maximální hodnotu rozpětí a `label` určuje popisek rozpětí. Takže řádek  `<ColorMapEntry color="#FFFF00" quantity="1200" label="values" />` nám říka že hodnoty rastru 1000-1200 se vykreslí barvou #FFFF00 a s popiskem values
+`ColorMap` slouží k nastavění stylu pro hodnoty rastrové vrstvy.`ColorMapEntry color` určuje jakou barvou se má rozpětí hodnot vykreslit, `quantity` určuje maximální hodnotu rozpětí a `label` určuje popisek rozpětí. Takže řádek  `<ColorMapEntry color="#FFFF00" quantity="1200" label="values" />` nám říka že hodnoty rastrové vrstvy 1000-1200 se vykreslí barvou #FFFF00 a s popiskem values
 
 
 

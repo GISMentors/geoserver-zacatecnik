@@ -3,8 +3,8 @@
 
 .. _definicev:
 
-Definice vektoru
-----------------
+Definice vektorových dat
+------------------------
 
 Vektorová vrstva se definuje pomocí popisu dat. Seznam vrstev získáme pomocí
 odkazu `Layers` v sekci `Data`.
