@@ -11,7 +11,10 @@ Web Map Service (WMS). WMS umožňuje klientovi ze
 serveru získat geodata v podobě mapy. Obvykle se jedná
 o mapu v podobě rastrového obrázku, ale není to podmínkou.
 Mapa může být vrácena např. ve formátu SVG (Scalable Vector Graphics).
-   
+
+.. tip:: Více o standardu WMS ve školení :skoleni:`Úvod do (open
+         source) GIS <open-source-gis/standardy/ogc/wms.html>`.
+         
 Základní dotaz WMS
 ==================
 
@@ -23,7 +26,8 @@ Kompletní dotaz zaslaný na stranu serveru najdete v řádku URL (WWW) adresy.
 
 
 .. figure:: images/wms_basic.png
-
+   :class: middle
+           
    Umístění WMS dotazu v prohlížeči.
 
 Danou adresu je možné rozebrat na jednotlivé části, kde oddělovačem je ? a &
@@ -107,7 +111,7 @@ Změňte `BBOX`, tak aby zobrazoval pouze výřez mapy.
 
 Layers
 ^^^^^^
-Přidejte do seznamu vrstev vrstvu `sf:restricted`, tak aby se vykreslila pod vrstvou sf:archsites.  
+Přidejte do seznamu vrstev vrstvu `sf:restricted`, tak aby se vykreslila pod vrstvou `sf:archsites`.  
 
 Řešení úkolů
 ============

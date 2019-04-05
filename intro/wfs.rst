@@ -11,17 +11,21 @@ Web Feature Service (WFS). WFS umožňuje klientovi ze
 serveru získat geodata v podobě vektoru s atributy. Obvykle se jedná
 o kolekci kódovanou v jazyce `GML (Geography Markup Language)`, ale není to podmínkou.
 Data mohou být vrácena např. ve formátu ESRI Shapefile.
-   
+
+.. tip:: Více o standardu WFS ve školení :skoleni:`Úvod do (open
+         source) GIS <open-source-gis/standardy/ogc/wfs.html>`.
+
 Základní dotaz WFS
 ==================
 
 Základní dotaz WFS je možné zaslat přes Layer Preview a
-vybrat možnost GML pro vrstvu sf:archsites. 
+vybrat možnost GML pro vrstvu `sf:archsites`. 
 
 Kompletní dotaz zaslaný na stranu serveru najdete v řádku URL (WWW) adresy.
 
 .. figure:: images/wfs_basic.png
-
+   :class: middle
+           
    Umístění WFS dotazu v prohlížeči.
 
 Danou adresu je možné rozebrat na jednotlivé části, kde oddělovačem je ? a &
