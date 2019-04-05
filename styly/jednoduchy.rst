@@ -313,22 +313,22 @@ Další ze základních možností stylování je vytvoření popisku. Popisky m
 TextSymbolizer
 ^^^^^^^^^^^^^^
 
-Slouží k vzkreslení popisků. Základními parametrama pro `TextSymbolizer` jsou `Label` a `Fill`
+Slouží k vykreslení popisků. Základními parametry pro `TextSymbolizer` jsou `Label` a `Fill`
 
 Label
 ^^^^^
 
-Slouží k zadefinování atribůtu, z kterého se čerpají data pro popisky
+Slouží k definování atributu, z kterého se čerpají data pro popisky
 
 Fill
 ^^^^
 
-Slouží k nastavění barvy popisku.
+Slouží k nastavení barvy popisku.
 
 AnchorPoint
 ^^^^^^^^^^^ 
 
-Určuje pozici vztažného bodu popisku. Může nadobůdat hodnoty 0 až 1 pro X a Y. Hodnota 0,0 znamená že vzťažný bod je v levém dolním rohu a hodnota 1,1 znamená že je v pravém horním rohu. 
+Určuje pozici vztažného bodu popisku. Může nabývat hodnot 0 až 1 pro X a Y. Hodnota 0,0 znamená že vztažný bod je v levém dolním rohu a hodnota 1,1 znamená že je v pravém horním rohu. 
 
 .. figure:: images/anchor.png
 
