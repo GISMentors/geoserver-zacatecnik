@@ -11,21 +11,31 @@ pracovat.
 Spuštění systému GeoServer
 ==========================
 
+.. note:: Pokud jste instalovali GeoServer v rámci
+   :doc:`../instalace/docker`, tak byl GeoServer automaticky spuštěn
+   při startu kontejneru. Tuto část můžete přeškočit.
+
+
 Úspěšně nainstalovaný mapový server by měl být spustitelný z příkazové
 řádky pomocí příkazu :file:`startup.sh` (pro Linux) nebo spuštěním
-dávkového souboru :file:`startup.bat` (pro Windows).  V obou případech
-čekáme až server naběhne zcela.
-
-.. note:: Tento krok není nutný při instalaci GeoServeru v rámci
-   :doc:`../instalace/docker`. V tomto případě je GeoServer
-   automaticky spuštěn při startu kontejneru.
+dávkového souboru :file:`startup.bat` (pro Windows) umístěného v
+adresáři :file:`bin`.  V obou případech čekáme až server naběhne
+zcela.
 
 .. notecmd:: Spuštění GeoServer
-             
+
+   Příklad spuštění na OS Linux:
+   
    .. code-block:: bash
 		
-      ./startup.sh
+      ./bin/startup.sh
 
+   Příklad spuštění na OS MS Windows:
+   
+   .. code-block:: bash
+		
+      .\bin\startup.bat
+      
 .. raw:: latex
 
 	 \newpage
@@ -35,6 +45,7 @@ dávkového souboru :file:`startup.bat` (pro Windows).  V obou případech
    Spuštění systému GeoServer v Ubuntu.
 
 Server je spuštěn v okamžiku, kdy se objeví informační hláška:
+
 ``INFO:  Started SelectChannelConnector@0.0.0.0:8080``.
 
 
