@@ -95,7 +95,7 @@ Styl pro DEM
 ColorMap
 ^^^^^^^^
 
-`ColorMap` slouží k nastavění stylu pro hodnoty rastrové vrstvy.`ColorMapEntry color` určuje jakou barvou se má rozpětí hodnot vykreslit, `quantity` určuje maximální hodnotu rozpětí a `label` určuje popisek rozpětí. Takže řádek  `<ColorMapEntry color="#FFFF00" quantity="1200" label="values" />` nám říka že hodnoty rastrové vrstvy 1000-1200 se vykreslí barvou #FFFF00 a s popiskem values
+`ColorMap` slouží k nastavení stylu pro hodnoty rastrové vrstvy.`ColorMapEntry color` určuje jakou barvou se má rozpětí hodnot vykreslit, `quantity` určuje maximální hodnotu rozpětí a `label` určuje popisek rozpětí. Takže řádek  `<ColorMapEntry color="#FFFF00" quantity="1200" label="values" />` nám říka že hodnoty rastrové vrstvy 1000-1200 se vykreslí barvou #FFFF00 a s popiskem values.
 
 
 
