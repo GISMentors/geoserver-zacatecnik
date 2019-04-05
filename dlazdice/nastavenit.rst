@@ -1,7 +1,7 @@
 .. index::
    single: Nastavení dlaždic
 
-.. _definicer:
+.. _nastavenit:
 
 Nastavení dlaždic
 -----------------

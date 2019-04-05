@@ -1,6 +1,6 @@
-*****
-Rastr
-*****
+*************
+Rastrová data
+*************
 
 .. toctree::
    :maxdepth: 2
@@ -8,6 +8,7 @@ Rastr
    ulozister
    definicer
    publikovanir
+   rstyle
 
 
 

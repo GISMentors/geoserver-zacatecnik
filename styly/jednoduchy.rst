@@ -79,19 +79,31 @@ Styl je možné přímo editovat. Před uložením změn je vhodné použít tla
 
 Rule
 ^^^^
+
 Hlavní částí stylu jsou pravidla (`Rule`). V naší ukázce je pouze jedno pravidlo.
 Pravidla jsou pojmenována a obsahují informaci jak se má skupina objektů vykreslit.
 V našem případě se daným pravidlem vykreslí všechny objekty.
 
 PointSymbolizer
 ^^^^^^^^^^^^^^^
+
 `PointSymbolizer` slouží k vykreslení bodů. V rámci definice je pak definována grafika (`Graphic`),
 která bude použita.
 
 Mark
 ^^^^
+
 V našem případě jde o grafiku definovanou pomocí `WellKnownName` a `Fill`. `WellKnownName` udává symbol 
-a `Fill` barvu výplně symbolu.
+a `Fill` barvu výplně symbolu. `WellKnownName` může mít hodnoty:
+
+* square
+* circle
+* triangle
+* star
+* cross
+* x
+
+Na další možnosti stylování se můžete podívat do dokumentace ku GeoServeru na stránce : https://docs.geoserver.org/stable/en/user/styling/sld/cookbook/points.html
 
 Základní liniový styl
 =====================
@@ -138,11 +150,19 @@ Podobně jednoduchý styl jako je pro bodovou vrstvu `point` je pro liniovou vrs
 
 LineSymbolizer
 ^^^^^^^^^^^^^^
+
 Podobně jako PointSymbolizer slouží k vykreslení bodu, tak LineSymbolizer slouží k vykreslení linie. Místo grafiky se zde definuje tah (`Stroke`).
 
 Stroke
 ^^^^^^^^^^^^^^
-V našem případe definujeme tah pomocí dvou parametrů. Jeden je `stroke`, který určuje barvu a druhý je `stroke-width` který určuje šírku linie.
+
+V našem případe definujeme tah pomocí dvou parametrů. Jeden je `stroke`, který určuje barvu a druhý je `stroke-width` který určuje šírku linie. Dále můžeme použít parametr `stroke-linecap` který určuje tvar linie. 
+
+* butt
+* round
+* square
+
+Na další možnosti stylování se můžete podívat do dokumentace ku GeoServeru na stránce : https://docs.geoserver.org/stable/en/user/styling/sld/cookbook/lines.html
 
 Základní polygonový styl
 ========================
@@ -193,18 +213,24 @@ Jednoduchý polygonový styl je `polygon`.
 
 PolygonSymbolizer
 ^^^^^^^^^^^^^^^^^
+
 Podobně jako PointSymbolizer slouží k vykreslení bodu, tak PolygonSymbolizer slouží k vykreslení polygonu. Polygon se vykresluje pomocí dvou parametrů. `Fill` a `Stroke`. 
 
 Fill
 ^^^^
+
 Slouží k nastavení výplně polygonu.
 
 Stroke
 ^^^^^^
-Slouží k nastavení zobrazení hranice polygonu. Nastavuje se stejně jako stylu linie.
+
+Slouží k nastavení zobrazení hranice polygonu. Nastavuje se stejně jako stylu linie
+.
+Na další možnosti stylování se můžete podívat do dokumentace ku GeoServeru na stránce : https://docs.geoserver.org/stable/en/user/styling/sld/cookbook/polygons.html
 
 Popisky
 =========
+
 Další ze základních možností stylování je vytvoření popisku. Popisky můžeme vytvářet pro všechny typy vrstev. 
 
 .. code-block:: xml
@@ -286,22 +312,31 @@ Další ze základních možností stylování je vytvoření popisku. Popisky m
 
 TextSymbolizer
 ^^^^^^^^^^^^^^
+
 Slouží k vzkreslení popisků. Základními parametrama pro `TextSymbolizer` jsou `Label` a `Fill`
 
 Label
 ^^^^^
+
 Slouží k zadefinování atribůtu, z kterého se čerpají data pro popisky
 
 Fill
 ^^^^
+
 Slouží k nastavění barvy popisku.
 
 AnchorPoint
 ^^^^^^^^^^^ 
-Určuje pozici popisku. 
+
+Určuje pozici vztažného bodu popisku. Může nadobůdat hodnoty 0 až 1 pro X a Y. Hodnota 0,0 znamená že vzťažný bod je v levém dolním rohu a hodnota 1,1 znamená že je v pravém horním rohu. 
+
+.. figure:: images/anchor.png
+
+   Pozice popisku
 
 Displacement
 ^^^^^^^^^^^^
+
 Určuje odsazení popisku.
 
 Úkoly
@@ -318,6 +353,7 @@ WellKnownName
 
 Fill
 ^^^^
+
 Barvy výplně změňte z #FF0000 (červená) na #00FF00 (zelená).
 
 Řešení úkolů

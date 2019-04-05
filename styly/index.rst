@@ -9,6 +9,7 @@ Styly
    externi
    slozity
    kartogram
+   prekryv
 
 
 

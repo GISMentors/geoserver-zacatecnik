@@ -1,10 +1,10 @@
 .. index::
-   single: Publikování vektoru
+   single: Publikování vektorových dat
 
 .. _publikovaniv:
 
-Publikování vektoru
--------------------
+Publikování vektorových dat
+---------------------------
 
 V rámci publikování vektorových dat můžete ještě na dalších kartách nastavovat
 jakým způsobem budou data prezentována.

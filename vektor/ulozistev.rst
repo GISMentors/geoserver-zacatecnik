@@ -1,10 +1,10 @@
 .. index::
-   single: Úložiště vektoru
+   single: Úložiště vektorových dat
 
 .. _ulozistev:
 
-Úložiště vektoru
-----------------
+Úložiště vektorových dat
+------------------------
 
 Úložiště (`Storage`) slouží k definici datového skladu, ze kterého budou
 data publikována.

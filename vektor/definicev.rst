@@ -3,8 +3,8 @@
 
 .. _definicev:
 
-Definice vektoru
-----------------
+Definice vektorových dat
+------------------------
 
 Vektorová vrstva se definuje pomocí popisu dat. Seznam vrstev získáme pomocí
 odkazu `Layers` v sekci `Data`.
@@ -96,7 +96,7 @@ SQL view parameters
 Slouží na definování možností filtrování.
 
 Attributes
-^^^^^^^^^
+^^^^^^^^^^
 Zde se nám po kliknutí na Refresh zobrazí seznam atributů. U sloupce s geometrii můžeme určit souřadnicový systém. Taky tady zadefinujeme, který atribut je identifikátor.
 
 Po kliknutí na Save se dostaneme na okno Edit Layer.
@@ -116,8 +116,9 @@ Přepsání se realizuje pomocí deklarace v souboru :download:`epsg_overrides.p
 Úkoly
 =====
 
-Vypublikujte vrstvu kraje_pseudo ze zdroje FreeGeodataCZ<http://geo.fsv.cvut.cz/data/grasswikicz/freegeodatacz/aktualni/cr-shp-wgs84-0.3.3.zip>.
-Vrstvu nakopírujte do adresáře data_dir/data/cr-shp-wgs84. 
+Vypublikujte vrstvu :map:`kraje` z `datové sady GISMentors
+<http://training.gismentors.eu/geodata/qgis/data.zip>`__. Vrstvu
+nakopírujte do adresáře :file:`data_dir/data/gismentors`.
 
 .. note:: Tento adresář neexistuje, musíte jej vytvořit.
 

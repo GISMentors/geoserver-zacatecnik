@@ -31,23 +31,25 @@ Instalace v terminálu, předpokládá zadání pouze jednoho příkazu.
                
    .. code-block:: bash
 
-      sudo apt-get install openjdk-8-jre
+      sudo apt install openjdk-8-jre
 
 .. note:: Je možné, že JRE nebude v repozitáři. Pak je nutné repozitář přidat.
 
    .. code-block:: bash
 
       sudo add-apt-repository ppa:openjdk-r/ppa
-      sudo apt-get update
-      sudo apt-get install openjdk-8-jre  
+      sudo apt update
+      sudo apt install openjdk-8-jre  
       
 
 Instalace GeoServer
 ===================
 
-Pro účely školení a seznamování se s nástrojem GeoServer je vhodná varianta 
-`Platform Independent Binary`. Jedná se o ZIP archiv, který je možné rozbalit kdekoli
-na disk. Nedoporučují se adresáře s diakritikou a mezerami.
+Pro účely školení a seznamování se s nástrojem GeoServer je vhodná
+varianta *Platform Independent Binary*
+(http://geoserver.org/download/). Jedná se o zip archiv, který je
+možné rozbalit kdekoli na disk. Nedoporučují se adresáře s diakritikou
+a mezerami.
 
 Rozbalení archivu by obvykle již mělo stačit pro spuštění serveru. V
 případě starších verzí nebo v případě nestandardních cest je nutné
@@ -66,7 +68,8 @@ spouštěč :file:`startup.sh` přidáním informace o umístění
  
 	 \newpage
 
-V souboru :file:`geoserver-2.14.1/bin/startup.sh` nastavíme cestu k instalaci JRE, např.
+V souboru :file:`geoserver-verze/bin/startup.sh` nastavíme cestu k
+instalaci JRE, např.
 
 .. code:: bash
 

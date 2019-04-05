@@ -19,7 +19,7 @@ copyright = u'2016-%d GISMentors' % get_year()
 # The short X.Y version.
 version = '0.1'
 # The full version, including alpha/beta/rc tags.
-release = '%salfa' % version
+release = '%sbeta' % version
 
 # -- Options for HTML output ----------------------------------------------
 
