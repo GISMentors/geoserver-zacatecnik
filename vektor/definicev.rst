@@ -116,6 +116,9 @@ Přepsání se realizuje pomocí deklarace v souboru :download:`epsg_overrides.p
 Úkoly
 =====
 
+ESRI Shapefile
+^^^^^^^^^^^^^^
+
 Vypublikujte vrstvu :map:`kraje` z `datové sady GISMentors
 <http://training.gismentors.eu/geodata/qgis/data.zip>`__. Vrstvu
 nakopírujte do adresáře :file:`data_dir/data/gismentors`.
@@ -123,6 +126,11 @@ nakopírujte do adresáře :file:`data_dir/data/gismentors`.
 .. note:: Tento adresář neexistuje, musíte jej vytvořit.
 
 Pak vytvořte nový Worskspace a nový Storage.
+
+PostGIS pohled
+^^^^^^^^^^^^^^
+
+Vytvořte pohled na data z PostGIS který vybere parcely v základní sídelní jednotce v Praze nazvané Baba s kódem 129470. Vytvořte styl, který klasifikuje parcely dle způsobu využití.
 
 Řešení úkolů
 ============
@@ -157,3 +165,252 @@ Předtím však musíte projít kroky vytvoření `Workspace` (nepovinné) a `St
 .. figure:: images/storecrwgs84list.png
 
    Seznam vrstev v úložišti cr-shp-wgs84.
+
+PostGIS pohled
+^^^^^^^^^^^^^^
+
+Pomocí Create new view vytvoříme pohled parcely_baba. Jako definici zadáme
+
+.. code-block:: sql
+
+  SELECT p.geom, p.zpusobyvyuzitipozemku 
+  FROM ruian_praha.parcely p 
+  JOIN ruian_praha.zsj z 
+  ON ST_Intersects(p.geom, z.geom) 
+  WHERE z.kod = 129470
+
+Následně sestavíme styl a přiřadíme k vrstvě.
+
+.. code-block:: xml
+
+   <?xml version="1.0" encoding="UTF-8"?>
+   <StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" xmlns:se="http://www.opengis.net/se">
+   <NamedLayer>
+    <se:Name>QueryLayer</se:Name>
+    <UserStyle>
+      <se:Name>QueryLayer</se:Name>
+      <se:FeatureTypeStyle>
+        <se:Rule>
+          <se:Name>12</se:Name>
+          <se:Description>
+            <se:Title>12</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zpusobyvyuzitipozemku</ogc:PropertyName>
+              <ogc:Literal>12</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <se:PolygonSymbolizer>
+            <se:Fill>
+              <se:SvgParameter name="fill">#74ddef</se:SvgParameter>
+            </se:Fill>
+            <se:Stroke>
+              <se:SvgParameter name="stroke">#000001</se:SvgParameter>
+              <se:SvgParameter name="stroke-width">1</se:SvgParameter>
+              <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
+            </se:Stroke>
+          </se:PolygonSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>16</se:Name>
+          <se:Description>
+            <se:Title>16</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zpusobyvyuzitipozemku</ogc:PropertyName>
+              <ogc:Literal>16</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <se:PolygonSymbolizer>
+            <se:Fill>
+              <se:SvgParameter name="fill">#8ee9c0</se:SvgParameter>
+            </se:Fill>
+            <se:Stroke>
+              <se:SvgParameter name="stroke">#000001</se:SvgParameter>
+              <se:SvgParameter name="stroke-width">1</se:SvgParameter>
+              <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
+            </se:Stroke>
+          </se:PolygonSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>17</se:Name>
+          <se:Description>
+            <se:Title>17</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zpusobyvyuzitipozemku</ogc:PropertyName>
+              <ogc:Literal>17</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <se:PolygonSymbolizer>
+            <se:Fill>
+              <se:SvgParameter name="fill">#dd7be2</se:SvgParameter>
+            </se:Fill>
+            <se:Stroke>
+              <se:SvgParameter name="stroke">#000001</se:SvgParameter>
+              <se:SvgParameter name="stroke-width">1</se:SvgParameter>
+              <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
+            </se:Stroke>
+          </se:PolygonSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>19</se:Name>
+          <se:Description>
+            <se:Title>19</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zpusobyvyuzitipozemku</ogc:PropertyName>
+              <ogc:Literal>19</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <se:PolygonSymbolizer>
+            <se:Fill>
+              <se:SvgParameter name="fill">#e969a5</se:SvgParameter>
+            </se:Fill>
+            <se:Stroke>
+              <se:SvgParameter name="stroke">#000001</se:SvgParameter>
+              <se:SvgParameter name="stroke-width">1</se:SvgParameter>
+              <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
+            </se:Stroke>
+          </se:PolygonSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>20</se:Name>
+          <se:Description>
+            <se:Title>20</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zpusobyvyuzitipozemku</ogc:PropertyName>
+              <ogc:Literal>20</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <se:PolygonSymbolizer>
+            <se:Fill>
+              <se:SvgParameter name="fill">#dec26e</se:SvgParameter>
+            </se:Fill>
+            <se:Stroke>
+              <se:SvgParameter name="stroke">#000001</se:SvgParameter>
+              <se:SvgParameter name="stroke-width">1</se:SvgParameter>
+              <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
+            </se:Stroke>
+          </se:PolygonSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>21</se:Name>
+          <se:Description>
+            <se:Title>21</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zpusobyvyuzitipozemku</ogc:PropertyName>
+              <ogc:Literal>21</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <se:PolygonSymbolizer>
+            <se:Fill>
+              <se:SvgParameter name="fill">#7792e0</se:SvgParameter>
+            </se:Fill>
+            <se:Stroke>
+              <se:SvgParameter name="stroke">#000001</se:SvgParameter>
+              <se:SvgParameter name="stroke-width">1</se:SvgParameter>
+              <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
+            </se:Stroke>
+          </se:PolygonSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>23</se:Name>
+          <se:Description>
+            <se:Title>23</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zpusobyvyuzitipozemku</ogc:PropertyName>
+              <ogc:Literal>23</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <se:PolygonSymbolizer>
+            <se:Fill>
+              <se:SvgParameter name="fill">#72da6c</se:SvgParameter>
+            </se:Fill>
+            <se:Stroke>
+              <se:SvgParameter name="stroke">#000001</se:SvgParameter>
+              <se:SvgParameter name="stroke-width">1</se:SvgParameter>
+              <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
+            </se:Stroke>
+          </se:PolygonSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>26</se:Name>
+          <se:Description>
+            <se:Title>26</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zpusobyvyuzitipozemku</ogc:PropertyName>
+              <ogc:Literal>26</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <se:PolygonSymbolizer>
+            <se:Fill>
+              <se:SvgParameter name="fill">#a1cf4b</se:SvgParameter>
+            </se:Fill>
+            <se:Stroke>
+              <se:SvgParameter name="stroke">#000001</se:SvgParameter>
+              <se:SvgParameter name="stroke-width">1</se:SvgParameter>
+              <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
+            </se:Stroke>
+          </se:PolygonSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>27</se:Name>
+          <se:Description>
+            <se:Title>27</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zpusobyvyuzitipozemku</ogc:PropertyName>
+              <ogc:Literal>27</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <se:PolygonSymbolizer>
+            <se:Fill>
+              <se:SvgParameter name="fill">#9264e6</se:SvgParameter>
+            </se:Fill>
+            <se:Stroke>
+              <se:SvgParameter name="stroke">#000001</se:SvgParameter>
+              <se:SvgParameter name="stroke-width">1</se:SvgParameter>
+              <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
+            </se:Stroke>
+          </se:PolygonSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name></se:Name>
+          <se:Description>
+            <se:Title>NULL'</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:PropertyIsNull>
+              <ogc:PropertyName>zpusobyvyuzitipozemku</ogc:PropertyName>
+            </ogc:PropertyIsNull>
+          </ogc:Filter>
+          <se:PolygonSymbolizer>
+            <se:Fill>
+              <se:SvgParameter name="fill">#d96452</se:SvgParameter>
+            </se:Fill>
+            <se:Stroke>
+              <se:SvgParameter name="stroke">#000001</se:SvgParameter>
+              <se:SvgParameter name="stroke-width">1</se:SvgParameter>
+              <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
+            </se:Stroke>
+          </se:PolygonSymbolizer>
+        </se:Rule>
+      </se:FeatureTypeStyle>
+    </UserStyle>
+   </NamedLayer>
+   </StyledLayerDescriptor>
+    
