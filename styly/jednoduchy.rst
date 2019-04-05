@@ -6,21 +6,22 @@
 Jednoduchý styl
 ----------------
 
-Styly jsou psány v jazyce `Styled Layer Descriptor`. Jde o jazyk využívající 
-syntaxi jazyka XML. 
+Styly jsou psány v jazyce `Styled Layer Descriptor` (viz standard `OGC
+SLD <https://www.opengeospatial.org/standards/sld>`__). Jde o jazyk
+využívající syntaxi jazyka XML.
 
-Editace je možná v jakémkoli textovém editoru. Editace je možná i v integrovaném 
-www editoru přímo v administraci nástroje GeoServer.
+Editace je možná v jakémkoli textovém editoru anebo i přímo v
+integrovaném editoru v administraci nástroje GeoServer.
 
 Styly je možné také vytvářet v nástrojích jako je AtlasStyler, QGIS, OpenJUMP nebo uDIG.
 
-.. note:: Pro získání kompatibilních stylů z QGISu je nutné použít QGIS 3.0 nebo novější a GeoServer 2.13.x nebo novější. 
+.. note:: Pro získání kompatibilních stylů z QGISu je nutné použít QGIS 3.x a GeoServer 2.13.x nebo novější. 
 
 
 Základní bodový styl
 ====================
 
-Velmi jednoduchý bodový styl je styl použitý pro vrstvu `sf:archsites`. Jedná se o styl `point`.
+Velmi jednoduchý bodový styl je například použitý pro vrstvu `sf:archsites`. Jedná se o styl `point`.
 Styl si zobrazíme pomocí sekce `Data`, volba `Styles` a vybereme styl `point`.
 
 .. figure:: images/point.png
@@ -81,7 +82,7 @@ Rule
 ^^^^
 
 Hlavní částí stylu jsou pravidla (`Rule`). V naší ukázce je pouze jedno pravidlo.
-Pravidla jsou pojmenována a obsahují informaci jak se má skupina objektů vykreslit.
+Pravidla jsou pojmenována a obsahují informaci, jak se má skupina objektů vykreslit.
 V našem případě se daným pravidlem vykreslí všechny objekty.
 
 PointSymbolizer
@@ -103,7 +104,9 @@ a `Fill` barvu výplně symbolu. `WellKnownName` může mít hodnoty:
 * cross
 * x
 
-Na další možnosti stylování se můžete podívat do dokumentace ku GeoServeru na stránce : https://docs.geoserver.org/stable/en/user/styling/sld/cookbook/points.html
+Na další možnosti stylování se můžete podívat do `dokumentace
+GeoServeru
+<https://docs.geoserver.org/stable/en/user/styling/sld/cookbook/points.html>`__.
 
 Základní liniový styl
 =====================
@@ -154,15 +157,15 @@ LineSymbolizer
 Podobně jako PointSymbolizer slouží k vykreslení bodu, tak LineSymbolizer slouží k vykreslení linie. Místo grafiky se zde definuje tah (`Stroke`).
 
 Stroke
-^^^^^^^^^^^^^^
+^^^^^^
 
-V našem případe definujeme tah pomocí dvou parametrů. Jeden je `stroke`, který určuje barvu a druhý je `stroke-width` který určuje šírku linie. Dále můžeme použít parametr `stroke-linecap` který určuje tvar linie. 
+V našem případě` definujeme tah pomocí dvou parametrů. Jeden je `stroke`, který určuje barvu a druhý je `stroke-width` který určuje šírku linie. Dále můžeme použít parametr `stroke-linecap` který určuje tvar linie. 
 
 * butt
 * round
 * square
 
-Na další možnosti stylování se můžete podívat do dokumentace ku GeoServeru na stránce : https://docs.geoserver.org/stable/en/user/styling/sld/cookbook/lines.html
+Na další možnosti stylování se můžete podívat do `dokumentace GeoServeru <https://docs.geoserver.org/stable/en/user/styling/sld/cookbook/lines.html>`__.
 
 Základní polygonový styl
 ========================
@@ -224,9 +227,9 @@ Slouží k nastavení výplně polygonu.
 Stroke
 ^^^^^^
 
-Slouží k nastavení zobrazení hranice polygonu. Nastavuje se stejně jako stylu linie
-.
-Na další možnosti stylování se můžete podívat do dokumentace ku GeoServeru na stránce : https://docs.geoserver.org/stable/en/user/styling/sld/cookbook/polygons.html
+Slouží k nastavení zobrazení hranice polygonu. Nastavuje se stejně jako stylu linie.
+
+Na další možnosti stylování se můžete podívat do `dokumentace GeoServeru <https://docs.geoserver.org/stable/en/user/styling/sld/cookbook/polygons.html>`__.
 
 Popisky
 =========
@@ -313,12 +316,12 @@ Další ze základních možností stylování je vytvoření popisku. Popisky m
 TextSymbolizer
 ^^^^^^^^^^^^^^
 
-Slouží k vykreslení popisků. Základními parametry pro `TextSymbolizer` jsou `Label` a `Fill`
+Slouží k vykreslení popisků. Základními parametry pro `TextSymbolizer` jsou `Label` a `Fill`.
 
 Label
 ^^^^^
 
-Slouží k definování atributu, z kterého se čerpají data pro popisky
+Slouží k definování atributu, z kterého se čerpají data pro popisky.
 
 Fill
 ^^^^
