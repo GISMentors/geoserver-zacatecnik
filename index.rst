@@ -31,8 +31,8 @@ určený pro sdílení a publikaci geografických dat. Mezi jeho hlavní
 výhody patří zejména rychlost vývoje a rozšiřování jeho funkcionality.
 Licence GNU GPL umožňuje jeho používání i pro komerční
 účely. Podstatné je, že umožňuje i modifikaci zdrojového kódu a jeho
-následné šíření. Neznedbatelnou výhodou tohot mapového serveru je
-existence webové uživatelského rozhraní pro administraci systému a v
+následné šíření. Neznedbatelnou výhodou tohoto mapového serveru je
+existence webového uživatelského rozhraní pro administraci systému a v
 neposlední řadě sada cvičných dat, které jsou automaticky po instalaci
 vypublikovány.
 

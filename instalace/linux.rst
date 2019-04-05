@@ -13,7 +13,7 @@ GNU/Linux - Ubuntu
 
 Instalace programů napsaných v jazyce Java spočívá v instalaci JRE
 (Java Runtime Environment). JRE bývá obvykle již v systému Ubuntu k dispozici.
-Pokud tomu tak není, je její instalace založená na tzv. balíčcích, které jsou k
+Pokud tomu tak není, je jeho instalace založená na tzv. balíčcích, které jsou k
 dispozici v repozitářích.
 Existuje řada verzí JRE, základní open source verze dostupná ve všech repozitářích 
 by měla pro běh serveru dostačovat. 
