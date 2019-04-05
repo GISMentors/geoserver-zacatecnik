@@ -36,8 +36,8 @@ Styl 1
         <!-- A FeatureTypeStyle for rendering polygons -->
         <FeatureTypeStyle>       
           <Rule>
-            <Title>Gray Polygon with Black Outline</Title>
-            <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
+            <Title>Red Polygon with Black Outline</Title>
+            <Abstract>A polygon with a red fill and a 1 pixel black outline</Abstract>
             <ogc:Filter>
               <ogc:PropertyIsEqualTo>
                <ogc:PropertyName>id</ogc:PropertyName>
@@ -126,8 +126,8 @@ Styl 2
             </PolygonSymbolizer>
           </Rule>
           <Rule>
-            <Title>Gray Polygon with Black Outline</Title>
-            <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
+            <Title>Red Polygon with Black Outline</Title>
+            <Abstract>A polygon with a red fill and a 1 pixel black outline</Abstract>
             <ogc:Filter>
               <ogc:PropertyIsEqualTo>
                <ogc:PropertyName>id</ogc:PropertyName>
@@ -182,8 +182,8 @@ Styl 1
         <!-- A FeatureTypeStyle for rendering polygons -->
         <FeatureTypeStyle>       
           <Rule>
-            <Title>Gray Polygon with Black Outline</Title>
-            <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
+            <Title>Red Polygon with Black Outline</Title>
+            <Abstract>A polygon with a red fill and a 1 pixel black outline</Abstract>
             <ogc:Filter>
               <ogc:PropertyIsEqualTo>
                <ogc:PropertyName>id</ogc:PropertyName>
@@ -275,8 +275,8 @@ Styl 2
         </FeatureTypeStyle>
         <FeatureTypeStyle>
           <Rule>
-            <Title>Gray Polygon with Black Outline</Title>
-            <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
+            <Title>Red Polygon with Black Outline</Title>
+            <Abstract>A polygon with a red fill and a 1 pixel black outline</Abstract>
             <ogc:Filter>
               <ogc:PropertyIsEqualTo>
                <ogc:PropertyName>id</ogc:PropertyName>
