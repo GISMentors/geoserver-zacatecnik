@@ -10,6 +10,7 @@ Styly
    slozity
    kartogram
    prekryv
+   qgis
 
 
 
