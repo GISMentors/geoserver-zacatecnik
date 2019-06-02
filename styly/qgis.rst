@@ -31,13 +31,21 @@ Styl jenom v SLD
 ================
 
 Tyto styly jsou kompletně v SLD. Jsou to převážně jednoduché styly, ale můžeme si připravit i komplexní styl. Je důležité styl v QGISu připravovat s hodnotami v pixelech. Protože SLD pracuje s pixely a ne s milimetry. Při uložení do SLD se hodnoty přepočtou, ale hodnoty se zaokrouhlí. 
-Problém nastává, když chceme použít čáru se značkami (mark line). Můžeme ji použít, ale problém je při nastavění mezer mezi značkami. To bohužel nefunguje. 
+
+Čára se značkama 
+^^^^^^^^^^^^^^^^
+Problémem při čárách se značkou (mark line) je nastavění mezer mezi značkami. To bohužel nefunguje. 
 Nastavíme si v QGISu linií vyskládanou z kroužků o velikosti 6 pixelů a s odstupem 20 pixelů.
 
 .. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
-    <StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1.0" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" xmlns:ogc="http://www.opengis.net/ogc" xmlns:se="http://www.opengis.net/se" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <StyledLayerDescriptor xmlns="http://www.opengis.net/sld" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1.0" 
+    xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" 
+    xmlns:ogc="http://www.opengis.net/ogc" 
+    xmlns:se="http://www.opengis.net/se" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <NamedLayer>
         <se:Name>tasmania_roads</se:Name>
         <UserStyle>
@@ -126,13 +134,124 @@ Aby to fungovalo, musíme vytvořit jiný styl.
 
 .. figure:: images/geo_bod_uprav.png
 
+Šrafa
+^^^^^
 
-SLD z QGISu
-^^^^^^^^^^^
+Šrafy nefungují. Ukážeme si styl jak ho vygenereju QGIS a pak si ukážeme jak má vypadat styl, který funguje.
+Styl z QGISu:
+
 .. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
-    <StyledLayerDescriptor xmlns="http://www.opengis.net/sld" version="1.1.0" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" xmlns:se="http://www.opengis.net/se" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <StyledLayerDescriptor xmlns="http://www.opengis.net/sld" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:ogc="http://www.opengis.net/ogc" 
+    xmlns:se="http://www.opengis.net/se" 
+    xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" 
+    version="1.1.0">
+      <NamedLayer>
+        <se:Name>states</se:Name>
+        <UserStyle>
+          <se:Name>states</se:Name>
+          <se:FeatureTypeStyle>
+            <se:Rule>
+              <se:Name>Single symbol</se:Name>
+              <se:PolygonSymbolizer>
+                <se:Fill>
+                  <se:GraphicFill>
+                    <se:Graphic>
+                      <se:Mark>
+                        <se:WellKnownName>horline</se:WellKnownName>
+                        <se:Stroke>
+                          <se:SvgParameter name="stroke">#377eb8</se:SvgParameter>
+                          <se:SvgParameter name="stroke-width">1</se:SvgParameter>
+                        </se:Stroke>
+                      </se:Mark>
+                      <se:Size>7</se:Size>
+                      <se:Rotation>
+                        <ogc:Literal>45</ogc:Literal>
+                      </se:Rotation>
+                    </se:Graphic>
+                  </se:GraphicFill>
+                </se:Fill>
+              </se:PolygonSymbolizer>
+              <se:LineSymbolizer>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#377eb8</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">2</se:SvgParameter>
+                  <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
+                  <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
+                </se:Stroke>
+              </se:LineSymbolizer>
+            </se:Rule>
+          </se:FeatureTypeStyle>
+        </UserStyle>
+      </NamedLayer>
+    </StyledLayerDescriptor>
+
+Styl se šrafou, který funguje
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="ISO-8859-1"?>
+    <StyledLayerDescriptor version="1.0.0" 
+        xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd" 
+        xmlns="http://www.opengis.net/sld" 
+        xmlns:ogc="http://www.opengis.net/ogc" 
+        xmlns:xlink="http://www.w3.org/1999/xlink" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <NamedLayer>
+        <Name>Šrafy</Name>
+        <UserStyle>
+          <Title>Šrafy</Title>
+          <FeatureTypeStyle>
+            <Rule>
+              <PolygonSymbolizer>
+                <Fill>
+                  <GraphicFill>
+                    <Graphic>
+                      <Mark>
+                        <WellKnownName>shape://slash</WellKnownName>
+                        <Stroke>
+                          <CssParameter name="stroke">#377eb8</CssParameter>
+                          <CssParameter name="stroke-width">1</CssParameter>
+                        </Stroke>
+                      </Mark>
+                      <Size>16</Size>
+                    </Graphic>
+                  </GraphicFill>
+                </Fill>
+              </PolygonSymbolizer>
+              <LineSymbolizer>
+                <Stroke>
+                  <CssParameter name="stroke">#377eb8</CssParameter>
+                  <CssParameter name="stroke-width">2</CssParameter>
+                </Stroke>
+              </LineSymbolizer>
+            </Rule>
+          </FeatureTypeStyle>
+        </UserStyle>
+      </NamedLayer>
+    </StyledLayerDescriptor>
+
+Styl s SVG
+==========
+
+Styl s SVG si musíme upravit. Ukážeme si to na stylu u bodovej vrstvy. 
+
+Tady máme styl z QGISu:
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <StyledLayerDescriptor xmlns="http://www.opengis.net/sld" 
+    version="1.1.0" 
+    xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" 
+    xmlns:se="http://www.opengis.net/se" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:ogc="http://www.opengis.net/ogc" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <NamedLayer>
         <se:Name>tasmania_cities</se:Name>
         <UserStyle>
@@ -144,7 +263,9 @@ SLD z QGISu
                 <se:Graphic>
                   <!--Parametric SVG-->
                   <se:ExternalGraphic>
-                    <se:OnlineResource xlink:href="/usr/share/qgis/svg/gpsicons/plane.svg?fill=%23000000&amp;fill-opacity=1&amp;outline=%23ffffff&amp;outline-opacity=1&amp;outline-width=0" xlink:type="simple"/>
+                    <se:OnlineResource xlink:href="/usr/share/qgis/svg/gpsicons/plane.svg?
+                    fill=%23000000&amp;fill-opacity=1&amp;outline=%23ffffff&
+                    amp;outline-opacity=1&amp;outline-width=0" xlink:type="simple"/>
                     <se:Format>image/svg+xml</se:Format>
                   </se:ExternalGraphic>
                   <!--Plain SVG fallback, no parameters-->
@@ -180,7 +301,9 @@ Odstraníme části pro  `Parametric SVG` a `Well known marker fallback`
 
                   <!--Parametric SVG-->
                   <se:ExternalGraphic>
-                    <se:OnlineResource xlink:href="/usr/share/qgis/svg/gpsicons/plane.svg?fill=%23000000&amp;fill-opacity=1&amp;outline=%23ffffff&amp;outline-opacity=1&amp;outline-width=0" xlink:type="simple"/>
+                    <se:OnlineResource xlink:href="/usr/share/qgis/svg/gpsicons/plane.svg?
+                    fill=%23000000&amp;fill-opacity=1&amp;outline=%23ffffff&
+                    amp;outline-opacity=1&amp;outline-width=0" xlink:type="simple"/>
                     <se:Format>image/svg+xml</se:Format>
                   </se:ExternalGraphic>
                   <se:Mark>
@@ -203,7 +326,13 @@ Výslední styl:
 .. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
-    <StyledLayerDescriptor xmlns="http://www.opengis.net/sld" version="1.1.0" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" xmlns:se="http://www.opengis.net/se" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <StyledLayerDescriptor xmlns="http://www.opengis.net/sld" 
+    version="1.1.0" 
+    xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" 
+    xmlns:se="http://www.opengis.net/se" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:ogc="http://www.opengis.net/ogc" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <NamedLayer>
         <se:Name>tasmania_cities</se:Name>
         <UserStyle>
