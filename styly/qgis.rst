@@ -15,19 +15,117 @@ Když si vytvoříme styl v QGISu tak máme možnost ho uložit do formátu SLD.
 
 .. figure:: images/qgis_ulozeni.png
 
-V položce Uložit styl vybere možnosť pro SLD a vybereme kam se soubor uloží. 
+V položce Uložit styl vybere možnost pro SLD a vybereme kam se soubor uloží. 
 
 .. figure:: images/qgis_sld.png
 
-Načtění SLD v GeoServeru
+Načtení SLD v GeoServeru
 =========================
-Při vztvoření stytlu v GeoServeru vybereme uložené SLD a dáme `Upload`. Do okna s kódem se nám načte SLD.
+Při vytvoření stylu v GeoServeru vybereme uložené SLD a dáme `Upload`. Do okna s kódem se nám načte SLD.
 
 .. figure:: images/nacteni_sld.png
 
-Bodová vrstva
-=============
-Základné stylování pro bodové vrstvy fungují. Bohužel u použití SVG ikon je potřeba udělat v SLD nějaké úpravy. 
+V QGISu si můžeme připravit dva základní styly. Buď máme kompletní styl v SLD nebo použije k stylu ještě nějaký doplňkový soubor. Tento soubor bude ve formátu SVG. 
+
+Styl jenom v SLD
+================
+
+Tyto styly jsou kompletně v SLD. Jsou to převážně jednoduché styly, ale můžeme si připravit i komplexní styl. Je důležité styl v QGISu připravovat s hodnotami v pixelech. Protože SLD pracuje s pixely a ne s milimetry. Při uložení do SLD se hodnoty přepočtou, ale hodnoty se zaokrouhlí. 
+Problém nastává, když chceme použít čáru se značkami (mark line). Můžeme ji použít, ale problém je při nastavění mezer mezi značkami. To bohužel nefunguje. 
+Nastavíme si v QGISu linií vyskládanou z kroužků o velikosti 6 pixelů a s odstupem 20 pixelů.
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1.0" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" xmlns:ogc="http://www.opengis.net/ogc" xmlns:se="http://www.opengis.net/se" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <NamedLayer>
+        <se:Name>tasmania_roads</se:Name>
+        <UserStyle>
+          <se:Name>tasmania_roads</se:Name>
+          <se:FeatureTypeStyle>
+            <se:Rule>
+              <se:Name>Single symbol</se:Name>
+              <se:LineSymbolizer>
+                <se:Stroke>
+                  <se:GraphicStroke>
+                    <se:Graphic>
+                      <se:Mark>
+                        <se:WellKnownName>circle</se:WellKnownName>
+                        <se:Fill>
+                          <se:SvgParameter name="fill">#ff0000</se:SvgParameter>
+                        </se:Fill>
+                        <se:Stroke>
+                          <se:SvgParameter name="stroke">#232323</se:SvgParameter>
+                          <se:SvgParameter name="stroke-width">0.5</se:SvgParameter>
+                        </se:Stroke>
+                      </se:Mark>
+                      <se:Size>6</se:Size>
+                    </se:Graphic>
+                    <se:Gap>
+                      <ogc:Literal>20</ogc:Literal>
+                    </se:Gap>
+                  </se:GraphicStroke>
+                </se:Stroke>
+              </se:LineSymbolizer>
+            </se:Rule>
+          </se:FeatureTypeStyle>
+        </UserStyle>
+      </NamedLayer>
+    </StyledLayerDescriptor>
+
+Ukázka z QGISu:
+
+.. figure:: images/qgis_bod.png
+
+Takhle vypadá použití stylu v GeoServeru:
+
+.. figure:: images/geo_bod.png
+
+Aby to fungovalo, musíme vytvořit jiný styl. 
+
+.. code-block:: xml
+
+    <?xml version="1.0" encoding="ISO-8859-1"?>
+    <StyledLayerDescriptor version="1.0.0"
+        xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd"
+        xmlns="http://www.opengis.net/sld"
+        xmlns:ogc="http://www.opengis.net/ogc"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <NamedLayer>
+        <Name>Marker line</Name>
+        <UserStyle>
+          <Title>Marker line</Title>
+          <FeatureTypeStyle>
+            <Rule>
+              <LineSymbolizer>
+                <Stroke>
+                  <GraphicStroke>
+                    <Graphic>
+                      <Mark>
+                        <WellKnownName>circle</WellKnownName>
+                        <Fill>
+                          <CssParameter name="fill">#ff0000</CssParameter>  
+                        </Fill>
+                        <Stroke>
+                          <CssParameter name="stroke">#232323</CssParameter>
+                          <CssParameter name="stroke-width">1</CssParameter>
+                        </Stroke>
+                      </Mark>
+                      <Size>4</Size>
+                    </Graphic>
+                  </GraphicStroke>
+                  <CssParameter name="stroke-dasharray">4 20</CssParameter>
+                </Stroke>
+              </LineSymbolizer>
+            </Rule>
+          </FeatureTypeStyle>
+        </UserStyle>
+      </NamedLayer>
+    </StyledLayerDescriptor>
+
+.. figure:: images/geo_bod_uprav.png
+
 
 SLD z QGISu
 ^^^^^^^^^^^
@@ -74,9 +172,9 @@ SLD z QGISu
       </NamedLayer>
     </StyledLayerDescriptor>
 
-* 1. odstránění nadbztečných částí
+* 1. odstranění nadbytečných částí
 
-Odstráníme části pro  `Parametric SVG` a `Well known marker fallback`
+Odstraníme části pro  `Parametric SVG` a `Well known marker fallback`
 
 .. code-block:: xml
 
@@ -98,7 +196,7 @@ Odstráníme části pro  `Parametric SVG` a `Well known marker fallback`
 
 * 2. uložení SVG
 
-Zvolené SVG uložíme do do adresáře `styles` ve složce geoservera. Cestu k SVG nalezneme v části pro `Parametric SVG`. Před umístění SVG musíme vložit file:// Když budeme používat víc SVG ikon, tak můžeme si do adresáře `styles` všechny ikony z QGISu.
+Zvolené SVG uložíme do do adresáře `styles` ve složce GeoServeru. Cestu k SVG nalezneme v části pro `Parametric SVG`. Před umístění SVG musíme vložit file:// Když budeme používat víc SVG ikon, tak můžeme si do adresáře `styles` všechny ikony z QGISu.
 
 Výslední styl:
 
