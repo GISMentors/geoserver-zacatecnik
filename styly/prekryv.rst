@@ -304,3 +304,5 @@ Styl 2
 .. figure:: images/prekryv2.png
 
    Styl 2 
+
+Důvodem proč musíme psát jednotlivé `Rule` do samostatních `FeatureTypeStyle` je, že Geoserver prvky v jednom `FeatureTypeStyle` vykresluje v poradí dle interního ID. 
