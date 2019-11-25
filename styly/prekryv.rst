@@ -18,65 +18,66 @@ Styl 1
 
 .. code-block:: xml
 
-  <?xml version="1.0" encoding="UTF-8"?>
-  <StyledLayerDescriptor version="1.0.0" 
-   xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd" 
-   xmlns="http://www.opengis.net/sld" 
-   xmlns:ogc="http://www.opengis.net/ogc" 
-   xmlns:xlink="http://www.w3.org/1999/xlink" 
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <!-- a Named Layer is the basic building block of an SLD document -->
-    <NamedLayer>
-      <Name>default_polygon</Name>
-      <UserStyle>
-      <!-- Styles can have names, titles and abstracts -->
-        <Title>Default Polygon</Title>
-        <Abstract>A sample style that draws a polygon</Abstract>
-        <!-- FeatureTypeStyles describe how to render different features -->
-        <!-- A FeatureTypeStyle for rendering polygons -->
-        <FeatureTypeStyle>       
-          <Rule>
-            <Title>Red Polygon with Black Outline</Title>
-            <Abstract>A polygon with a red fill and a 1 pixel black outline</Abstract>
-            <ogc:Filter>
-              <ogc:PropertyIsEqualTo>
-               <ogc:PropertyName>id</ogc:PropertyName>
-               <ogc:Literal>1</ogc:Literal>
-              </ogc:PropertyIsEqualTo>
-            </ogc:Filter>
-            <PolygonSymbolizer>
-              <Fill>
-                <CssParameter name="fill">#ff0000</CssParameter>
-              </Fill>
-              <Stroke>
-                <CssParameter name="stroke">#000000</CssParameter>
-                <CssParameter name="stroke-width">1</CssParameter>
-              </Stroke>
-             </PolygonSymbolizer>
-          </Rule>
-          <Rule>
-            <Title>Gray Polygon with Black Outline</Title>
-            <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
-            <ogc:Filter>
-              <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>id</ogc:PropertyName>
-              <ogc:Literal>2</ogc:Literal>
-             </ogc:PropertyIsEqualTo>
-            </ogc:Filter>
-            <PolygonSymbolizer>
-              <Fill>
-                <CssParameter name="fill">#AAAAAA</CssParameter>
-              </Fill>
-              <Stroke>
-                <CssParameter name="stroke">#000000</CssParameter>
-                <CssParameter name="stroke-width">1</CssParameter>
-              </Stroke>
-            </PolygonSymbolizer>
-          </Rule>
-        </FeatureTypeStyle>
-      </UserStyle>
-    </NamedLayer>
-  </StyledLayerDescriptor>
+	<?xml version="1.0" encoding="UTF-8"?>
+	  <StyledLayerDescriptor version="1.0.0" 
+	   xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd" 
+	   xmlns="http://www.opengis.net/sld" 
+	   xmlns:ogc="http://www.opengis.net/ogc" 
+	   xmlns:xlink="http://www.w3.org/1999/xlink" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	    <!-- a Named Layer is the basic building block of an SLD document -->
+	    <NamedLayer>
+	      <Name>default_polygon</Name>
+	      <UserStyle>
+	      <!-- Styles can have names, titles and abstracts -->
+	        <Title>Default Polygon</Title>
+	        <Abstract>A sample style that draws a polygon</Abstract>
+	        <!-- FeatureTypeStyles describe how to render different features -->
+	        <!-- A FeatureTypeStyle for rendering polygons -->
+	        <FeatureTypeStyle>       
+	          <Rule>
+	            <Title>Red Polygon with Black Outline</Title>
+	            <Abstract>A polygon with a red fill and a 1 pixel black outline</Abstract>
+	            <ogc:Filter>
+	              <ogc:PropertyIsEqualTo>
+	               <ogc:PropertyName>typ</ogc:PropertyName>
+	               <ogc:Literal>dalnice</ogc:Literal>
+	              </ogc:PropertyIsEqualTo>
+	            </ogc:Filter>
+	            <PolygonSymbolizer>
+	              <Fill>
+	                <CssParameter name="fill">#ff0000</CssParameter>
+	              </Fill>
+	              <Stroke>
+	                <CssParameter name="stroke">#000000</CssParameter>
+	                <CssParameter name="stroke-width">1</CssParameter>
+	              </Stroke>
+	             </PolygonSymbolizer>
+	          </Rule>
+	          <Rule>
+	            <Title>Gray Polygon with Black Outline</Title>
+	            <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
+	            <ogc:Filter>
+	              <ogc:PropertyIsEqualTo>
+	              <ogc:PropertyName>typ</ogc:PropertyName>
+	              <ogc:Literal>silnice</ogc:Literal>
+	             </ogc:PropertyIsEqualTo>
+	            </ogc:Filter>
+	            <PolygonSymbolizer>
+	              <Fill>
+	                <CssParameter name="fill">#AAAAAA</CssParameter>
+	              </Fill>
+	              <Stroke>
+	                <CssParameter name="stroke">#000000</CssParameter>
+	                <CssParameter name="stroke-width">1</CssParameter>
+	              </Stroke>
+	            </PolygonSymbolizer>
+	          </Rule>
+	        </FeatureTypeStyle>
+	      </UserStyle>
+	    </NamedLayer>
+	  </StyledLayerDescriptor>
+
   
   
 .. figure:: images/prekryv1.png
@@ -89,65 +90,65 @@ Styl 2
 
 .. code-block:: xml 
 
-  <?xml version="1.0" encoding="UTF-8"?>
-  <StyledLayerDescriptor version="1.0.0" 
-   xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd" 
-   xmlns="http://www.opengis.net/sld" 
-   xmlns:ogc="http://www.opengis.net/ogc" 
-   xmlns:xlink="http://www.w3.org/1999/xlink" 
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <!-- a Named Layer is the basic building block of an SLD document -->
-    <NamedLayer>
-      <Name>default_polygon</Name>
-      <UserStyle>
-      <!-- Styles can have names, titles and abstracts -->
-        <Title>Default Polygon</Title>
-        <Abstract>A sample style that draws a polygon</Abstract>
-        <!-- FeatureTypeStyles describe how to render different features -->
-        <!-- A FeatureTypeStyle for rendering polygons -->
-        <FeatureTypeStyle>       
-          <Rule>
-            <Title>Gray Polygon with Black Outline</Title>
-            <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
-            <ogc:Filter>
-              <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>id</ogc:PropertyName>
-              <ogc:Literal>2</ogc:Literal>
-             </ogc:PropertyIsEqualTo>
-            </ogc:Filter>
-            <PolygonSymbolizer>
-              <Fill>
-                <CssParameter name="fill">#AAAAAA</CssParameter>
-              </Fill>
-              <Stroke>
-                <CssParameter name="stroke">#000000</CssParameter>
-                <CssParameter name="stroke-width">1</CssParameter>
-              </Stroke>
-            </PolygonSymbolizer>
-          </Rule>
-          <Rule>
-            <Title>Red Polygon with Black Outline</Title>
-            <Abstract>A polygon with a red fill and a 1 pixel black outline</Abstract>
-            <ogc:Filter>
-              <ogc:PropertyIsEqualTo>
-               <ogc:PropertyName>id</ogc:PropertyName>
-               <ogc:Literal>1</ogc:Literal>
-              </ogc:PropertyIsEqualTo>
-            </ogc:Filter>
-            <PolygonSymbolizer>
-              <Fill>
-                <CssParameter name="fill">#ff0000</CssParameter>
-              </Fill>
-              <Stroke>
-                <CssParameter name="stroke">#000000</CssParameter>
-                <CssParameter name="stroke-width">1</CssParameter>
-              </Stroke>
-             </PolygonSymbolizer>
-          </Rule>
-        </FeatureTypeStyle>
-      </UserStyle>
-    </NamedLayer>
-  </StyledLayerDescriptor> 
+	<?xml version="1.0" encoding="UTF-8"?>
+	  <StyledLayerDescriptor version="1.0.0" 
+	   xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd" 
+	   xmlns="http://www.opengis.net/sld" 
+	   xmlns:ogc="http://www.opengis.net/ogc" 
+	   xmlns:xlink="http://www.w3.org/1999/xlink" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	    <!-- a Named Layer is the basic building block of an SLD document -->
+	    <NamedLayer>
+	      <Name>default_polygon</Name>
+	      <UserStyle>
+	      <!-- Styles can have names, titles and abstracts -->
+	        <Title>Default Polygon</Title>
+	        <Abstract>A sample style that draws a polygon</Abstract>
+	        <!-- FeatureTypeStyles describe how to render different features -->
+	        <!-- A FeatureTypeStyle for rendering polygons -->
+	        <FeatureTypeStyle>       
+	          <Rule>
+	            <Title>Gray Polygon with Black Outline</Title>
+	            <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
+	            <ogc:Filter>
+	              <ogc:PropertyIsEqualTo>
+	              <ogc:PropertyName>typ</ogc:PropertyName>
+	              <ogc:Literal>silnice</ogc:Literal>
+	             </ogc:PropertyIsEqualTo>
+	            </ogc:Filter>
+	            <PolygonSymbolizer>
+	              <Fill>
+	                <CssParameter name="fill">#AAAAAA</CssParameter>
+	              </Fill>
+	              <Stroke>
+	                <CssParameter name="stroke">#000000</CssParameter>
+	                <CssParameter name="stroke-width">1</CssParameter>
+	              </Stroke>
+	            </PolygonSymbolizer>
+	          </Rule>
+	          <Rule>
+	            <Title>Red Polygon with Black Outline</Title>
+	            <Abstract>A polygon with a red fill and a 1 pixel black outline</Abstract>
+	            <ogc:Filter>
+	              <ogc:PropertyIsEqualTo>
+	               <ogc:PropertyName>typ</ogc:PropertyName>
+	               <ogc:Literal>dalnice</ogc:Literal>
+	              </ogc:PropertyIsEqualTo>
+	            </ogc:Filter>
+	            <PolygonSymbolizer>
+	              <Fill>
+	                <CssParameter name="fill">#ff0000</CssParameter>
+	              </Fill>
+	              <Stroke>
+	                <CssParameter name="stroke">#000000</CssParameter>
+	                <CssParameter name="stroke-width">1</CssParameter>
+	              </Stroke>
+	             </PolygonSymbolizer>
+	          </Rule>
+	        </FeatureTypeStyle>
+	      </UserStyle>
+	    </NamedLayer>
+	  </StyledLayerDescriptor>
 
 .. figure:: images/prekryv1.png
 
@@ -164,67 +165,68 @@ Styl 1
 
 .. code-block:: xml
 
-  <?xml version="1.0" encoding="UTF-8"?>
-  <StyledLayerDescriptor version="1.0.0" 
-   xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd" 
-   xmlns="http://www.opengis.net/sld" 
-   xmlns:ogc="http://www.opengis.net/ogc" 
-   xmlns:xlink="http://www.w3.org/1999/xlink" 
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <!-- a Named Layer is the basic building block of an SLD document -->
-    <NamedLayer>
-      <Name>default_polygon</Name>
-      <UserStyle>
-      <!-- Styles can have names, titles and abstracts -->
-        <Title>Default Polygon</Title>
-        <Abstract>A sample style that draws a polygon</Abstract>
-        <!-- FeatureTypeStyles describe how to render different features -->
-        <!-- A FeatureTypeStyle for rendering polygons -->
-        <FeatureTypeStyle>       
-          <Rule>
-            <Title>Red Polygon with Black Outline</Title>
-            <Abstract>A polygon with a red fill and a 1 pixel black outline</Abstract>
-            <ogc:Filter>
-              <ogc:PropertyIsEqualTo>
-               <ogc:PropertyName>id</ogc:PropertyName>
-               <ogc:Literal>1</ogc:Literal>
-              </ogc:PropertyIsEqualTo>
-            </ogc:Filter>
-            <PolygonSymbolizer>
-              <Fill>
-                <CssParameter name="fill">#ff0000</CssParameter>
-              </Fill>
-              <Stroke>
-                <CssParameter name="stroke">#000000</CssParameter>
-                <CssParameter name="stroke-width">1</CssParameter>
-              </Stroke>
-             </PolygonSymbolizer>
-          </Rule>
-        </FeatureTypeStyle>
-        <FeatureTypeStyle>          
-          <Rule>
-            <Title>Gray Polygon with Black Outline</Title>
-            <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
-            <ogc:Filter>
-              <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>id</ogc:PropertyName>
-              <ogc:Literal>2</ogc:Literal>
-             </ogc:PropertyIsEqualTo>
-            </ogc:Filter>
-            <PolygonSymbolizer>
-              <Fill>
-                <CssParameter name="fill">#AAAAAA</CssParameter>
-              </Fill>
-              <Stroke>
-                <CssParameter name="stroke">#000000</CssParameter>
-                <CssParameter name="stroke-width">1</CssParameter>
-              </Stroke>
-            </PolygonSymbolizer>
-          </Rule>
-        </FeatureTypeStyle>
-      </UserStyle>
-    </NamedLayer>
-  </StyledLayerDescriptor>
+	<?xml version="1.0" encoding="UTF-8"?>
+	<StyledLayerDescriptor version="1.0.0"
+	 xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd"
+	 xmlns="http://www.opengis.net/sld"
+	 xmlns:ogc="http://www.opengis.net/ogc"
+	 xmlns:xlink="http://www.w3.org/1999/xlink"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	  <!-- a Named Layer is the basic building block of an SLD document -->
+	  <NamedLayer>
+	    <Name>default_polygon</Name>
+	    <UserStyle>
+	    <!-- Styles can have names, titles and abstracts -->
+	      <Title>Default Polygon</Title>
+	      <Abstract>A sample style that draws a polygon</Abstract>
+	      <!-- FeatureTypeStyles describe how to render different features -->
+	      <!-- A FeatureTypeStyle for rendering polygons -->
+	      <FeatureTypeStyle>
+	        <Rule>
+	          <Title>Red Polygon with Black Outline</Title>
+	          <Abstract>A polygon with a red fill and a 1 pixel black outline</Abstract>
+	          <ogc:Filter>
+	            <ogc:PropertyIsEqualTo>
+	             <ogc:PropertyName>typ</ogc:PropertyName>
+	             <ogc:Literal>dalnice</ogc:Literal>
+	            </ogc:PropertyIsEqualTo>
+	          </ogc:Filter>
+	          <PolygonSymbolizer>
+	            <Fill>
+	              <CssParameter name="fill">#ff0000</CssParameter>
+	            </Fill>
+	            <Stroke>
+	              <CssParameter name="stroke">#000000</CssParameter>
+	              <CssParameter name="stroke-width">1</CssParameter>
+	            </Stroke>
+	           </PolygonSymbolizer>
+	        </Rule>
+	      </FeatureTypeStyle>
+	      <FeatureTypeStyle>
+	        <Rule>
+	          <Title>Gray Polygon with Black Outline</Title>
+	          <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
+	          <ogc:Filter>
+	            <ogc:PropertyIsEqualTo>
+	            <ogc:PropertyName>typ</ogc:PropertyName>
+	            <ogc:Literal>silnice</ogc:Literal>
+	           </ogc:PropertyIsEqualTo>
+	          </ogc:Filter>
+	          <PolygonSymbolizer>
+	            <Fill>
+	              <CssParameter name="fill">#AAAAAA</CssParameter>
+	            </Fill>
+	            <Stroke>
+	              <CssParameter name="stroke">#000000</CssParameter>
+	              <CssParameter name="stroke-width">1</CssParameter>
+	            </Stroke>
+	          </PolygonSymbolizer>
+	        </Rule>
+	      </FeatureTypeStyle>
+	    </UserStyle>
+	  </NamedLayer>
+	</StyledLayerDescriptor>
+
 
 .. figure:: images/prekryv1.png
 
@@ -236,67 +238,68 @@ Styl 2
 
 .. code-block:: xml 
 
-  <?xml version="1.0" encoding="UTF-8"?>
-  <StyledLayerDescriptor version="1.0.0" 
-   xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd" 
-   xmlns="http://www.opengis.net/sld" 
-   xmlns:ogc="http://www.opengis.net/ogc" 
-   xmlns:xlink="http://www.w3.org/1999/xlink" 
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <!-- a Named Layer is the basic building block of an SLD document -->
-    <NamedLayer>
-      <Name>default_polygon</Name>
-      <UserStyle>
-      <!-- Styles can have names, titles and abstracts -->
-        <Title>Default Polygon</Title>
-        <Abstract>A sample style that draws a polygon</Abstract>
-        <!-- FeatureTypeStyles describe how to render different features -->
-        <!-- A FeatureTypeStyle for rendering polygons -->
-        <FeatureTypeStyle>       
-          <Rule>
-            <Title>Gray Polygon with Black Outline</Title>
-            <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
-            <ogc:Filter>
-              <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>id</ogc:PropertyName>
-              <ogc:Literal>2</ogc:Literal>
-             </ogc:PropertyIsEqualTo>
-            </ogc:Filter>
-            <PolygonSymbolizer>
-              <Fill>
-                <CssParameter name="fill">#AAAAAA</CssParameter>
-              </Fill>
-              <Stroke>
-                <CssParameter name="stroke">#000000</CssParameter>
-                <CssParameter name="stroke-width">1</CssParameter>
-              </Stroke>
-            </PolygonSymbolizer>
-          </Rule>
-        </FeatureTypeStyle>
-        <FeatureTypeStyle>
-          <Rule>
-            <Title>Red Polygon with Black Outline</Title>
-            <Abstract>A polygon with a red fill and a 1 pixel black outline</Abstract>
-            <ogc:Filter>
-              <ogc:PropertyIsEqualTo>
-               <ogc:PropertyName>id</ogc:PropertyName>
-               <ogc:Literal>1</ogc:Literal>
-              </ogc:PropertyIsEqualTo>
-            </ogc:Filter>
-            <PolygonSymbolizer>
-              <Fill>
-                <CssParameter name="fill">#ff0000</CssParameter>
-              </Fill>
-              <Stroke>
-                <CssParameter name="stroke">#000000</CssParameter>
-                <CssParameter name="stroke-width">1</CssParameter>
-              </Stroke>
-             </PolygonSymbolizer>
-          </Rule>
-        </FeatureTypeStyle>
-      </UserStyle>
-    </NamedLayer>
-  </StyledLayerDescriptor> 
+	<?xml version="1.0" encoding="UTF-8"?>
+	<StyledLayerDescriptor version="1.0.0"
+	 xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd"
+	 xmlns="http://www.opengis.net/sld"
+	 xmlns:ogc="http://www.opengis.net/ogc"
+	 xmlns:xlink="http://www.w3.org/1999/xlink"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	  <!-- a Named Layer is the basic building block of an SLD document -->
+	  <NamedLayer>
+	    <Name>default_polygon</Name>
+	    <UserStyle>
+	    <!-- Styles can have names, titles and abstracts -->
+	      <Title>Default Polygon</Title>
+	      <Abstract>A sample style that draws a polygon</Abstract>
+	      <!-- FeatureTypeStyles describe how to render different features -->
+	      <!-- A FeatureTypeStyle for rendering polygons -->
+	      <FeatureTypeStyle>
+	        <Rule>
+	          <Title>Red Polygon with Black Outline</Title>
+	          <Abstract>A polygon with a red fill and a 1 pixel black outline</Abstract>
+	          <ogc:Filter>
+	            <ogc:PropertyIsEqualTo>
+	             <ogc:PropertyName>typ</ogc:PropertyName>
+	             <ogc:Literal>silnice</ogc:Literal>
+	            </ogc:PropertyIsEqualTo>
+	          </ogc:Filter>
+	          <PolygonSymbolizer>
+	            <Fill>
+	              <CssParameter name="fill">#ff0000</CssParameter>
+	            </Fill>
+	            <Stroke>
+	              <CssParameter name="stroke">#000000</CssParameter>
+	              <CssParameter name="stroke-width">1</CssParameter>
+	            </Stroke>
+	           </PolygonSymbolizer>
+	        </Rule>
+	      </FeatureTypeStyle>
+	      <FeatureTypeStyle>
+	        <Rule>
+	          <Title>Gray Polygon with Black Outline</Title>
+	          <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
+	          <ogc:Filter>
+	            <ogc:PropertyIsEqualTo>
+	            <ogc:PropertyName>typ</ogc:PropertyName>
+	            <ogc:Literal>dalnice</ogc:Literal>
+	           </ogc:PropertyIsEqualTo>
+	          </ogc:Filter>
+	          <PolygonSymbolizer>
+	            <Fill>
+	              <CssParameter name="fill">#AAAAAA</CssParameter>
+	            </Fill>
+	            <Stroke>
+	              <CssParameter name="stroke">#000000</CssParameter>
+	              <CssParameter name="stroke-width">1</CssParameter>
+	            </Stroke>
+	          </PolygonSymbolizer>
+	        </Rule>
+	      </FeatureTypeStyle>
+	    </UserStyle>
+	  </NamedLayer>
+	</StyledLayerDescriptor>
+
 
 .. figure:: images/prekryv2.png
 
