@@ -5,7 +5,7 @@
 
 Skupiny vrstev
 ---------------
-SSkupiny vrstev slouží k spojení vícerých  vrstev do jedné. Umožní nám to zavolat víc vrstev naráz. Skupiny vrstev definujeme v sekce `Data`, volba `Layer Groups`
+Skupiny vrstev slouží k spojení vícerých  vrstev do jedné. Umožní nám to zavolat víc vrstev naráz. Skupiny vrstev definujeme v sekci `Data`, volba `Layer Groups`
 
 Novou skupinu vytvoříme kliknutím na `Add new layer group` .  Povinně musíme vyplnit `Name` a je vhodné taky vyplnit `Title` a `Abstract`. 
 
