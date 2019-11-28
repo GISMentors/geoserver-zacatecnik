@@ -88,6 +88,7 @@ formáty či služby.
    rastr/index
    dlazdice/index
    inspire/index
+   ruzne/index
 
 *******
 Dodatky
