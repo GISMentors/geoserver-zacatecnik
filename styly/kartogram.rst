@@ -6,7 +6,7 @@
 Kartogram
 ---------
 
-Jednodcuhý pseudokartogram je možné vytvořit pomocí filtrace dat a přiřazením stylu 
+Jednoduchý pseudokartogram je možné vytvořit pomocí filtrace dat a přiřazením stylu 
 takto filtrovaným datům. V principu se vytvoří několik pravidel, pro každý filtr jedno.
 
 Jednoduchý pseudokartogram

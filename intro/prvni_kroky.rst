@@ -66,7 +66,7 @@ Ověření běhu
 
 Informační hláška ``INFO: Started
 SelectChannelConnector@0.0.0.0:8080`` bohužel nemusí znamenat, že
-server běží. Toto je nutné ověřit. Ověření prodeme ve webovém
+server běží. Toto je nutné ověřit. Ověření provedeme ve webovém
 prohlížeči zadáním adresy: http://localhost:8080/geoserver/
 
 .. note:: V případě, že jste změnili port, je nutné i zde zadat jiné číslo portu než 8080.

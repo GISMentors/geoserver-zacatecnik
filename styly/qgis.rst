@@ -7,7 +7,7 @@
 Vytvoření stylu v QGISu
 ------------------------
 
-Jednou z možností jako připravit styl pro Geoserver, je vytvořit styl v programe QGIS. Pro získání kompatibilních stylů z QGISu je nutné použít QGIS 3.x a GeoServer 2.13.x nebo novější.
+Jednou z možností jako připravit styl pro Geoserver, je vytvořit styl v programu QGIS. Pro získání kompatibilních stylů z QGISu je nutné použít QGIS 3.x a GeoServer 2.13.x nebo novější.
 
 Uložení stylu do SLD v QGISu
 ============================
@@ -238,7 +238,7 @@ Styl se šrafou, který funguje
 Styl s SVG
 ==========
 
-Styl s SVG si musíme upravit. Ukážeme si to na stylu u bodovej vrstvy. 
+Styl s SVG si musíme upravit. Ukážeme si to na stylu u bodové vrstvy. 
 
 Tady máme styl z QGISu:
 
