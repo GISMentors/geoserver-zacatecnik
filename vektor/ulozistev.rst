@@ -62,9 +62,7 @@ Relativní cesta začíná v adresáři `data_dir`.
 Často využívaným úložištěm je databáze PostgreSQL/PostGIS. Přidání nového
 úložiště je možné buď jako PostGIS nebo PostGIS (JNDI). 
 
-.. note:: Varianta JNDI vyžaduje konfiguraci na úrovni aplikačního serveru a pro 
-začátečníky není vhodná. Navíc testy ukázaly, že je připojení přes JNDI o něco pomalejší. 
-Vhodné je v případě, že již organizace JNDI běžně využívá.
+.. note:: Varianta JNDI vyžaduje konfiguraci na úrovni aplikačního serveru a pro začátečníky není vhodná. Navíc testy ukázaly, že je připojení přes JNDI o něco pomalejší. Vhodné je v případě, že již organizace JNDI běžně využívá.
 
 .. figure:: images/storepostgis1.png
 
