@@ -1,10 +1,13 @@
 .. index::
-   single: Nastavení dlaždic
+   single: Rastrové dlaždice
 
 .. _nastavenit:
 
-Nastavení dlaždic
+Rastrové dlaždice
 -----------------
+
+Nastavení rastrovích dlaždic
+=============================
 
 Nastavení dlaždic je poměrně rozsáhlé, ale pro začátečníka není zas tak složité.
 Komplikace mohou nastat v případě, že potřebujete např. nastavit vlastní
