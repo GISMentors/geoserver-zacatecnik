@@ -19,5 +19,4 @@ Data ve vektorových dlaždicích jsou generalizované, čím nižší úroveň 
 
 
 
-`zip archiv
-   <http://training.gismentors.eu/geodata/qgis/data.zip>`__
+`:download:`epsg_overrides.properties <data/vectortiles.zip>`
