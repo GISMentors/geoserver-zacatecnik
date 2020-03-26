@@ -14,5 +14,10 @@ Pro další možnosti potřebujeme nainstalovat extenzi Vector Tiles. Najdeme ji
 .. figure:: images/vector_ext.png
 
 Instalací extenzi nám přibyla možnost generovat vektorové dlaždice ve formátech application/json;type=geojson, application/json;type=topojson nebo application/vnd.mapbox-vector-tile. Rozdíli mezi formátmi GeoJSON a TopoJSON jsou popsány v materiálech ke školení Úvod do GIS https://training.gismentors.eu/open-source-gis/formaty/vektor.html
-Formát application/vnd.mapbox-vector-tile generuje binární soubor s příponou *.pbf
-Data ve vektorových dlaždicích jsou generalizované, čím nižší úroveň přiblížení, tým je generalizace větší.
+Formát application/vnd.mapbox-vector-tile generuje binární soubor s příponou *.pbf. Tento formát je tvůrcemi Geoserveru doporučovaný.
+Data ve vektorových dlaždicích jsou generalizované, čím nižší úroveň přiblížení, tým je generalizace větší. Na rozdíl od rastrovích dlaždic, nemajů vektorové dlaždice v sebe informáciu o štýle. 
+
+
+
+`zip archiv
+   <http://training.gismentors.eu/geodata/qgis/data.zip>`__
