@@ -69,7 +69,7 @@ Klikneme na `Add a new resource` a vybereme si úložiště z kterého chceme p�
 Přidání nové vrstvy z úložiště PostGIS
 =============================================
 
-Po kliknutí na `Add a new resource` a výběre úložiště z, kterého chceme přidat vrstvu, máme u PostGIS úložiště dvě možnosti. První možnost je stejná jako u ESRI Shapefile úložiště přes Publish. Druhá možnost je publikovat vytvořený SQL pohled. Tuto možnost získáme po kliknutí na Configure new SQL view... . 
+Po kliknutí na `Add a new resource` a výběre úložiště, z kterého chceme přidat vrstvu, máme u PostGIS úložiště dvě možnosti. První možnost je stejná jako u ESRI Shapefile úložiště přes Publish. Druhá možnost je publikovat vytvořený SQL pohled. Tuto možnost získáme po kliknutí na Configure new SQL view... .
 
 View Name 
 ^^^^^^^^^^

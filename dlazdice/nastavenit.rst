@@ -47,4 +47,5 @@ předpřipravenými Gridsety pro WGS84 a Google Mercator.
 
    Gridsety
 
-
+.. note:: Např. parametry pro Gridset pro EPSG:5514 můžeme najít na
+https://geoportal.cuzk.cz/WMTS_ORTOFOTO/WMTService.aspx?REQUEST=GetCapabilities&SERVICE=WMTS

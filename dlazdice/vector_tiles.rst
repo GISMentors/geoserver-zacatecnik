@@ -12,6 +12,7 @@ Generovat vektorové dlaždice můžeme bez instalace pluginu ve formátu applic
 
 Pro další možnosti potřebujeme nainstalovat extenzi Vector Tiles.
 Najdeme ji na stránkách Geoserveru. Soubory z archivu uložíme do :file:`webapps/geoserver/WEB-INF/lib`
+a restartujeme server.
 
 .. figure:: images/vector_ext.png
 
@@ -21,6 +22,8 @@ Rozdíly mezi formáty GeoJSON a TopoJSON jsou popsány v materiálech ke škole
 Formát `application/vnd.mapbox-vector-tile` generuje binární soubor s příponou pbf. Tento formát je tvůrci Geoserveru doporučovaný.
 Data ve vektorových dlaždicích jsou generalizovaná, čím nižší úroveň přiblížení, tím je generalizace větší.
 Na rozdíl od rastrových dlaždic, nemají vektorové dlaždice v sobě informaci o stylu.
+
+Proto pokud chceme data vizualizovat na straně klienta musíme stylování nastavit v jeho konfiguraci.
 
 .. code-block:: html
 
@@ -113,7 +116,7 @@ Stylování je možné měnit přímo na straně klienta, tak jak demonstruje m�
     <input id="fill" value="#FF0000"/><button onclick="setFill()">Set fill</button>
     <div id="map" class="map"></div>
     <script>
-  // definování stylu
+    // definování stylu
     var fill = '#ADD8E6';
 
     function getStyle() {
@@ -155,7 +158,7 @@ Stylování je možné měnit přímo na straně klienta, tak jak demonstruje m�
       })
     }
 
-  //definice vrstvy
+    //definice vrstvy
     var layer_name = 'sf:restricted';
     //definice čísla EPSG
     var projection_epsg_no = '900913';
