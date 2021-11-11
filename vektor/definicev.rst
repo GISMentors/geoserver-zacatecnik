@@ -91,6 +91,8 @@ Například můžeme sestavit pohled, který vybere parcely v základní sídeln
 
 .. note:: Pohledy je také možno parametrizovat a vytvářet tak dynamicky výstupy z databáze včetně animací.
 Parametry se zadávají do procent přímo do SQL. Např. AND ST_Area(p.geom) > %MIN_AREA%
+Volání přes WMS pak jako atribut &viewparams=MIN_AREA:20000
+Pokud je parametrů více oddělují se středníkem.
 Tomu se věnuje školení pro pokročilé.
 
 SQL view parameters
