@@ -66,9 +66,9 @@ Stažení a spuštení kontejneru
 
 .. code-block:: bash
 
-	docker pull oscarfonts/geoserver:2.14.1
+	docker pull oscarfonts/geoserver:2.19.3
 
-``:2.14.1`` slouží k nastavení verze GeoServeru. Pokud verzi
+``:2.19.3`` slouží k nastavení verze GeoServeru. Pokud verzi
 vynecháme, tak se nainstaluje do Dockeru nejnovější verze GeoServeru.
 
 Spuštění Docker kontejneru:
@@ -77,7 +77,7 @@ Spuštění Docker kontejneru:
 
 	docker run -d -p 8080:8080 -v /opt/geoserver/data_dir:/var/local/geoserver \
         -v /opt/geoserver/exts_dir:/var/local/geoserver-exts \
-        --name=geoserver oscarfonts/geoserver:2.14.1
+        --name=geoserver oscarfonts/geoserver:2.19.3
 
 * ``-p`` slouží k určení portu. První část určuje port, na kterém je
   Geoserver posléze dostupný.

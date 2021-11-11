@@ -89,7 +89,9 @@ Například můžeme sestavit pohled, který vybere parcely v základní sídeln
   ON ST_Intersects(p.geom, z.geom) 
   WHERE z.kod = 129470
 
-.. note:: Pohledy je také možno parametrizovat a vytvářet tak dynamicky výstupy z databáze včetně animací. Tomu se věnuje školení pro pokročilé.
+.. note:: Pohledy je také možno parametrizovat a vytvářet tak dynamicky výstupy z databáze včetně animací.
+Parametry se zadávají do procent přímo do SQL. Např. AND ST_Area(p.geom) > %MIN_AREA%
+Tomu se věnuje školení pro pokročilé.
 
 SQL view parameters
 ^^^^^^^^^^^^^^^^^^^
