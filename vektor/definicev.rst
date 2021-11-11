@@ -137,10 +137,10 @@ Vytvořte pohled na data z PostGIS který vybere parcely v základní sídelní 
 Řešení úkolů
 ============
 
-Vrstva kraje_pseudo
-^^^^^^^^^^^^^^^^^^^
+Vrstva kraje
+^^^^^^^^^^^^
 
-Pokud jste data nakopírovali správně, pak v rámci definice vrstvy musíte pouze nastavit `Declared SRS` na `EPSG:4326` a spočítat BBOX.
+Pokud jste data nakopírovali správně, pak v rámci definice vrstvy musíte pouze nastavit `Declared SRS` na `EPSG:5514` a spočítat BBOX.
 
 .. figure:: images/kraje_pseudo.png
 
@@ -150,7 +150,7 @@ Předtím však musíte projít kroky vytvoření `Workspace` (nepovinné) a `St
 
 .. figure:: images/cr.png
 
-   Nový pracovní prostor cr.
+   Nový pracovní prostor gismentors_shp.
 
 .. note:: Prostor můžete zvolit jako `Default`. Vše pak od této chvíle bude realizováno v tomto prostoru.
 
