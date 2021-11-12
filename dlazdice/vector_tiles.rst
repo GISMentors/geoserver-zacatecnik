@@ -88,7 +88,8 @@ Proto pokud chceme data vizualizovat na straně klienta musíme stylování nast
   </body>
   </html>
 
-Kód vložíme do textového souboru a pojmenujeme ho index.html. Připravený index.html a i knižnice pro javascript si můžete stáhnou zde: :download:`vectortiles.zip <data/vectortiles.zip>`. Stažený archiv rozbalíme do složky :file:`/geoserver-2.16.2/data_dir/www`. Táto aplikace nám umožní si zobrazit vektorové dlaždice ve formátu `application/vnd.mapbox-vector-tile`.
+Kód vložíme do textového souboru a pojmenujeme ho index.html. Připravený index.html a i knihovny pro javascript si můžete stáhnou zde: :download:`vectortiles.zip <data/vectortiles.zip>`. Stažený archiv rozbalíme do složky :file:`/geoserver-2.16.2/data_dir/www`. Táto aplikace nám umožní si zobrazit vektorové dlaždice ve formátu `application/vnd.mapbox-vector-tile`.
+Aplikace je pak dostupná na http://localhost:8080/geoserver/www/vektortiles/index.html
 
 Stylování je možné měnit přímo na straně klienta, tak jak demonstruje mírně upravený předchozí příklad.
 

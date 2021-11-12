@@ -113,7 +113,7 @@ S-JTSK
 ======
 Opakovaně se můžete v různých verzích GeoServeru setkat s problémy při publikování geodat v prostorovém referenčním systému S-JTSK označeném kódem EPSG:5514. V případě, že GeoServer nevypočítá korektně souřadnice ohraničujícího obdélníka pro Lat/Lon, případně chybně identifikuje souřadnicový systém, je možné přepsat jeho definici.
 
-Přepsání se realizuje pomocí deklarace v souboru :download:`epsg_overrides.properties <epsg_overrides.properties>`. Tento soubor se umisťuje do adresáře :file:`data_dir/user_projections`. Pro aktivování je nutné server restartovat.
+Přepsání se realizuje pomocí deklarace v souboru :download:`epsg_overrides.properties <images/epsg_overrides.properties>`. Tento soubor se umisťuje do adresáře :file:`data_dir/user_projections`. Pro aktivování je nutné server restartovat.
  
 .. note:: Pokud chceme přidat systém, který není nakonfigurován, pak deklaraci umisťujeme do souboru :file:`epsg.properties`. Na stránce `epsg.io <http://epsg.io/>`_ si najdeme definici vybraného souřadnicového systému pro Geoserver. Text vykopírujeme a přidáme ho do souboru :file:`epsg.properties`. Změna se projeví po restartování Geoserveru.
 
