@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Vektorové dlaždice &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Generování dlaždic" href="generovanit.html" />
+    <link rel="prev" title="Rastrové dlaždice" href="nastavenit.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="nastavenit.html" title="Rastrové dlaždice"
+             accesskey="P">předchozí</a> |
+          <a href="generovanit.html" title="Generování dlaždic"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="vektorove-dlazdice">
+<span id="vector-tiles"></span><span id="index-0"></span><h1>Vektorové dlaždice<a class="headerlink" href="#vektorove-dlazdice" title="Permalink to this heading">¶</a></h1>
+<p>Vektorové dlaždice je možné v Geoserveru generovat jenom z vektorových vrstev.
+Generovat vektorové dlaždice můžeme bez instalace pluginu ve formátu application/json;type=utfgrid .</p>
+<figure class="align-center">
+<img alt="../_images/vector_geo.png" src="../_images/vector_geo.png" />
+</figure>
+<p>Pro další možnosti potřebujeme nainstalovat extenzi Vector Tiles.
+Najdeme ji na stránkách Geoserveru. Soubory z archivu uložíme do <code class="file docutils literal notranslate"><span class="pre">webapps/geoserver/WEB-INF/lib</span></code>
+a restartujeme server.</p>
+<figure class="align-center">
+<img alt="../_images/vector_ext.png" src="../_images/vector_ext.png" />
+</figure>
+<p>Instalací extenze nám přibyla možnost generovat vektorové dlaždice ve formátech <cite>application/json;type=geojson</cite>, <cite>application/json;type=topojson</cite>
+nebo <cite>application/vnd.mapbox-vector-tile</cite>.
+Rozdíly mezi formáty GeoJSON a TopoJSON jsou popsány v materiálech ke školení Úvod do GIS <a class="reference external" href="https://training.gismentors.eu/open-source-gis/formaty/vektor.html">https://training.gismentors.eu/open-source-gis/formaty/vektor.html</a>
+Formát <cite>application/vnd.mapbox-vector-tile</cite> generuje binární soubor s příponou pbf. Tento formát je tvůrci Geoserveru doporučovaný.
+Data ve vektorových dlaždicích jsou generalizovaná, čím nižší úroveň přiblížení, tím je generalizace větší.
+Na rozdíl od rastrových dlaždic, nemají vektorové dlaždice v sobě informaci o stylu.</p>
+<p>Proto pokud chceme data vizualizovat na straně klienta musíme stylování nastavit v jeho konfiguraci.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html --&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Vector tiles<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;ol.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;ol.css&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="nt">html</span><span class="o">,</span><span class="w"> </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">      </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">.</span><span class="nc">map</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">      </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Mapbox Protobuf - vector tiles<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;map&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="c1">// definování stylu</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">style_simple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">Fill</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#ADD8E6&#39;</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">Stroke</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#880000&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">simpleStyle</span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">style_simple</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="c1">//definice vrstvy</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sf:restricted&#39;</span><span class="p">;</span>
+<span class="c1">//definice čísla EPSG</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">projection_epsg_no</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;900913&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">View</span><span class="p">({</span>
+<span class="c1">//souřadnice středového bodu</span>
+<span class="w">      </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">11559399.021158619</span><span class="p">,</span><span class="w"> </span><span class="mf">5534556.797017269</span><span class="p">],</span>
+<span class="c1">//počáteční zoom</span>
+<span class="w">      </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nx">VectorTile</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">style</span><span class="o">:</span><span class="nx">simpleStyle</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nx">VectorTile</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">tilePixelRatio</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="c1">// oversampling when &gt; 1</span>
+<span class="w">        </span><span class="nx">tileGrid</span><span class="o">:</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">tilegrid</span><span class="p">.</span><span class="nx">createXYZ</span><span class="p">({</span><span class="nx">maxZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">19</span><span class="p">}),</span>
+<span class="w">        </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">MVT</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/geoserver/gwc/service/tms/1.0.0/&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">layer</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="s1">&#39;@EPSG%3A&#39;</span><span class="o">+</span><span class="nx">projection_epsg_no</span><span class="o">+</span><span class="s1">&#39;@pbf/{z}/{x}/{-y}.pbf&#39;</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})]</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Kód vložíme do textového souboru a pojmenujeme ho index.html. Připravený index.html a i knihovny pro javascript si můžete stáhnou zde: <a class="reference download internal" download="" href="../_downloads/90ea2bf0356d0f391133fd30dc741c61/vectortiles.zip"><code class="xref download docutils literal notranslate"><span class="pre">vectortiles.zip</span></code></a>. Stažený archiv rozbalíme do složky <code class="file docutils literal notranslate"><span class="pre">/geoserver-2.16.2/data_dir/www</span></code>. Táto aplikace nám umožní si zobrazit vektorové dlaždice ve formátu <cite>application/vnd.mapbox-vector-tile</cite>.
+Aplikace je pak dostupná na <a class="reference external" href="http://localhost:8080/geoserver/www/vektortiles/index.html">http://localhost:8080/geoserver/www/vektortiles/index.html</a></p>
+<p>Stylování je možné měnit přímo na straně klienta, tak jak demonstruje mírně upravený předchozí příklad.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html --&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Vector tiles<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;ol.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;ol.css&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="nt">html</span><span class="o">,</span><span class="w"> </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">      </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">.</span><span class="nc">map</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">      </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Mapbox Protobuf - vector tiles<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;fill&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#FF0000&quot;</span><span class="p">/&gt;&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;setFill()&quot;</span><span class="p">&gt;</span>Set fill<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;map&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="c1">// definování stylu</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;#ADD8E6&#39;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">getStyle</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">Fill</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="nx">fill</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">Stroke</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#880000&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">style_simple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getStyle</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">setFill</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fill&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">style_simple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getStyle</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">removeLayer</span><span class="p">(</span><span class="nx">layer</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getLayer</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">layer</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">simpleStyle</span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">style_simple</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">getLayer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nx">VectorTile</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">style</span><span class="o">:</span><span class="nx">simpleStyle</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nx">VectorTile</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">tilePixelRatio</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="c1">// oversampling when &gt; 1</span>
+<span class="w">        </span><span class="nx">tileGrid</span><span class="o">:</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">tilegrid</span><span class="p">.</span><span class="nx">createXYZ</span><span class="p">({</span><span class="nx">maxZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">19</span><span class="p">}),</span>
+<span class="w">        </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">MVT</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/geoserver/gwc/service/tms/1.0.0/&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">layer_name</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="s1">&#39;@EPSG%3A&#39;</span><span class="o">+</span><span class="nx">projection_epsg_no</span><span class="o">+</span><span class="s1">&#39;@pbf/{z}/{x}/{-y}.pbf&#39;</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">//definice vrstvy</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">layer_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sf:restricted&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">//definice čísla EPSG</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">projection_epsg_no</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;900913&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getLayer</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">View</span><span class="p">({</span>
+<span class="w">      </span><span class="c1">//souřednices středového bodu</span>
+<span class="w">      </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">11559399.021158619</span><span class="p">,</span><span class="w"> </span><span class="mf">5534556.797017269</span><span class="p">],</span>
+<span class="w">      </span><span class="c1">//počáteční zoom</span>
+<span class="w">      </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">layer</span><span class="p">]</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">První kroky</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../styly/index.html">Styly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Dlaždice</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nastavenit.html">Rastrové dlaždice</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Vektorové dlaždice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generovanit.html">Generování dlaždic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="nastavenit.html" title="Rastrové dlaždice"
+              >předchozí</a> |
+            <a href="generovanit.html" title="Generování dlaždic"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

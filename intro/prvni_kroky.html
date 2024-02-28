@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Úvod do systému GeoServer &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Administrace" href="administrace.html" />
+    <link rel="prev" title="Docker" href="../instalace/docker.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../instalace/docker.html" title="Docker"
+             accesskey="P">předchozí</a> |
+          <a href="administrace.html" title="Administrace"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="uvod-do-systemu-geoserver">
+<h1>Úvod do systému GeoServer<a class="headerlink" href="#uvod-do-systemu-geoserver" title="Permalink to this heading">¶</a></h1>
+<p>Po úspěšné instalaci systému GeoServer (dle návodu
+<a class="reference internal" href="../instalace/index.html"><span class="doc">Instalace</span></a>) je možné jej spustit a začít okamžitě
+pracovat.</p>
+<section id="spusteni-systemu-geoserver">
+<span id="index-0"></span><h2>Spuštění systému GeoServer<a class="headerlink" href="#spusteni-systemu-geoserver" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud jste instalovali GeoServer v rámci
+<a class="reference internal" href="../instalace/docker.html"><span class="doc">Docker</span></a>, tak byl GeoServer automaticky spuštěn
+při startu kontejneru. Tuto část můžete přeškočit.</p>
+</div>
+<p>Úspěšně nainstalovaný mapový server by měl být spustitelný z příkazové
+řádky pomocí příkazu <code class="file docutils literal notranslate"><span class="pre">startup.sh</span></code> (pro Linux) nebo spuštěním
+dávkového souboru <code class="file docutils literal notranslate"><span class="pre">startup.bat</span></code> (pro Windows) umístěného v
+adresáři <code class="file docutils literal notranslate"><span class="pre">bin</span></code>.  V obou případech čekáme až server naběhne
+zcela.</p>
+<div class="notecmd admonition">
+<p class="admonition-title">Spuštění GeoServer z příkazové řádky</p>
+<p>Příklad spuštění na OS Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bin/startup.sh
+</pre></div>
+</div>
+<p>Příklad spuštění na OS MS Windows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="se">\b</span>in<span class="se">\s</span>tartup.bat
+</pre></div>
+</div>
+</div>
+<figure class="align-center" id="id2">
+<img alt="../_images/linux_start.png" src="../_images/linux_start.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 3 </span><span class="caption-text">Spuštění systému GeoServer v Ubuntu.</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Server je spuštěn v okamžiku, kdy se objeví informační hláška:</p>
+<p><code class="docutils literal notranslate"><span class="pre">INFO:</span>&#160; <span class="pre">Started</span> <span class="pre">SelectChannelConnector&#64;0.0.0.0:8080</span></code>.</p>
+</section>
+<section id="mozne-problemy-a-jejich-reseni">
+<h2>Možné problémy a jejich řešení<a class="headerlink" href="#mozne-problemy-a-jejich-reseni" title="Permalink to this heading">¶</a></h2>
+<p>Obvyklým problémem je nespuštění serveru s chybovou hláškou <code class="docutils literal notranslate"><span class="pre">Address</span>
+<span class="pre">already</span> <span class="pre">in</span> <span class="pre">use</span></code>. To znamená, že na portu <cite>8080</cite>, kde se server
+startuje, již něco běží.</p>
+<p>V takovém případě je nutné změnit port pro start serveru.  Toto se
+dělá v souboru <code class="file docutils literal notranslate"><span class="pre">etc/jetty.xml</span></code> nahrazením portu <cite>8080</cite> jiným
+číslem např. <cite>25000</cite>. U portu s čísly většími než <cite>20000</cite> se dá
+očekávat, že jsou volné.</p>
+</section>
+<section id="overeni-behu">
+<h2>Ověření běhu<a class="headerlink" href="#overeni-behu" title="Permalink to this heading">¶</a></h2>
+<p>Informační hláška <code class="docutils literal notranslate"><span class="pre">INFO:</span> <span class="pre">Started</span>
+<span class="pre">SelectChannelConnector&#64;0.0.0.0:8080</span></code> bohužel nemusí znamenat, že
+server běží. Toto je nutné ověřit. Ověření provedeme ve webovém
+prohlížeči zadáním adresy: <a class="reference external" href="http://localhost:8080/geoserver/">http://localhost:8080/geoserver/</a></p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>V případě, že jste změnili port, je nutné i zde zadat jiné číslo portu než 8080.</p>
+</div>
+<figure class="align-center" id="id3">
+<img alt="../_images/welcome.png" class="middle" src="../_images/welcome.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 4 </span><span class="caption-text">Ověření spuštění systému GeoServer.</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>V případě, že se objeví uvítací obrazovka je systém pravděpodobně spuštěn.
+Přesto je vhodné provést ještě jedno ověření. Ověření se realizuje výběrem Layer Preview
+a výběrem možnosti Open Layers u vrstvy <cite>sf:archsites</cite>. Pokud se objeví mapa bodové vrstvy, je
+systém spuštěn.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/layer-preview.png" class="middle" src="../_images/layer-preview.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 5 </span><span class="caption-text">Ověření spuštění systému GeoServer pomocí vizualizace vrstvy geodat.</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<img alt="../_images/archsites.png" src="../_images/archsites.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 6 </span><span class="caption-text">Vrstva sf:archsites.</span><a class="headerlink" href="#id5" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Toto ověření je vhodné realizovat vždy po restartu serveru.</p>
+</div>
+</section>
+<section id="id1">
+<h2>Možné problémy a jejich řešení<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+<p>Obvyklým problémem je nespuštění serveru s chybovou hláškou <code class="docutils literal notranslate"><span class="pre">HTTP</span>
+<span class="pre">ERROR</span> <span class="pre">500.</span> <span class="pre">Caused</span> <span class="pre">by:</span>
+<span class="pre">org.springframework.security.web.firewall.RequestRejectedException</span></code>.</p>
+<figure class="align-center" id="id6">
+<img alt="../_images/error500.png" src="../_images/error500.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 7 </span><span class="caption-text">Chyba 500.</span><a class="headerlink" href="#id6" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Řešením je úprava konfigurace serveru jetty. Řeší se přidáním XML
+elementu do konfigurace.  Konfigurační soubor se nachází v
+<code class="file docutils literal notranslate"><span class="pre">webapps/geoserver/WEB-INF/web.xml</span></code>.</p>
+<p>Na konec souboru před značku <code class="docutils literal notranslate"><span class="pre">&lt;/web-app&gt;</span></code> vložíme následující tři řádky.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;session-config&gt;</span>
+<span class="w">      </span><span class="nt">&lt;tracking-mode&gt;</span>COOKIE<span class="nt">&lt;/tracking-mode&gt;</span>
+<span class="nt">&lt;/session-config&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">První kroky</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../instalace/index.html">Instalace</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Úvod do systému GeoServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administrace.html">Administrace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wms.html">Web Map Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wfs.html">Web Feature Service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../styly/index.html">Styly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../instalace/docker.html" title="Docker"
+              >předchozí</a> |
+            <a href="administrace.html" title="Administrace"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

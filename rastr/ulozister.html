@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Úložiště rastrových dat &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Definice rastrových dat" href="definicer.html" />
+    <link rel="prev" title="Rastrová data" href="index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="index.html" title="Rastrová data"
+             accesskey="P">předchozí</a> |
+          <a href="definicer.html" title="Definice rastrových dat"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="uloziste-rastrovych-dat">
+<span id="ulozister"></span><span id="index-0"></span><h1>Úložiště rastrových dat<a class="headerlink" href="#uloziste-rastrovych-dat" title="Permalink to this heading">¶</a></h1>
+<section id="uloziste-worldimage">
+<h2>Úložiště WorldImage<a class="headerlink" href="#uloziste-worldimage" title="Permalink to this heading">¶</a></h2>
+<p>Často využívaným úložištěm je rastrový soubor s doplňkovým souborem typu <cite>WorldFile</cite>.
+Např. pro <cite>TIFF</cite> se jedná o soubor <cite>TFW</cite>. Seznam existujících úložišť je možné získat pomocí odkazu
+<cite>Stores</cite> v sekci <cite>Data</cite>.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/rstores.png" src="../_images/rstores.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 55 </span><span class="caption-text">Seznam úložišť.</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Pokud pak následně zvolíme prostor (např. <cite>img_sample2</cite>) uvidíme jeho konfiguraci.
+V rámci této konfigurace je kromně názvu poviná položka URL.
+Zde je uvedena cesta k rastrovému souboru. Cesta může být relativní nebo absolutní.
+Relativní cesta začíná v adresáři <cite>data_dir</cite>.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Povinné položky jsou označeny červeným kolečkem. Položky, které je vhodné doplnit jsou označeny zeleným kolečkem.</p>
+</div>
+<figure class="align-center" id="id2">
+<img alt="../_images/rstore.png" src="../_images/rstore.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 56 </span><span class="caption-text">Úložiště img_sample2.</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Začátečníkům se doporučuje používat pouze relativní cesty, zapsané pomocí funkce dostupné pod tlačítkem <cite>Browse</cite>.</p>
+</div>
+</section>
+<section id="uloziste-geotiff">
+<h2>Úložiště GeoTIFF<a class="headerlink" href="#uloziste-geotiff" title="Permalink to this heading">¶</a></h2>
+<p>Dalším často používaným formátem pro rastrové data je GeoTIFF. Na rozdíl od souboru s doplňkovým souborem typu <cite>WorldFile</cite> je informace o poloze zapsaná přímo do souboru <cite>TIFF</cite>.</p>
+<p>Ukázkovým uložištěm pro GeoTIFF je <cite>sfdem</cite>. Všechno nastavění je stejné jako pro <cite>WorldImage</cite></p>
+<figure class="align-center" id="id3">
+<img alt="../_images/bstores.png" src="../_images/bstores.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 57 </span><span class="caption-text">Úložiště sfdem.</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">První kroky</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../styly/index.html">Styly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Rastrová data</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Úložiště rastrových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="definicer.html">Definice rastrových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publikovanir.html">Publikování rastrových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rstyle.html">Stylování rastrových dat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="index.html" title="Rastrová data"
+              >předchozí</a> |
+            <a href="definicer.html" title="Definice rastrových dat"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

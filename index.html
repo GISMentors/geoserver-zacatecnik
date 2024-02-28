@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Obsah &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gismentors.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="genindex.html" />
+    <link rel="search" title="Vyhledávání" href="search.html" />
+    <link rel="next" title="První kroky" href="intro/index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="#">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="intro/index.html" title="První kroky"
+             accesskey="N">další</a> |
+          <a href="genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p><a class="reference external" href="http://gismentors.cz">GISMentors</a> | Školení <a class="reference external" href="http://gismentors.cz/skoleni/grass-gis">GRASS GIS</a> | <a class="reference external" href="http://gismentors.cz/skoleni/qgis">QGIS</a> | <a class="reference external" href="http://gismentors.cz/skoleni/postgis">PostGIS</a> | <a class="reference external" href="http://gismentors.cz/skoleni/geopython">GeoPython</a></p>
+<section id="uvod">
+<h1>Úvod<a class="headerlink" href="#uvod" title="Permalink to this heading">¶</a></h1>
+</section>
+<a class="reference internal image-reference" href="_images/intro_logo.png"><img alt="_images/intro_logo.png" class="align-left" src="_images/intro_logo.png" style="width: 140px;" /></a>
+<p id="index-0"><a class="reference external" href="http://www.geoserver.org/">GeoServer</a> je open source mapový server
+určený pro sdílení a publikaci geografických dat. Mezi jeho hlavní
+výhody patří zejména rychlost vývoje a rozšiřování jeho funkcionality.
+Licence GNU GPL umožňuje jeho používání i pro komerční
+účely. Podstatné je, že umožňuje i modifikaci zdrojového kódu a jeho
+následné šíření. Neznedbatelnou výhodou tohoto mapového serveru je
+existence webového uživatelského rozhraní pro administraci systému a v
+neposlední řadě sada cvičných dat, které jsou automaticky po instalaci
+vypublikovány.</p>
+<div class="admonition important">
+<p class="admonition-title">Důležité</p>
+<p>Školení je zaměřeno na verzi <a class="reference external" href="http://geoserver.org/release/stable/">GeoServer 2.16</a>. V jiných verzích není
+zaručena funkčnost uvedených příkladů.</p>
+</div>
+<p>GeoServer je včetně jeho uživatelského prostředí napsán v
+programovacím jazyce Java. Díky tomu je GeoServer multiplatformní,
+tudíž jej lze využívat na většině používaných operačních systémech
+jako je MS Windows, GNU/Linux nebo OS X. GeoServer využívá pro práci s
+prostorovými daty v rastrové anebo vektorové reprezentaci knihovnu
+<a class="reference external" href="http://geotools.org">GeoTools</a> případně <a class="reference external" href="http://gdal.org">GDAL</a>.  Díky tomu je možné pomocí GeoServeru publikovat
+široké spektrum formátů.</p>
+<figure class="align-center" id="id4">
+<img alt="_images/intro_geoserver.png" src="_images/intro_geoserver.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 2 </span><span class="caption-text">Ukázka uživatelského rozhraní konfiguračního nástroje pro GeoServer.</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>GeoServer je populární i pro svou rozšiřitelnost pomocí takzvaných
+rozšíření (extensions).  Rozšíření jsou dílčí nástroje, které jsou
+vyvíjeny komunitou kolem projektu GeoServer.  Pomocí rozšíření je
+možné dopnit do GeoServeru novou funkcionalitu či podporu pro další
+formáty či služby.</p>
+<section id="id1">
+<h1>Obsah<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h1>
+</section>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro/index.html">První kroky</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="instalace/index.html">Instalace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/prvni_kroky.html">Úvod do systému GeoServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/administrace.html">Administrace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/wms.html">Web Map Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/wfs.html">Web Feature Service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="styly/index.html">Styly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="styly/jednoduchy.html">Jednoduchý styl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="styly/externi.html">Externí grafika</a></li>
+<li class="toctree-l2"><a class="reference internal" href="styly/slozity.html">Komplexní stylování</a></li>
+<li class="toctree-l2"><a class="reference internal" href="styly/kartogram.html">Kartogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="styly/prekryv.html">Stylování vrstev s překryvem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="styly/qgis.html">Vytvoření stylu v QGISu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vektor/index.html">Vektorová data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vektor/ulozistev.html">Úložiště vektorových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vektor/definicev.html">Definice vektorových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vektor/publikovaniv.html">Publikování vektorových dat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rastr/index.html">Rastrová data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rastr/ulozister.html">Úložiště rastrových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastr/definicer.html">Definice rastrových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastr/publikovanir.html">Publikování rastrových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastr/rstyle.html">Stylování rastrových dat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dlazdice/index.html">Dlaždice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dlazdice/nastavenit.html">Rastrové dlaždice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dlazdice/vector_tiles.html">Vektorové dlaždice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dlazdice/generovanit.html">Generování dlaždic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inspire/index.html">INSPIRE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inspire/instalacei.html">Instalace rozšíření INSPIRE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inspire/nastavenii.html">Nastavení rozšíření INSPIRE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ruzne/index.html">Různé</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ruzne/skupiny_vrstev.html">Skupiny vrstev</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="dodatky">
+<h1>Dodatky<a class="headerlink" href="#dodatky" title="Permalink to this heading">¶</a></h1>
+<section id="o-dokumentu">
+<h2>O dokumentu<a class="headerlink" href="#o-dokumentu" title="Permalink to this heading">¶</a></h2>
+<p>Text dokumentu je licencován pod <a class="reference external" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+Attribution-ShareAlike 4.0 International License</a>.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/cc-by-sa.png"><img alt="_images/cc-by-sa.png" src="_images/cc-by-sa.png" style="width: 130px;" /></a>
+</figure>
+<p><em>Verze textu dokumentu:</em> 0.1beta (sestaveno 28.02.2024)</p>
+<section id="autori">
+<h3>Autoři<a class="headerlink" href="#autori" title="Permalink to this heading">¶</a></h3>
+<p>Za <a class="reference external" href="http://www.gismentors.cz/">GISMentors</a>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.gismentors.cz/mentors/ruzicka/">Jan Růžička</a></p></li>
+<li><p><a class="reference external" href="http://www.gismentors.cz/mentors/kruzliak/">Boris Kružliak</a></p></li>
+</ul>
+</section>
+<section id="text-dokumentu">
+<h3>Text dokumentu<a class="headerlink" href="#text-dokumentu" title="Permalink to this heading">¶</a></h3>
+<p>Zdrojové texty školení jsou dostupné na adrese:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/GISMentors/geoserver-zacatecnik">https://github.com/GISMentors/geoserver-zacatecnik</a></p></li>
+</ul>
+<p>Případné chyby nebo náměty na vylepšení můžete hlásit:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/GISMentors/geoserver-zacatecnik/issues">https://github.com/GISMentors/geoserver-zacatecnik/issues</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul>
+<li class="toctree-l1"><a class="reference internal" href="intro/index.html">První kroky</a></li>
+<li class="toctree-l1"><a class="reference internal" href="styly/index.html">Styly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="intro/index.html" title="První kroky"
+              >další</a> |
+            <a href="genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

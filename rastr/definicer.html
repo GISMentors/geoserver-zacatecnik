@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Definice rastrových dat &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Publikování rastrových dat" href="publikovanir.html" />
+    <link rel="prev" title="Úložiště rastrových dat" href="ulozister.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="ulozister.html" title="Úložiště rastrových dat"
+             accesskey="P">předchozí</a> |
+          <a href="publikovanir.html" title="Publikování rastrových dat"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="definice-rastrovych-dat">
+<span id="definicer"></span><span id="index-0"></span><h1>Definice rastrových dat<a class="headerlink" href="#definice-rastrovych-dat" title="Permalink to this heading">¶</a></h1>
+<p>Rastrová vrstva se definuje pomocí popisu dat. Seznam vrstev získáme pomocí
+odkazu <cite>Layers</cite> v sekci <cite>Data</cite>. V seznamu vrstev vidíme u každé vrstvy její typ,
+úložiště a souřadnicový systém. Pokud následně zvolíme vrstvu <cite>Img_Sample</cite>
+dostáváme se ke konfiguraci rastrové vrstvy.</p>
+<section id="identifikace">
+<h2>Identifikace<a class="headerlink" href="#identifikace" title="Permalink to this heading">¶</a></h2>
+<p>V rámci identifikace je povinné zadat pouze název vrstvy. Vhodné je ale uvést i popis vrstvy
+a abstrakt vrstvy. Název vrstvy (name) je technickou identifikací vrstvy. Popis (<cite>title</cite>) a <cite>abstrakt</cite> je
+určen ke čtení lidskému uživateli služby.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Povinné položky jsou označeny červeným kolečkem. Položky, které je vhodné doplnit jsou označeny zeleným kolečkem.</p>
+</div>
+<figure class="align-center" id="id1">
+<img alt="../_images/rdata1.png" src="../_images/rdata1.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 58 </span><span class="caption-text">Identifikace rastrové vrstvy.</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dalsi-metadata-a-souradnicove-systemy">
+<h2>Další metadata a souřadnicové systémy<a class="headerlink" href="#dalsi-metadata-a-souradnicove-systemy" title="Permalink to this heading">¶</a></h2>
+<p>V další části popisu vrstvy je vhodné uvést klíčová slova, popisující data
+a pokud je to možné, pak link na metadata dle normy ISO nebo FGDC.</p>
+<p>Povinně je nutné uvést deklarovaný souřadnicový systém (<cite>Declared SRS</cite>).
+Tento se specifikuje s využitím databáze <cite>EPSG</cite>. Např. systém WGS84 má kód <cite>EPSG:4326</cite>.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/rdata2.png" src="../_images/rdata2.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 59 </span><span class="caption-text">Další metadata a souřadnicové systémy.</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ohranicujici-obdelnik">
+<h2>Ohraničující obdélník<a class="headerlink" href="#ohranicujici-obdelnik" title="Permalink to this heading">¶</a></h2>
+<p>V další části popisu vrstvy je nutné uvést ohraničující obdélník (<cite>BBOX</cite>) vrstvy.
+BBOX musí být uveden jak v deklarovaném <cite>SRS</cite> tak v <cite>Lat/Lon</cite> souřadnicích.
+K vytvoření pomohou odkazy <cite>Compute from data</cite> a <cite>Compute from native bounds</cite>.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/rdata3.png" src="../_images/rdata3.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 60 </span><span class="caption-text">BBOX</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">První kroky</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../styly/index.html">Styly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Rastrová data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ulozister.html">Úložiště rastrových dat</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Definice rastrových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publikovanir.html">Publikování rastrových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rstyle.html">Stylování rastrových dat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="ulozister.html" title="Úložiště rastrových dat"
+              >předchozí</a> |
+            <a href="publikovanir.html" title="Publikování rastrových dat"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

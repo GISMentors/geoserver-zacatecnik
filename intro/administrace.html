@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Administrace &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Web Map Service" href="wms.html" />
+    <link rel="prev" title="Úvod do systému GeoServer" href="prvni_kroky.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="prvni_kroky.html" title="Úvod do systému GeoServer"
+             accesskey="P">předchozí</a> |
+          <a href="wms.html" title="Web Map Service"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="administrace">
+<span id="index-0"></span><span id="id1"></span><h1>Administrace<a class="headerlink" href="#administrace" title="Permalink to this heading">¶</a></h1>
+<p>Pro práci s nástrojem GeoServer je možné využívat webové GUI, které umožňuje
+konfigurovat řadu nastavení serveru. Zejména je možné měnit styly a přidávat nová data.</p>
+<p>Jinou možností je využití <cite>REST API</cite>, které je však vhodné pro pokročilé uživatele.</p>
+<section id="uzivatelske-rozhrani-administrace-serveru">
+<h2>Uživatelské rozhraní administrace serveru<a class="headerlink" href="#uzivatelske-rozhrani-administrace-serveru" title="Permalink to this heading">¶</a></h2>
+<p>Uživatelské rozhraní je členěno na několik částí. Tyto jsou popsány
+dále s odkazem na <a class="reference internal" href="#admin"><span class="std std-numref">Obr. 8</span></a>.  Pro vstup do administrace je nutné
+se přihlásit. Implicitní uživatelské jméno je <cite>admin</cite> a heslo
+<cite>geoserver</cite>.</p>
+<figure class="align-center" id="id2">
+<span id="admin"></span><img alt="../_images/administrace.png" class="large" src="../_images/administrace.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 8 </span><span class="caption-text">Uživatelské rozhraní administrace serveru</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<section id="about-status">
+<h3>About &amp; Status<a class="headerlink" href="#about-status" title="Permalink to this heading">¶</a></h3>
+<p>(Na <a class="reference internal" href="#admin"><span class="std std-numref">Obr. 8</span></a> označena číslem 1) Sekce umožňující zobrazit informace o stavu serveru, zejména pak log serveru.
+Dále je zde možné nastavit základní metadata serveru.</p>
+</section>
+<section id="data">
+<h3>Data<a class="headerlink" href="#data" title="Permalink to this heading">¶</a></h3>
+<p>(Na <a class="reference internal" href="#admin"><span class="std std-numref">Obr. 8</span></a> označena číslem 2) Hlavní sekce pro práci se styly a daty.</p>
+</section>
+<section id="services">
+<h3>Services<a class="headerlink" href="#services" title="Permalink to this heading">¶</a></h3>
+<p>(Na <a class="reference internal" href="#admin"><span class="std std-numref">Obr. 8</span></a> označena číslem 3) Sekce umožňující konfiguraci protokolů WMS, WFS a WCS.</p>
+</section>
+<section id="settings">
+<h3>Settings<a class="headerlink" href="#settings" title="Permalink to this heading">¶</a></h3>
+<p>(Na <a class="reference internal" href="#admin"><span class="std std-numref">Obr. 8</span></a> označena číslem 4) Sekce pro pokročilé uživatele pro optimalizaci práce s rastrovými daty.</p>
+</section>
+<section id="tile-caching">
+<h3>Tile Caching<a class="headerlink" href="#tile-caching" title="Permalink to this heading">¶</a></h3>
+<p>(Na <a class="reference internal" href="#admin"><span class="std std-numref">Obr. 8</span></a> označena číslem 5) Sekce pro konfiguraci kešování obsahu pomocí dlaždic.</p>
+</section>
+<section id="security">
+<h3>Security<a class="headerlink" href="#security" title="Permalink to this heading">¶</a></h3>
+<p>(Na <a class="reference internal" href="#admin"><span class="std std-numref">Obr. 8</span></a> označena číslem 6) Sekce pro konfiguraci uživatelů a práv přístupu.</p>
+</section>
+<section id="demos">
+<h3>Demos<a class="headerlink" href="#demos" title="Permalink to this heading">¶</a></h3>
+<p>(Na <a class="reference internal" href="#admin"><span class="std std-numref">Obr. 8</span></a> označena číslem 7) Výborná sekce s různými příklady a nástroji.</p>
+</section>
+<section id="tools">
+<h3>Tools<a class="headerlink" href="#tools" title="Permalink to this heading">¶</a></h3>
+<p>(Na <a class="reference internal" href="#admin"><span class="std std-numref">Obr. 8</span></a> označena číslem 8) Zatím obsahuje pouze nástroj pro nahrání testovacích dat.</p>
+</section>
+<section id="service-capabilities">
+<h3>Service Capabilities<a class="headerlink" href="#service-capabilities" title="Permalink to this heading">¶</a></h3>
+<p>(Na <a class="reference internal" href="#admin"><span class="std std-numref">Obr. 8</span></a> označena číslem 9) Schopnosti služeb, které server poskytuje.</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">První kroky</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../instalace/index.html">Instalace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prvni_kroky.html">Úvod do systému GeoServer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Administrace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wms.html">Web Map Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wfs.html">Web Feature Service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../styly/index.html">Styly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="prvni_kroky.html" title="Úvod do systému GeoServer"
+              >předchozí</a> |
+            <a href="wms.html" title="Web Map Service"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

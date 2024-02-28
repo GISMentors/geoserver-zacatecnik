@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Úložiště vektorových dat &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Definice vektorových dat" href="definicev.html" />
+    <link rel="prev" title="Vektorová data" href="index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="index.html" title="Vektorová data"
+             accesskey="P">předchozí</a> |
+          <a href="definicev.html" title="Definice vektorových dat"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="uloziste-vektorovych-dat">
+<span id="ulozistev"></span><span id="index-0"></span><h1>Úložiště vektorových dat<a class="headerlink" href="#uloziste-vektorovych-dat" title="Permalink to this heading">¶</a></h1>
+<p>Úložiště (<cite>Storage</cite>) slouží k definici datového skladu, ze kterého budou
+data publikována.</p>
+<p>Před samotnou prací s úložišti je vhodné věnovat pozornost pracovním
+prostorům (<cite>Workspaces</cite>).</p>
+<section id="workspaces">
+<h2>Workspaces<a class="headerlink" href="#workspaces" title="Permalink to this heading">¶</a></h2>
+<p>Pracovní prostory slouží pro lepší organizaci v rámci serveru. Pro pracovní prostor
+je možné definovat samostatná metadata, přístupová práva a další nastavení.</p>
+<p>Seznam pracovních prostorů je možné získat pomocí odkazu <cite>Workspaces</cite> v sekci <cite>Data</cite>.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/workspaces.png" src="../_images/workspaces.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 37 </span><span class="caption-text">Seznam pracovních prostorů.</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Pokud pak následně zvolíme prostor (např. <cite>topp</cite>) uvidíme jeho konfiguraci.
+V rámci této konfigurace je kromně názvu důležitá položka URI. URI jednoznačně
+identifikuje prostor v rámci všehomíra. Jako vhodné hodnoty jsou možné téměř
+všechny URL, přičemž daná URL nemusí reálně existovat.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/workspace.png" src="../_images/workspace.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 38 </span><span class="caption-text">Konfigurace pracovního prostoru.</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="uloziste-esri-shapefile">
+<h2>Úložiště ESRI Shapefile<a class="headerlink" href="#uloziste-esri-shapefile" title="Permalink to this heading">¶</a></h2>
+<p>Často využívaným úložištěm je adresář se soubory typou <cite>ESRI Shapefile</cite>. Seznam
+existujících úložišť je možné získat pomocí odkazu <cite>Stores</cite> v sekci <cite>Data</cite>.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/stores.png" src="../_images/stores.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 39 </span><span class="caption-text">Seznam úložišť.</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Pokud pak následně zvolíme prostor (např. <cite>taz_shapes</cite>) uvidíme jeho konfiguraci.
+V rámci této konfigurace je kromě názvu poviná položka <cite>Shapefile location</cite>.
+Zde je uvedena cesta k adresáři se soubory. Cesta může být relativní nebo absolutní.
+Relativní cesta začíná v adresáři <cite>data_dir</cite>.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Povinné položky jsou označeny červeným kolečkem. Položky, které je vhodné doplnit jsou označeny zeleným kolečkem.</p>
+</div>
+<figure class="align-center" id="id4">
+<img alt="../_images/store.png" src="../_images/store.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 40 </span><span class="caption-text">Úložiště taz_shapes.</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Začátečníkům se doporučuje používat pouze relativní cesty, zapsané pomocí funkce dostupné pod tlačítkem <cite>Browse</cite>.</p>
+</div>
+</section>
+<section id="uloziste-postgis">
+<h2>Úložiště PostGIS<a class="headerlink" href="#uloziste-postgis" title="Permalink to this heading">¶</a></h2>
+<p>Často využívaným úložištěm je databáze PostgreSQL/PostGIS. Přidání nového
+úložiště je možné buď jako PostGIS nebo PostGIS (JNDI).</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Varianta JNDI vyžaduje konfiguraci na úrovni aplikačního serveru a pro začátečníky není vhodná. Navíc testy ukázaly, že je připojení přes JNDI o něco pomalejší. Vhodné je v případě, že již organizace JNDI běžně využívá.</p>
+</div>
+<figure class="align-center" id="id5">
+<img alt="../_images/storepostgis1.png" src="../_images/storepostgis1.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 41 </span><span class="caption-text">PostGIS úložiště.</span><a class="headerlink" href="#id5" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Základní konfigurace úložiště je poměrně jednoduchá. Povinné položky jsou již předvyplněny a
+hodnoty obvykle vyhovují požadavkům. Nutné je pouze úložiště pojmenovat <cite>Data Source Name</cite> a
+správně uvést název databáze <cite>database</cite>, uživatele <cite>user</cite> a heslo <cite>passwd</cite> do databáze.
+Někdy je potřeba změnit jméno serveru <cite>host</cite>, kde databázový server běží a někdy port <cite>port</cite> na kterém naslouchá.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Povinné položky jsou označeny červeným kolečkem. Položky, které je vhodné doplnit jsou označeny zeleným kolečkem.</p>
+</div>
+<figure class="align-center" id="id6">
+<img alt="../_images/storepostgis2.png" src="../_images/storepostgis2.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 42 </span><span class="caption-text">Definice PostGIS úložiště.</span><a class="headerlink" href="#id6" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">První kroky</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../styly/index.html">Styly</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vektorová data</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Úložiště vektorových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="definicev.html">Definice vektorových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publikovaniv.html">Publikování vektorových dat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="index.html" title="Vektorová data"
+              >předchozí</a> |
+            <a href="definicev.html" title="Definice vektorových dat"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

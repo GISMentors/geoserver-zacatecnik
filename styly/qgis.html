@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Vytvoření stylu v QGISu &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Vektorová data" href="../vektor/index.html" />
+    <link rel="prev" title="Stylování vrstev s překryvem" href="prekryv.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="prekryv.html" title="Stylování vrstev s překryvem"
+             accesskey="P">předchozí</a> |
+          <a href="../vektor/index.html" title="Vektorová data"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="vytvoreni-stylu-v-qgisu">
+<span id="qgis"></span><span id="index-0"></span><h1>Vytvoření stylu v QGISu<a class="headerlink" href="#vytvoreni-stylu-v-qgisu" title="Permalink to this heading">¶</a></h1>
+<p>Jednou z možností jako připravit styl pro Geoserver, je vytvořit styl v programu QGIS. Pro získání kompatibilních stylů z QGISu je nutné použít QGIS 3.x a GeoServer 2.13.x nebo novější.</p>
+<section id="ulozeni-stylu-do-sld-v-qgisu">
+<h2>Uložení stylu do SLD v QGISu<a class="headerlink" href="#ulozeni-stylu-do-sld-v-qgisu" title="Permalink to this heading">¶</a></h2>
+<p>Když si vytvoříme styl v QGISu tak máme možnost ho uložit do formátu SLD. Uložení stylu najdeme pod tlačítkem <cite>Styl</cite></p>
+<figure class="align-center">
+<img alt="../_images/qgis_ulozeni.png" src="../_images/qgis_ulozeni.png" />
+</figure>
+<p>V položce Uložit styl vybere možnost pro SLD a vybereme kam se soubor uloží.</p>
+<figure class="align-center">
+<img alt="../_images/qgis_sld.png" src="../_images/qgis_sld.png" />
+</figure>
+</section>
+<section id="nacteni-sld-v-geoserveru">
+<h2>Načtení SLD v GeoServeru<a class="headerlink" href="#nacteni-sld-v-geoserveru" title="Permalink to this heading">¶</a></h2>
+<p>Při vytvoření stylu v GeoServeru vybereme uložené SLD a dáme <cite>Upload</cite>. Do okna s kódem se nám načte SLD.</p>
+<figure class="align-center">
+<img alt="../_images/nacteni_sld.png" src="../_images/nacteni_sld.png" />
+</figure>
+<p>V QGISu si můžeme připravit dva základní styly. Buď máme kompletní styl v SLD nebo použije k stylu ještě nějaký doplňkový soubor. Tento soubor bude ve formátu SVG.</p>
+</section>
+<section id="styl-jenom-v-sld">
+<h2>Styl jenom v SLD<a class="headerlink" href="#styl-jenom-v-sld" title="Permalink to this heading">¶</a></h2>
+<p>Tyto styly jsou kompletně v SLD. Jsou to převážně jednoduché styly, ale můžeme si připravit i komplexní styl. Je důležité styl v QGISu připravovat s hodnotami v pixelech. Protože SLD pracuje s pixely a ne s milimetry. Při uložení do SLD se hodnoty přepočtou, ale hodnoty se zaokrouhlí.</p>
+<section id="cara-se-znackama">
+<h3>Čára se značkama<a class="headerlink" href="#cara-se-znackama" title="Permalink to this heading">¶</a></h3>
+<p>Problémem při čárách se značkou (mark line) je nastavění mezer mezi značkami. To bohužel nefunguje.
+Nastavíme si v QGISu linií vyskládanou z kroužků o velikosti 6 pixelů a s odstupem 20 pixelů.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.1.0&quot;</span>
+<span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd&quot;</span>
+<span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="na">xmlns:se=</span><span class="s">&quot;http://www.opengis.net/se&quot;</span>
+<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;se:Name&gt;</span>tasmania_roads<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;se:Name&gt;</span>tasmania_roads<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">      </span><span class="nt">&lt;se:FeatureTypeStyle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">          </span><span class="nt">&lt;se:Name&gt;</span>Single<span class="w"> </span>symbol<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;se:LineSymbolizer&gt;</span>
+<span class="w">            </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">              </span><span class="nt">&lt;se:GraphicStroke&gt;</span>
+<span class="w">                </span><span class="nt">&lt;se:Graphic&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;se:Mark&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;se:WellKnownName&gt;</span>circle<span class="nt">&lt;/se:WellKnownName&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#ff0000<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#232323<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>0.5<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/se:Mark&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;se:Size&gt;</span>6<span class="nt">&lt;/se:Size&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/se:Graphic&gt;</span>
+<span class="w">                </span><span class="nt">&lt;se:Gap&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:Literal&gt;</span>20<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/se:Gap&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/se:GraphicStroke&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/se:LineSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/se:FeatureTypeStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<p>Ukázka z QGISu:</p>
+<figure class="align-center">
+<img alt="../_images/qgis_bod.png" src="../_images/qgis_bod.png" />
+</figure>
+<p>Takhle vypadá použití stylu v GeoServeru:</p>
+<figure class="align-center">
+<img alt="../_images/geo_bod.png" src="../_images/geo_bod.png" />
+</figure>
+<p>Aby to fungovalo, musíme vytvořit jiný styl.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span>
+<span class="w">    </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld StyledLayerDescriptor.xsd&quot;</span>
+<span class="w">    </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="w">    </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="w">    </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="w">    </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Name&gt;</span>Marker<span class="w"> </span>line<span class="nt">&lt;/Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Title&gt;</span>Marker<span class="w"> </span>line<span class="nt">&lt;/Title&gt;</span>
+<span class="w">      </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">          </span><span class="nt">&lt;LineSymbolizer&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Stroke&gt;</span>
+<span class="w">              </span><span class="nt">&lt;GraphicStroke&gt;</span>
+<span class="w">                </span><span class="nt">&lt;Graphic&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;Mark&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;WellKnownName&gt;</span>circle<span class="nt">&lt;/WellKnownName&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#ff0000<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;Stroke&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#232323<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/Stroke&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/Mark&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;Size&gt;</span>4<span class="nt">&lt;/Size&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/Graphic&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/GraphicStroke&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-dasharray&quot;</span><span class="nt">&gt;</span>4<span class="w"> </span>20<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/Stroke&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/LineSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<figure class="align-center">
+<img alt="../_images/geo_bod_uprav.png" src="../_images/geo_bod_uprav.png" />
+</figure>
+</section>
+<section id="srafa">
+<h3>Šrafa<a class="headerlink" href="#srafa" title="Permalink to this heading">¶</a></h3>
+<p>Šrafy nefungují. Ukážeme si styl jak ho vygenereju QGIS a pak si ukážeme jak má vypadat styl, který funguje.
+Styl z QGISu:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="na">xmlns:se=</span><span class="s">&quot;http://www.opengis.net/se&quot;</span>
+<span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd&quot;</span>
+<span class="na">version=</span><span class="s">&quot;1.1.0&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;se:Name&gt;</span>states<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;se:Name&gt;</span>states<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">      </span><span class="nt">&lt;se:FeatureTypeStyle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">          </span><span class="nt">&lt;se:Name&gt;</span>Single<span class="w"> </span>symbol<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;se:PolygonSymbolizer&gt;</span>
+<span class="w">            </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">              </span><span class="nt">&lt;se:GraphicFill&gt;</span>
+<span class="w">                </span><span class="nt">&lt;se:Graphic&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;se:Mark&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;se:WellKnownName&gt;</span>horline<span class="nt">&lt;/se:WellKnownName&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#377eb8<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/se:Mark&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;se:Size&gt;</span>7<span class="nt">&lt;/se:Size&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;se:Rotation&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;ogc:Literal&gt;</span>45<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/se:Rotation&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/se:Graphic&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/se:GraphicFill&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/se:PolygonSymbolizer&gt;</span>
+<span class="w">          </span><span class="nt">&lt;se:LineSymbolizer&gt;</span>
+<span class="w">            </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">              </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#377eb8<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-linejoin&quot;</span><span class="nt">&gt;</span>bevel<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-linecap&quot;</span><span class="nt">&gt;</span>square<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/se:LineSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/se:FeatureTypeStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<p>Styl se šrafou, který funguje</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span>
+<span class="w">    </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld StyledLayerDescriptor.xsd&quot;</span>
+<span class="w">    </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="w">    </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="w">    </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="w">    </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Name&gt;</span>Šrafy<span class="nt">&lt;/Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Title&gt;</span>Šrafy<span class="nt">&lt;/Title&gt;</span>
+<span class="w">      </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">          </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="nt">&lt;GraphicFill&gt;</span>
+<span class="w">                </span><span class="nt">&lt;Graphic&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;Mark&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;WellKnownName&gt;</span>shape://slash<span class="nt">&lt;/WellKnownName&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;Stroke&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#377eb8<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/Stroke&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/Mark&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;Size&gt;</span>16<span class="nt">&lt;/Size&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/Graphic&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/GraphicFill&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">          </span><span class="nt">&lt;LineSymbolizer&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Stroke&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#377eb8<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/Stroke&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/LineSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="styl-s-svg">
+<h2>Styl s SVG<a class="headerlink" href="#styl-s-svg" title="Permalink to this heading">¶</a></h2>
+<p>Styl s SVG si musíme upravit. Ukážeme si to na stylu u bodové vrstvy.</p>
+<p>Tady máme styl z QGISu:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="na">version=</span><span class="s">&quot;1.1.0&quot;</span>
+<span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd&quot;</span>
+<span class="na">xmlns:se=</span><span class="s">&quot;http://www.opengis.net/se&quot;</span>
+<span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;se:Name&gt;</span>tasmania_cities<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;se:Name&gt;</span>tasmania_cities<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">      </span><span class="nt">&lt;se:FeatureTypeStyle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">          </span><span class="nt">&lt;se:Name&gt;</span>Single<span class="w"> </span>symbol<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;se:PointSymbolizer&gt;</span>
+<span class="w">            </span><span class="nt">&lt;se:Graphic&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!--Parametric SVG--&gt;</span>
+<span class="w">              </span><span class="nt">&lt;se:ExternalGraphic&gt;</span>
+<span class="w">                </span><span class="nt">&lt;se:OnlineResource</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;/usr/share/qgis/svg/gpsicons/plane.svg?</span>
+<span class="s">                fill=%23000000&amp;amp;fill-opacity=1&amp;amp;outline=%23ffffff&amp;</span>
+<span class="s">                amp;outline-opacity=1&amp;amp;outline-width=0&quot;</span><span class="w"> </span><span class="na">xlink:type=</span><span class="s">&quot;simple&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;se:Format&gt;</span>image/svg+xml<span class="nt">&lt;/se:Format&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/se:ExternalGraphic&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!--Plain SVG fallback, no parameters--&gt;</span>
+<span class="w">              </span><span class="nt">&lt;se:ExternalGraphic&gt;</span>
+<span class="w">                </span><span class="nt">&lt;se:OnlineResource</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;gpsicons/plane.svg&quot;</span><span class="w"> </span><span class="na">xlink:type=</span><span class="s">&quot;simple&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;se:Format&gt;</span>image/svg+xml<span class="nt">&lt;/se:Format&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/se:ExternalGraphic&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!--Well known marker fallback--&gt;</span>
+<span class="w">              </span><span class="nt">&lt;se:Mark&gt;</span>
+<span class="w">                </span><span class="nt">&lt;se:WellKnownName&gt;</span>square<span class="nt">&lt;/se:WellKnownName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#000000<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">                </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#ffffff<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>0.5<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/se:Mark&gt;</span>
+<span class="w">              </span><span class="nt">&lt;se:Size&gt;</span>7<span class="nt">&lt;/se:Size&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/se:Graphic&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/se:PointSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/se:FeatureTypeStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>odstranění nadbytečných částí</p></li>
+</ol>
+</li>
+</ul>
+<p>Odstraníme části pro  <cite>Parametric SVG</cite> a <cite>Well known marker fallback</cite></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!--Parametric SVG--&gt;</span>
+<span class="nt">&lt;se:ExternalGraphic&gt;</span>
+<span class="w">  </span><span class="nt">&lt;se:OnlineResource</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;/usr/share/qgis/svg/gpsicons/plane.svg?</span>
+<span class="s">  fill=%23000000&amp;amp;fill-opacity=1&amp;amp;outline=%23ffffff&amp;</span>
+<span class="s">  amp;outline-opacity=1&amp;amp;outline-width=0&quot;</span><span class="w"> </span><span class="na">xlink:type=</span><span class="s">&quot;simple&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;se:Format&gt;</span>image/svg+xml<span class="nt">&lt;/se:Format&gt;</span>
+<span class="nt">&lt;/se:ExternalGraphic&gt;</span>
+<span class="nt">&lt;se:Mark&gt;</span>
+<span class="w">  </span><span class="nt">&lt;se:WellKnownName&gt;</span>square<span class="nt">&lt;/se:WellKnownName&gt;</span>
+<span class="w">  </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">    </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#000000<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">  </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">    </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#ffffff<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">    </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>0.5<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="nt">&lt;/se:Mark&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><ol class="arabic simple" start="2">
+<li><p>uložení SVG</p></li>
+</ol>
+</li>
+</ul>
+<p>Zvolené SVG uložíme do do adresáře <cite>styles</cite> ve složce GeoServeru. Cestu k SVG nalezneme v části pro <cite>Parametric SVG</cite>. Před umístění SVG musíme vložit <a class="reference external" href="file://">file://</a> Když budeme používat víc SVG ikon, tak můžeme si do adresáře <cite>styles</cite> všechny ikony z QGISu.</p>
+<p>Výslední styl:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="na">version=</span><span class="s">&quot;1.1.0&quot;</span>
+<span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd&quot;</span>
+<span class="na">xmlns:se=</span><span class="s">&quot;http://www.opengis.net/se&quot;</span>
+<span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;se:Name&gt;</span>tasmania_cities<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;se:Name&gt;</span>tasmania_cities<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">      </span><span class="nt">&lt;se:FeatureTypeStyle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">          </span><span class="nt">&lt;se:Name&gt;</span>Single<span class="w"> </span>symbol<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;se:PointSymbolizer&gt;</span>
+<span class="w">            </span><span class="nt">&lt;se:Graphic&gt;</span>
+<span class="w">              </span><span class="nt">&lt;se:ExternalGraphic&gt;</span>
+<span class="w">                </span><span class="nt">&lt;se:OnlineResource</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;file://plane.svg&quot;</span><span class="w"> </span><span class="na">xlink:type=</span><span class="s">&quot;simple&quot;</span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;se:Format&gt;</span>image/svg+xml<span class="nt">&lt;/se:Format&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/se:ExternalGraphic&gt;</span>
+<span class="w">              </span><span class="nt">&lt;se:Size&gt;</span>7<span class="nt">&lt;/se:Size&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/se:Graphic&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/se:PointSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/se:FeatureTypeStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">První kroky</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Styly</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="jednoduchy.html">Jednoduchý styl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="externi.html">Externí grafika</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slozity.html">Komplexní stylování</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kartogram.html">Kartogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prekryv.html">Stylování vrstev s překryvem</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Vytvoření stylu v QGISu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="prekryv.html" title="Stylování vrstev s překryvem"
+              >předchozí</a> |
+            <a href="../vektor/index.html" title="Vektorová data"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

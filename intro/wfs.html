@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Web Feature Service &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Styly" href="../styly/index.html" />
+    <link rel="prev" title="Web Map Service" href="wms.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="wms.html" title="Web Map Service"
+             accesskey="P">předchozí</a> |
+          <a href="../styly/index.html" title="Styly"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="web-feature-service">
+<span id="wfs"></span><span id="index-0"></span><h1>Web Feature Service<a class="headerlink" href="#web-feature-service" title="Permalink to this heading">¶</a></h1>
+<p>Druhý základní protokol, který GeoServer podporuje je
+Web Feature Service (WFS). WFS umožňuje klientovi ze
+serveru získat geodata v podobě vektoru s atributy. Obvykle se jedná
+o kolekci kódovanou v jazyce <cite>GML (Geography Markup Language)</cite>, ale není to podmínkou.
+Data mohou být vrácena např. ve formátu ESRI Shapefile.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Více o standardu WFS ve školení <a class="reference external" href="https://gismentors.github.io/open-source-gis/standardy/ogc/wfs.html">Úvod do (open
+source) GIS</a>.</p>
+</div>
+<section id="zakladni-dotaz-wfs">
+<h2>Základní dotaz WFS<a class="headerlink" href="#zakladni-dotaz-wfs" title="Permalink to this heading">¶</a></h2>
+<p>Základní dotaz WFS je možné zaslat přes Layer Preview a
+vybrat možnost GML pro vrstvu <cite>sf:archsites</cite>.</p>
+<p>Kompletní dotaz zaslaný na stranu serveru najdete v řádku URL (WWW) adresy.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/wfs_basic.png" class="middle" src="../_images/wfs_basic.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 14 </span><span class="caption-text">Umístění WFS dotazu v prohlížeči.</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Danou adresu je možné rozebrat na jednotlivé části, kde oddělovačem je ? a &amp;</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">geoserver</span><span class="o">/</span><span class="n">sf</span><span class="o">/</span><span class="n">ows</span><span class="o">?</span>
+<span class="n">service</span><span class="o">=</span><span class="n">WFS</span><span class="o">&amp;</span>
+<span class="k">version</span><span class="o">=</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="o">&amp;</span>
+<span class="n">request</span><span class="o">=</span><span class="n">GetFeature</span><span class="o">&amp;</span>
+<span class="n">typeName</span><span class="o">=</span><span class="n">sf</span><span class="p">:</span><span class="n">archsites</span><span class="o">&amp;</span>
+<span class="n">maxFeatures</span><span class="o">=</span><span class="mi">50</span>
+</pre></div>
+</div>
+<p>První část před otazníkem je virtuální soubor, kam je dotaz zasílán. Dispečer
+serveru zašle požadavek na příslušný servlet.</p>
+<p>Další části jsou parametry, které určují jak bude výstup vypadat.</p>
+<section id="service">
+<h3>Service<a class="headerlink" href="#service" title="Permalink to this heading">¶</a></h3>
+<p>Parametr udává název služby (protokolu), která má být využita.</p>
+</section>
+<section id="version">
+<h3>Version<a class="headerlink" href="#version" title="Permalink to this heading">¶</a></h3>
+<p>Parametr udává verzi služby (protokolu), která má být využita.</p>
+</section>
+<section id="request">
+<h3>Request<a class="headerlink" href="#request" title="Permalink to this heading">¶</a></h3>
+<p>Typ požadavku, který má být obsloužen. V případě WFS je možných několik hodnot, jako
+hlavní lze uvést <cite>GetCapabilities</cite>, <cite>GetFeature</cite> a <cite>DescribeFeatureType</cite>.</p>
+</section>
+<section id="typename">
+<h3>TypeName<a class="headerlink" href="#typename" title="Permalink to this heading">¶</a></h3>
+<p>Název vrstvy, která má být dotazována.</p>
+</section>
+<section id="maxfeatures">
+<h3>MaxFeatures<a class="headerlink" href="#maxfeatures" title="Permalink to this heading">¶</a></h3>
+<p>Maximální počet objektů v získané kolekci.</p>
+</section>
+</section>
+<section id="zakladni-odpoved-wfs">
+<h2>Základní odpověď WFS<a class="headerlink" href="#zakladni-odpoved-wfs" title="Permalink to this heading">¶</a></h2>
+<p>Obvyklou odpovědí je kolekce geoprvků. Jejich popis je kódován pomocí jazyka GML.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/wfs_basic_response.png" src="../_images/wfs_basic_response.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 15 </span><span class="caption-text">Obvyklá odpověď WFS služby.</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;wfs:FeatureCollection</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/wfs&quot;</span>
+<span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs&quot;</span>
+<span class="na">xmlns:sf=</span><span class="s">&quot;http://www.openplans.org/spearfish&quot;</span>
+<span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span>
+<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.openplans.org/spearfish</span>
+<span class="s">http://localhost:8080/geoserver/sf/wfs?</span>
+<span class="s">service=WFS&amp;amp;version=1.0.0&amp;amp;request=DescribeFeatureType&amp;amp;typeName=sf%3Aarchsites</span>
+<span class="s">http://www.opengis.net/wfs http://localhost:8080/geoserver/schemas/wfs/1.0.0/WFS-basic.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w"> </span><span class="nt">&lt;gml:featureMember&gt;</span>
+<span class="w">  </span><span class="nt">&lt;sf:archsites</span><span class="w"> </span><span class="na">fid=</span><span class="s">&quot;archsites.1&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;sf:the_geom&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gml:Point</span><span class="w"> </span><span class="na">srsName=</span><span class="s">&quot;http://www.opengis.net/gml/srs/epsg.xml#26713&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gml:coordinates</span>
+<span class="w">          </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span><span class="w"> </span><span class="na">decimal=</span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="na">cs=</span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="na">ts=</span><span class="s">&quot; &quot;</span><span class="nt">&gt;</span>
+<span class="w">          </span>593493,4914730
+<span class="w">         </span><span class="nt">&lt;/gml:coordinates&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gml:Point&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/sf:the_geom&gt;</span>
+<span class="w">   </span><span class="nt">&lt;sf:cat&gt;</span>1<span class="nt">&lt;/sf:cat&gt;</span>
+<span class="w">   </span><span class="nt">&lt;sf:str1&gt;</span>Signature<span class="w"> </span>Rock<span class="nt">&lt;/sf:str1&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/sf:archsites&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/gml:featureMember&gt;</span>
+<span class="w"> </span><span class="nt">&lt;gml:featureMember&gt;</span>
+<span class="w">  </span><span class="nt">&lt;sf:archsites</span><span class="w"> </span><span class="na">fid=</span><span class="s">&quot;archsites.2&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;sf:the_geom&gt;</span>
+<span class="w">    </span><span class="nt">&lt;gml:Point</span><span class="w"> </span><span class="na">srsName=</span><span class="s">&quot;http://www.opengis.net/gml/srs/epsg.xml#26713&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;gml:coordinates</span>
+<span class="w">          </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span><span class="w"> </span><span class="na">decimal=</span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="na">cs=</span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="na">ts=</span><span class="s">&quot; &quot;</span><span class="nt">&gt;</span>
+<span class="w">          </span>591950,4923000
+<span class="w">         </span><span class="nt">&lt;/gml:coordinates&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/gml:Point&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/sf:the_geom&gt;</span>
+<span class="w">   </span><span class="nt">&lt;sf:cat&gt;</span>2<span class="nt">&lt;/sf:cat&gt;</span>
+<span class="w">   </span><span class="nt">&lt;sf:str1&gt;</span>No<span class="w"> </span>Name<span class="nt">&lt;/sf:str1&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/sf:archsites&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/gml:featureMember&gt;</span>
+<span class="w"> </span>...
+<span class="nt">&lt;/wfs:FeatureCollection&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="wfs-kolekce">
+<h2>WFS kolekce<a class="headerlink" href="#wfs-kolekce" title="Permalink to this heading">¶</a></h2>
+<p>Kolekce v podobě GML obsahuje řadu informací. V hlavičce např. najdeme link na
+popis dat (pomocí zavolání operace <cite>DescribeFeatureType</cite>). Samotný obsah je tvořen
+řadou tzv. <cite>gml:featureMember</cite>, což jsou jednotlivé geoprvky. Geoprvky mohou být složené,
+ale obvykle, tak jako v našem případě jsou jednoduché. Tedy sestávají z jednoho objektu (<cite>sf:archsites</cite>),
+který je reprezentován jednou geometrií (<cite>sf:the_geom</cite>) a sadou dalších atributů (<cite>sf:cat</cite>, <cite>sf:str1</cite>).</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>V rámci sekce Demos je řada velmi pěkných příkladů. V případě času se na některé podíváme.</p>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">První kroky</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../instalace/index.html">Instalace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prvni_kroky.html">Úvod do systému GeoServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administrace.html">Administrace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wms.html">Web Map Service</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Web Feature Service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../styly/index.html">Styly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="wms.html" title="Web Map Service"
+              >předchozí</a> |
+            <a href="../styly/index.html" title="Styly"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

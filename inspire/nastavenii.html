@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Nastavení rozšíření INSPIRE &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Různé" href="../ruzne/index.html" />
+    <link rel="prev" title="Instalace rozšíření INSPIRE" href="instalacei.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="instalacei.html" title="Instalace rozšíření INSPIRE"
+             accesskey="P">předchozí</a> |
+          <a href="../ruzne/index.html" title="Různé"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="nastaveni-rozsireni-inspire">
+<span id="nastavenii"></span><span id="index-0"></span><h1>Nastavení rozšíření INSPIRE<a class="headerlink" href="#nastaveni-rozsireni-inspire" title="Permalink to this heading">¶</a></h1>
+<p>Rozšíření INSPIRE se projeví tak, že je možné konfigurovat některé další
+prvky metadat, které jsou vyžadovány dle směrnice INSPIRE.</p>
+<section id="konfigurace-metadat-sluzby">
+<h2>Konfigurace metadat služby<a class="headerlink" href="#konfigurace-metadat-sluzby" title="Permalink to this heading">¶</a></h2>
+<p>V administraci serveru v sekci Services vybereme příslušnou službu,
+jejíž metadata chceme konfigurovat.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/services.png" src="../_images/services.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 71 </span><span class="caption-text">Sekce Services.</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="konfigurace-metadat-sluzby-wms-wmts">
+<h2>Konfigurace metadat služby WMS (WMTS)<a class="headerlink" href="#konfigurace-metadat-sluzby-wms-wmts" title="Permalink to this heading">¶</a></h2>
+<p>V nastavení metadat služby WMS (WMTS) pak na konci uvidíme možnost INSPIRE,
+kterou když vybereme můžeme vyplnit link na metadata dle ISO 19139.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/inspire.png" src="../_images/inspire.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 72 </span><span class="caption-text">Nastavení metadat INSPIRE.</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Toto vyplnění se pak projeví v metadatech služby.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/inspire2.png" src="../_images/inspire2.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 73 </span><span class="caption-text">Sekce metadat dle INSPIRE.</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="konfigurace-metadat-sluzby-wfs-wcs">
+<h2>Konfigurace metadat služby WFS (WCS)<a class="headerlink" href="#konfigurace-metadat-sluzby-wfs-wcs" title="Permalink to this heading">¶</a></h2>
+<p>V nastavení metadat služby WFS (WCS) je konfigurace trochu jiná než u WMS.
+Zde je možné vyplnit také kódy jednotlivých datových sad.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/inspire3.png" src="../_images/inspire3.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 74 </span><span class="caption-text">Nastavení metadat INSPIRE pro WFS (WCS).</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Toto vyplnění se pak projeví v metadatech služby.</p>
+<figure class="align-center" id="id5">
+<img alt="../_images/inspire4.png" src="../_images/inspire4.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 75 </span><span class="caption-text">Sekce metadat dle INSPIRE pro WFS (WCS).</span><a class="headerlink" href="#id5" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Podrobně je užití extenze vysvětleno např na &lt;<a class="reference external" href="https://geoserver.geo-solutions.it/educational/en/inspire/inspire_ext.html">https://geoserver.geo-solutions.it/educational/en/inspire/inspire_ext.html</a>&gt;</p>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">První kroky</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../styly/index.html">Styly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">INSPIRE</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="instalacei.html">Instalace rozšíření INSPIRE</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nastavení rozšíření INSPIRE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="instalacei.html" title="Instalace rozšíření INSPIRE"
+              >předchozí</a> |
+            <a href="../ruzne/index.html" title="Různé"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

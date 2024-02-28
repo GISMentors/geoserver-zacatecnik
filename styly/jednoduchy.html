@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Jednoduchý styl &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Externí grafika" href="externi.html" />
+    <link rel="prev" title="Styly" href="index.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="index.html" title="Styly"
+             accesskey="P">předchozí</a> |
+          <a href="externi.html" title="Externí grafika"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="jednoduchy-styl">
+<span id="jednoduchy"></span><span id="index-0"></span><h1>Jednoduchý styl<a class="headerlink" href="#jednoduchy-styl" title="Permalink to this heading">¶</a></h1>
+<p>Styly jsou psány v jazyce <cite>Styled Layer Descriptor</cite> (viz standard <a class="reference external" href="https://www.opengeospatial.org/standards/sld">OGC
+SLD</a>). Jde o jazyk
+využívající syntaxi jazyka XML.</p>
+<p>Editace je možná v jakémkoli textovém editoru anebo i přímo v
+integrovaném editoru v administraci nástroje GeoServer.</p>
+<p>Styly je možné také vytvářet v nástrojích jako je AtlasStyler, QGIS, OpenJUMP nebo uDIG.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pro získání kompatibilních stylů z QGISu je nutné použít QGIS 3.x a GeoServer 2.13.x nebo novější.</p>
+</div>
+<section id="zakladni-bodovy-styl">
+<h2>Základní bodový styl<a class="headerlink" href="#zakladni-bodovy-styl" title="Permalink to this heading">¶</a></h2>
+<p>Velmi jednoduchý bodový styl je například použitý pro vrstvu <cite>sf:archsites</cite>. Jedná se o styl <cite>point</cite>.
+Styl si zobrazíme pomocí sekce <cite>Data</cite>, volba <cite>Styles</cite> a vybereme styl <cite>point</cite>.</p>
+<figure class="align-center" id="id6">
+<img alt="../_images/point1.png" src="../_images/point1.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 16 </span><span class="caption-text">Styl point</span><a class="headerlink" href="#id6" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Styl je možné přímo editovat. Před uložením změn je vhodné použít tlačítko <cite>Validate</cite>, které nám ověří zda máme správnou syntaxi.</p>
+<figure class="align-center" id="id7">
+<img alt="../_images/point2.png" src="../_images/point2.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 17 </span><span class="caption-text">Editace stylu</span><a class="headerlink" href="#id7" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span>
+<span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld StyledLayerDescriptor.xsd&quot;</span>
+<span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- a Named Layer is the basic building block of an SLD document --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Name&gt;</span>default_point<span class="nt">&lt;/Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Styles can have names, titles and abstracts --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Title&gt;</span>Default<span class="w"> </span>Point<span class="nt">&lt;/Title&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>sample<span class="w"> </span>style<span class="w"> </span>that<span class="w"> </span>draws<span class="w"> </span>a<span class="w"> </span>point<span class="nt">&lt;/Abstract&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- FeatureTypeStyles describe how to render different features --&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- A FeatureTypeStyle for rendering points --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Name&gt;</span>rule1<span class="nt">&lt;/Name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Title&gt;</span>Red<span class="w"> </span>Square<span class="nt">&lt;/Title&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>6<span class="w"> </span>pixel<span class="w"> </span>square<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>red<span class="w"> </span>fill<span class="w"> </span>and<span class="w"> </span>no<span class="w"> </span>stroke<span class="nt">&lt;/Abstract&gt;</span>
+<span class="w">            </span><span class="nt">&lt;PointSymbolizer&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Graphic&gt;</span>
+<span class="w">                </span><span class="nt">&lt;Mark&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;WellKnownName&gt;</span>square<span class="nt">&lt;/WellKnownName&gt;</span>
+<span class="w">                     </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#FF0000<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/Mark&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Size&gt;</span>6<span class="nt">&lt;/Size&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/Graphic&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/PointSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id8">
+<img alt="../_images/circle.png" src="../_images/circle.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 18 </span><span class="caption-text">Styl circle</span><a class="headerlink" href="#id8" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<section id="rule">
+<h3>Rule<a class="headerlink" href="#rule" title="Permalink to this heading">¶</a></h3>
+<p>Hlavní částí stylu jsou pravidla (<cite>Rule</cite>). V naší ukázce je pouze jedno pravidlo.
+Pravidla jsou pojmenována a obsahují informaci, jak se má skupina objektů vykreslit.
+V našem případě se daným pravidlem vykreslí všechny objekty.</p>
+</section>
+<section id="pointsymbolizer">
+<h3>PointSymbolizer<a class="headerlink" href="#pointsymbolizer" title="Permalink to this heading">¶</a></h3>
+<p><cite>PointSymbolizer</cite> slouží k vykreslení bodů. V rámci definice je pak definována grafika (<cite>Graphic</cite>),
+která bude použita.</p>
+</section>
+<section id="mark">
+<h3>Mark<a class="headerlink" href="#mark" title="Permalink to this heading">¶</a></h3>
+<p>V našem případě jde o grafiku definovanou pomocí <cite>WellKnownName</cite> a <cite>Fill</cite>. <cite>WellKnownName</cite> udává symbol
+a <cite>Fill</cite> barvu výplně symbolu. <cite>WellKnownName</cite> může mít hodnoty:</p>
+<ul class="simple">
+<li><p>square</p></li>
+<li><p>circle</p></li>
+<li><p>triangle</p></li>
+<li><p>star</p></li>
+<li><p>cross</p></li>
+<li><p>x</p></li>
+</ul>
+<p>Na další možnosti stylování se můžete podívat do <a class="reference external" href="https://docs.geoserver.org/stable/en/user/styling/sld/cookbook/points.html">dokumentace
+GeoServeru</a>.</p>
+</section>
+</section>
+<section id="zakladni-liniovy-styl">
+<h2>Základní liniový styl<a class="headerlink" href="#zakladni-liniovy-styl" title="Permalink to this heading">¶</a></h2>
+<p>Podobně jednoduchý styl jako je pro bodovou vrstvu <cite>point</cite> je pro liniovou vrstvu styl <cite>simple_streams</cite>. Používá ho vrstva <cite>sf:streams</cite>.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="w">   </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="w">  </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="w">   </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">  </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld</span>
+<span class="s">   http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Name&gt;</span>Simple<span class="w"> </span>Streams<span class="nt">&lt;/Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Title&gt;</span>Default<span class="w"> </span>Styler<span class="w"> </span>for<span class="w"> </span>streams<span class="w"> </span>segments<span class="nt">&lt;/Title&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Abstract&gt;</span>Blue<span class="w"> </span>lines,<span class="w"> </span>2px<span class="w"> </span>wide<span class="nt">&lt;/Abstract&gt;</span>
+<span class="w">      </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;FeatureTypeName&gt;</span>Feature<span class="nt">&lt;/FeatureTypeName&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Title&gt;</span>Streams<span class="nt">&lt;/Title&gt;</span>
+<span class="w">          </span><span class="nt">&lt;LineSymbolizer&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Stroke&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Literal&gt;</span>#003EBA<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Literal&gt;</span>2<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/Stroke&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/LineSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id9">
+<img alt="../_images/polyline1.png" src="../_images/polyline1.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 19 </span><span class="caption-text">Styl simple_streams</span><a class="headerlink" href="#id9" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<section id="linesymbolizer">
+<h3>LineSymbolizer<a class="headerlink" href="#linesymbolizer" title="Permalink to this heading">¶</a></h3>
+<p>Podobně jako PointSymbolizer slouží k vykreslení bodu, tak LineSymbolizer slouží k vykreslení linie. Místo grafiky se zde definuje tah (<cite>Stroke</cite>).</p>
+</section>
+<section id="stroke">
+<h3>Stroke<a class="headerlink" href="#stroke" title="Permalink to this heading">¶</a></h3>
+<p>V našem případě` definujeme tah pomocí dvou parametrů. Jeden je <cite>stroke</cite>, který určuje barvu a druhý je <cite>stroke-width</cite> který určuje šírku linie. Dále můžeme použít parametr <cite>stroke-linecap</cite> který určuje tvar linie.</p>
+<ul class="simple">
+<li><p>butt</p></li>
+<li><p>round</p></li>
+<li><p>square</p></li>
+</ul>
+<p>Na další možnosti stylování se můžete podívat do <a class="reference external" href="https://docs.geoserver.org/stable/en/user/styling/sld/cookbook/lines.html">dokumentace GeoServeru</a>.</p>
+</section>
+</section>
+<section id="zakladni-polygonovy-styl">
+<h2>Základní polygonový styl<a class="headerlink" href="#zakladni-polygonovy-styl" title="Permalink to this heading">¶</a></h2>
+<p>Jednoduchý polygonový styl je <cite>polygon</cite>.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span>
+<span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld StyledLayerDescriptor.xsd&quot;</span>
+<span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- a Named Layer is the basic building block of an SLD document --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Name&gt;</span>default_polygon<span class="nt">&lt;/Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Styles can have names, titles and abstracts --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Title&gt;</span>Default<span class="w"> </span>Polygon<span class="nt">&lt;/Title&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>sample<span class="w"> </span>style<span class="w"> </span>that<span class="w"> </span>draws<span class="w"> </span>a<span class="w"> </span>polygon<span class="nt">&lt;/Abstract&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- FeatureTypeStyles describe how to render different features --&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- A FeatureTypeStyle for rendering polygons --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Name&gt;</span>rule1<span class="nt">&lt;/Name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Title&gt;</span>Gray<span class="w"> </span>Polygon<span class="w"> </span>with<span class="w"> </span>Black<span class="w"> </span>Outline<span class="nt">&lt;/Title&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>polygon<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>gray<span class="w"> </span>fill<span class="w"> </span>and<span class="w"> </span>a<span class="w"> </span>1<span class="w"> </span>pixel<span class="w"> </span>black<span class="w"> </span>outline<span class="nt">&lt;/Abstract&gt;</span>
+<span class="w">          </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#AAAAAA<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Stroke&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#000000<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/Stroke&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id10">
+<img alt="../_images/polygone.png" src="../_images/polygone.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 20 </span><span class="caption-text">Styl polygone</span><a class="headerlink" href="#id10" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<section id="polygonsymbolizer">
+<h3>PolygonSymbolizer<a class="headerlink" href="#polygonsymbolizer" title="Permalink to this heading">¶</a></h3>
+<p>Podobně jako PointSymbolizer slouží k vykreslení bodu, tak PolygonSymbolizer slouží k vykreslení polygonu. Polygon se vykresluje pomocí dvou parametrů. <cite>Fill</cite> a <cite>Stroke</cite>.</p>
+</section>
+<section id="fill">
+<h3>Fill<a class="headerlink" href="#fill" title="Permalink to this heading">¶</a></h3>
+<p>Slouží k nastavení výplně polygonu.</p>
+</section>
+<section id="id1">
+<h3>Stroke<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<p>Slouží k nastavení zobrazení hranice polygonu. Nastavuje se stejně jako stylu linie.</p>
+<p>Na další možnosti stylování se můžete podívat do <a class="reference external" href="https://docs.geoserver.org/stable/en/user/styling/sld/cookbook/polygons.html">dokumentace GeoServeru</a>.</p>
+</section>
+</section>
+<section id="popisky">
+<h2>Popisky<a class="headerlink" href="#popisky" title="Permalink to this heading">¶</a></h2>
+<p>Další ze základních možností stylování je vytvoření popisku. Popisky můžeme vytvářet pro všechny typy vrstev.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="w">    </span><span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span>
+<span class="w">      </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld</span>
+<span class="s">http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd&quot;</span>
+<span class="w">      </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="w">      </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="w">      </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="w">      </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Name&gt;</span>capitals<span class="nt">&lt;/Name&gt;</span>
+<span class="w">        </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Name&gt;</span>capitals<span class="nt">&lt;/Name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Title&gt;</span>Capital<span class="w"> </span>cities<span class="nt">&lt;/Title&gt;</span>
+<span class="w">          </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Title&gt;</span>Capitals<span class="nt">&lt;/Title&gt;</span>
+<span class="w">            </span><span class="nt">&lt;TextSymbolizer&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Label&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:PropertyName&gt;</span>CITY_NAME<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/Label&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Font&gt;</span>
+<span class="w">                </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;font-family&quot;</span><span class="nt">&gt;</span>Times<span class="w"> </span>New<span class="w"> </span>Roman<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;font-style&quot;</span><span class="nt">&gt;</span>bold<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;font-size&quot;</span><span class="nt">&gt;</span>14<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/Font&gt;</span>
+<span class="w">              </span><span class="nt">&lt;LabelPlacement&gt;</span>
+<span class="w">                </span><span class="nt">&lt;PointPlacement&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;AnchorPoint&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;AnchorPointX&gt;</span>0<span class="nt">&lt;/AnchorPointX&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;AnchorPointY&gt;</span>0<span class="nt">&lt;/AnchorPointY&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/AnchorPoint&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;Displacement&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;DisplacementX&gt;</span>10<span class="nt">&lt;/DisplacementX&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;DisplacementY&gt;</span>0<span class="nt">&lt;/DisplacementY&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/Displacement&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/PointPlacement&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/LabelPlacement&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/TextSymbolizer&gt;</span>
+<span class="w">              </span><span class="nt">&lt;PointSymbolizer&gt;</span>
+<span class="w">                </span><span class="nt">&lt;Graphic&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;Mark&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;WellKnownName&gt;</span>circle<span class="nt">&lt;/WellKnownName&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;ogc:Literal&gt;</span>#FFFFFF<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;Stroke&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;ogc:Literal&gt;</span>#000000<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>
+<span class="w">                        </span><span class="nt">&lt;ogc:Literal&gt;</span>2<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;/Stroke&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/Mark&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;Opacity&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;ogc:Literal&gt;</span>1.0<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/Opacity&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;Size&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;ogc:Literal&gt;</span>6<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/Size&gt;</span>
+
+<span class="w">                </span><span class="nt">&lt;/Graphic&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/PointSymbolizer&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id11">
+<img alt="../_images/label1.png" src="../_images/label1.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 21 </span><span class="caption-text">Styl label</span><a class="headerlink" href="#id11" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<section id="textsymbolizer">
+<h3>TextSymbolizer<a class="headerlink" href="#textsymbolizer" title="Permalink to this heading">¶</a></h3>
+<p>Slouží k vykreslení popisků. Základními parametry pro <cite>TextSymbolizer</cite> jsou <cite>Label</cite> a <cite>Fill</cite>.</p>
+</section>
+<section id="label">
+<h3>Label<a class="headerlink" href="#label" title="Permalink to this heading">¶</a></h3>
+<p>Slouží k definování atributu, z kterého se čerpají data pro popisky.</p>
+</section>
+<section id="id2">
+<h3>Fill<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<p>Slouží k nastavení barvy popisku.</p>
+</section>
+<section id="anchorpoint">
+<h3>AnchorPoint<a class="headerlink" href="#anchorpoint" title="Permalink to this heading">¶</a></h3>
+<p>Určuje pozici vztažného bodu popisku. Může nabývat hodnot 0 až 1 pro X a Y. Hodnota 0,0 znamená že vztažný bod je v levém dolním rohu a hodnota 1,1 znamená že je v pravém horním rohu.</p>
+<figure class="align-center" id="id12">
+<img alt="../_images/anchor.png" src="../_images/anchor.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 22 </span><span class="caption-text">Pozice popisku</span><a class="headerlink" href="#id12" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="displacement">
+<h3>Displacement<a class="headerlink" href="#displacement" title="Permalink to this heading">¶</a></h3>
+<p>Určuje odsazení popisku.</p>
+</section>
+</section>
+<section id="ukoly">
+<h2>Úkoly<a class="headerlink" href="#ukoly" title="Permalink to this heading">¶</a></h2>
+<p>Editujte styl v rámci WWW editoru. Změňte následující parametry. Styl uložte a zkuste
+přes <cite>Layer Preview</cite> obnovit mapu.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud se nic nezměnilo, pak zkuste změnit výřez mapy. Někdy je starý obrázek v paměti prohlížeče.</p>
+</div>
+<section id="wellknownname">
+<h3>WellKnownName<a class="headerlink" href="#wellknownname" title="Permalink to this heading">¶</a></h3>
+<p><cite>Square</cite> změňte na <cite>circle</cite>.</p>
+</section>
+<section id="id3">
+<h3>Fill<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<p>Barvy výplně změňte z #FF0000 (červená) na #00FF00 (zelená).</p>
+</section>
+</section>
+<section id="reseni-ukolu">
+<h2>Řešení úkolů<a class="headerlink" href="#reseni-ukolu" title="Permalink to this heading">¶</a></h2>
+<section id="id4">
+<h3>WellKnownName<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span>
+<span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld StyledLayerDescriptor.xsd&quot;</span>
+<span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- a Named Layer is the basic building block of an SLD document --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Name&gt;</span>default_point<span class="nt">&lt;/Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Styles can have names, titles and abstracts --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Title&gt;</span>Default<span class="w"> </span>Point<span class="nt">&lt;/Title&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>sample<span class="w"> </span>style<span class="w"> </span>that<span class="w"> </span>draws<span class="w"> </span>a<span class="w"> </span>point<span class="nt">&lt;/Abstract&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- FeatureTypeStyles describe how to render different features --&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- A FeatureTypeStyle for rendering points --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Name&gt;</span>rule1<span class="nt">&lt;/Name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Title&gt;</span>Red<span class="w"> </span>Circle<span class="nt">&lt;/Title&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>6<span class="w"> </span>pixel<span class="w"> </span>circle<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>red<span class="w"> </span>fill<span class="w"> </span>and<span class="w"> </span>no<span class="w"> </span>stroke<span class="nt">&lt;/Abstract&gt;</span>
+<span class="w">            </span><span class="nt">&lt;PointSymbolizer&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Graphic&gt;</span>
+<span class="w">                </span><span class="nt">&lt;Mark&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;WellKnownName&gt;</span>circle<span class="nt">&lt;/WellKnownName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#FF0000<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/Mark&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Size&gt;</span>6<span class="nt">&lt;/Size&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/Graphic&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/PointSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id13">
+<img alt="../_images/circle.png" src="../_images/circle.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 23 </span><span class="caption-text">Styl circle</span><a class="headerlink" href="#id13" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id5">
+<h3>Fill<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span>
+<span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld StyledLayerDescriptor.xsd&quot;</span>
+<span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="cm">&lt;!-- a Named Layer is the basic building block of an SLD document --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Name&gt;</span>default_point<span class="nt">&lt;/Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Styles can have names, titles and abstracts --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Title&gt;</span>Default<span class="w"> </span>Point<span class="nt">&lt;/Title&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>sample<span class="w"> </span>style<span class="w"> </span>that<span class="w"> </span>draws<span class="w"> </span>a<span class="w"> </span>point<span class="nt">&lt;/Abstract&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- FeatureTypeStyles describe how to render different features --&gt;</span>
+<span class="w">      </span><span class="cm">&lt;!-- A FeatureTypeStyle for rendering points --&gt;</span>
+<span class="w">      </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Name&gt;</span>rule1<span class="nt">&lt;/Name&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Title&gt;</span>Green<span class="w"> </span>Circle<span class="nt">&lt;/Title&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>6<span class="w"> </span>pixel<span class="w"> </span>circle<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>green<span class="w"> </span>fill<span class="w"> </span>and<span class="w"> </span>no<span class="w"> </span>stroke<span class="nt">&lt;/Abstract&gt;</span>
+<span class="w">            </span><span class="nt">&lt;PointSymbolizer&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Graphic&gt;</span>
+<span class="w">                </span><span class="nt">&lt;Mark&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;WellKnownName&gt;</span>circle<span class="nt">&lt;/WellKnownName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#00FF00<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/Mark&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Size&gt;</span>6<span class="nt">&lt;/Size&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/Graphic&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/PointSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id14">
+<img alt="../_images/greencircle.png" src="../_images/greencircle.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 24 </span><span class="caption-text">Styl green circle</span><a class="headerlink" href="#id14" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">První kroky</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Styly</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Jednoduchý styl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="externi.html">Externí grafika</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slozity.html">Komplexní stylování</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kartogram.html">Kartogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prekryv.html">Stylování vrstev s překryvem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qgis.html">Vytvoření stylu v QGISu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="index.html" title="Styly"
+              >předchozí</a> |
+            <a href="externi.html" title="Externí grafika"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

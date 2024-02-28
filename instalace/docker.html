@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Docker &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Úvod do systému GeoServer" href="../intro/prvni_kroky.html" />
+    <link rel="prev" title="MS Windows" href="windows.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="windows.html" title="MS Windows"
+             accesskey="P">předchozí</a> |
+          <a href="../intro/prvni_kroky.html" title="Úvod do systému GeoServer"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="docker">
+<span id="index-0"></span><h1>Docker<a class="headerlink" href="#docker" title="Permalink to this heading">¶</a></h1>
+<p>Docker slouží k izolaci aplikací do kontejnerů. Kontejner obsahuje
+pouze aplikaci a soubory k ní. Neobsahuje operační systém. V této
+kapitole si ukážeme, jak nainstalovat Docker v Ubuntu 18.04 a v něm
+zprovoznit GeoServer.</p>
+<section id="instalace-docker">
+<h2>Instalace Docker<a class="headerlink" href="#instalace-docker" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apt-transport-https<span class="w"> </span>ca-certificates<span class="w"> </span>curl<span class="w"> </span>software-properties-common
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+sudo<span class="w"> </span>add-apt-repository<span class="w"> </span><span class="s2">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable&quot;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>docker-ce
+</pre></div>
+</div>
+<p>Po úspěšné instalaci příkaz vypíše:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>docker
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>●<span class="w"> </span>docker.service<span class="w"> </span>-<span class="w"> </span>Docker<span class="w"> </span>Application<span class="w"> </span>Container<span class="w"> </span>Engine
+<span class="w">   </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/lib/systemd/system/docker.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
+<span class="w">   </span>Active:<span class="w"> </span>active<span class="w"> </span><span class="o">(</span>running<span class="o">)</span><span class="w"> </span>since<span class="w"> </span>Thu<span class="w"> </span><span class="m">2018</span>-07-05<span class="w"> </span><span class="m">15</span>:08:39<span class="w"> </span>UTC<span class="p">;</span><span class="w"> </span>2min<span class="w"> </span>55s<span class="w"> </span>ago
+<span class="w">     </span>Docs:<span class="w"> </span>https://docs.docker.com
+<span class="w">  </span>Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">10096</span><span class="w"> </span><span class="o">(</span>dockerd<span class="o">)</span>
+<span class="w">     </span>Tasks:<span class="w"> </span><span class="m">16</span>
+<span class="w">    </span>CGroup:<span class="w"> </span>/system.slice/docker.service
+<span class="w">            </span>├─10096<span class="w"> </span>/usr/bin/dockerd<span class="w"> </span>-H<span class="w"> </span>fd://
+<span class="w">            </span>└─10113<span class="w"> </span>docker-containerd<span class="w"> </span>--config<span class="w"> </span>/var/run/docker/containerd/containerd.toml
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Dále je vhodné přidat běžného uživatele do skupiny <code class="docutils literal notranslate"><span class="pre">docker</span></code>, aby
+spouštění příkazů Dockeru nevyžadovalo práva <code class="docutils literal notranslate"><span class="pre">sudo</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
+su<span class="w"> </span>-<span class="w"> </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
+id<span class="w"> </span>-nG
+</pre></div>
+</div>
+</div>
+</section>
+<section id="instalace-kontejneru-pro-geoserver">
+<h2>Instalace kontejneru pro GeoServer<a class="headerlink" href="#instalace-kontejneru-pro-geoserver" title="Permalink to this heading">¶</a></h2>
+<p>Když už máme nainstalovaný Docker, přistoupíme k instalaci kontejneru
+pro GeoServer.</p>
+</section>
+<section id="stazeni-a-spusteni-kontejneru">
+<h2>Stažení a spuštení kontejneru<a class="headerlink" href="#stazeni-a-spusteni-kontejneru" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>oscarfonts/geoserver:2.19.3
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">:2.19.3</span></code> slouží k nastavení verze GeoServeru. Pokud verzi
+vynecháme, tak se nainstaluje do Dockeru nejnovější verze GeoServeru.</p>
+<p>Spuštění Docker kontejneru:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-v<span class="w"> </span>/opt/geoserver/data_dir:/var/local/geoserver<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/opt/geoserver/exts_dir:/var/local/geoserver-exts<span class="w"> </span><span class="se">\</span>
+--name<span class="o">=</span>geoserver<span class="w"> </span>oscarfonts/geoserver:2.19.3
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code> slouží k určení portu. První část určuje port, na kterém je
+Geoserver posléze dostupný.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-v</span></code> slouží k nastavení umístnění <code class="file docutils literal notranslate"><span class="pre">data_dir</span></code> a
+<code class="file docutils literal notranslate"><span class="pre">exts_dir</span></code>. Adresáře <code class="file docutils literal notranslate"><span class="pre">/opt/geoserver</span></code> jsou umístěny na
+lokálním disku, můžeme je zvolit libovolně.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--name</span></code> určí název kontejneru</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>V adresáři <code class="file docutils literal notranslate"><span class="pre">data_dir</span></code> jsou uložena data pro GeoServer a v
+adresáři <code class="file docutils literal notranslate"><span class="pre">exts_dir</span></code> jsou uloženy pluginy (rozšíření).</p>
+</div>
+<p>Instance Geoserveru je posléze dostupná na adrese <a class="reference external" href="http://localhost:8080/geoserver/web/">http://localhost:8080/geoserver/web/</a></p>
+</section>
+<section id="prikazy-pro-spravu-kontejneru">
+<h2>Příkazy pro správu kontejneru<a class="headerlink" href="#prikazy-pro-spravu-kontejneru" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>stop<span class="w"> </span>geoserver
+docker<span class="w"> </span>start<span class="w"> </span>geoserver
+docker<span class="w"> </span>restart<span class="w"> </span>geoserver
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../intro/index.html">První kroky</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Instalace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/prvni_kroky.html">Úvod do systému GeoServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/administrace.html">Administrace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/wms.html">Web Map Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/wfs.html">Web Feature Service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../styly/index.html">Styly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="windows.html" title="MS Windows"
+              >předchozí</a> |
+            <a href="../intro/prvni_kroky.html" title="Úvod do systému GeoServer"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

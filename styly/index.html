@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Styly &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Jednoduchý styl" href="jednoduchy.html" />
+    <link rel="prev" title="Web Feature Service" href="../intro/wfs.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../intro/wfs.html" title="Web Feature Service"
+             accesskey="P">předchozí</a> |
+          <a href="jednoduchy.html" title="Jednoduchý styl"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="styly">
+<h1>Styly<a class="headerlink" href="#styly" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="jednoduchy.html">Jednoduchý styl</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jednoduchy.html#zakladni-bodovy-styl">Základní bodový styl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jednoduchy.html#zakladni-liniovy-styl">Základní liniový styl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jednoduchy.html#zakladni-polygonovy-styl">Základní polygonový styl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jednoduchy.html#popisky">Popisky</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jednoduchy.html#ukoly">Úkoly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jednoduchy.html#reseni-ukolu">Řešení úkolů</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="externi.html">Externí grafika</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="externi.html#jednoducha-externi-grafika">Jednoduchá externí grafika</a></li>
+<li class="toctree-l2"><a class="reference internal" href="externi.html#ukoly">Úkoly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="externi.html#reseni-ukolu">Řešení úkolů</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slozity.html">Komplexní stylování</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slozity.html#linie-s-okrajem">Línie s okrajem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slozity.html#stylovani-na-zaklade-meritka">Stylování na základě měřítka</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kartogram.html">Kartogram</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kartogram.html#jednoduchy-pseudokartogram">Jednoduchý pseudokartogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kartogram.html#ukoly">Úkoly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kartogram.html#reseni-ukolu">Řešení úkolů</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="prekryv.html">Stylování vrstev s překryvem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="prekryv.html#stylovani-pres-rule">Stylování přes Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prekryv.html#stylovani-pres-ruzne-featuretypestyle">Stylování přes různé FeatureTypeStyle</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="qgis.html">Vytvoření stylu v QGISu</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qgis.html#ulozeni-stylu-do-sld-v-qgisu">Uložení stylu do SLD v QGISu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qgis.html#nacteni-sld-v-geoserveru">Načtení SLD v GeoServeru</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qgis.html#styl-jenom-v-sld">Styl jenom v SLD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qgis.html#styl-s-svg">Styl s SVG</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">První kroky</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Styly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jednoduchy.html">Jednoduchý styl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="externi.html">Externí grafika</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slozity.html">Komplexní stylování</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kartogram.html">Kartogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prekryv.html">Stylování vrstev s překryvem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qgis.html">Vytvoření stylu v QGISu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../intro/wfs.html" title="Web Feature Service"
+              >předchozí</a> |
+            <a href="jednoduchy.html" title="Jednoduchý styl"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

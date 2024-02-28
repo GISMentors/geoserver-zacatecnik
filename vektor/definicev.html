@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Definice vektorových dat &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Publikování vektorových dat" href="publikovaniv.html" />
+    <link rel="prev" title="Úložiště vektorových dat" href="ulozistev.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="ulozistev.html" title="Úložiště vektorových dat"
+             accesskey="P">předchozí</a> |
+          <a href="publikovaniv.html" title="Publikování vektorových dat"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="definice-vektorovych-dat">
+<span id="definicev"></span><span id="index-0"></span><h1>Definice vektorových dat<a class="headerlink" href="#definice-vektorovych-dat" title="Permalink to this heading">¶</a></h1>
+<p>Vektorová vrstva se definuje pomocí popisu dat. Seznam vrstev získáme pomocí
+odkazu <cite>Layers</cite> v sekci <cite>Data</cite>.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/layers.png" src="../_images/layers.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 43 </span><span class="caption-text">Seznam vrstev.</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>V seznamu vrstev vidíme u každé vrstvy její typ, úložiště a souřadnicový systém.
+Pokud následně zvolíme vrstvu <cite>states</cite> dostáváme se ke konfiguraci vektorové vrstvy.</p>
+<section id="identifikace">
+<h2>Identifikace<a class="headerlink" href="#identifikace" title="Permalink to this heading">¶</a></h2>
+<p>V rámci identifikace je povinné zadat pouze název vrstvy. Vhodné je ale uvést i popis vrstvy
+a abstrakt vrstvy. Název vrstvy (name) je technickou identifikací vrstvy. Popis (<cite>title</cite>) a <cite>abstrakt</cite> je
+určen ke čtení lidskému uživateli služby.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Povinné položky jsou označeny červeným kolečkem. Položky, které je vhodné doplnit jsou označeny zeleným kolečkem.</p>
+</div>
+<figure class="align-center" id="id3">
+<img alt="../_images/data1.png" src="../_images/data1.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 44 </span><span class="caption-text">Identifikace vektorové vrstvy.</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dalsi-metadata-a-souradnicove-systemy">
+<h2>Další metadata a souřadnicové systémy<a class="headerlink" href="#dalsi-metadata-a-souradnicove-systemy" title="Permalink to this heading">¶</a></h2>
+<p>V další části popisu vrstvy je vhodné uvést klíčová slova, popisující data
+a pokud je to možné, pak link na metadata dle normy ISO nebo FGDC.</p>
+<p>Povinně je nutné uvést deklarovaný souřadnicový systém (<cite>Declared SRS</cite>).
+Tento se specifikuje s využitím databáze <cite>EPSG</cite>. Např. systém <cite>WGS84</cite> má kód <cite>EPSG:4326</cite>.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/data2.png" src="../_images/data2.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 45 </span><span class="caption-text">Další metadata a souřadnicové systémy.</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ohranicujici-obdelnik">
+<h2>Ohraničující obdélník<a class="headerlink" href="#ohranicujici-obdelnik" title="Permalink to this heading">¶</a></h2>
+<p>V další části popisu vrstvy je nutné uvést ohraničující obdélník (<cite>BBOX</cite>) vrstvy.
+<cite>BBOX</cite> musí být uveden jak v <cite>deklarovaném SRS</cite> tak v <cite>Lat/Lon</cite> souřadnicích.
+K vytvoření pomohou odkazy <cite>Compute from data</cite> a <cite>Compute from native bounds</cite>.</p>
+<figure class="align-center" id="id5">
+<img alt="../_images/data3.png" src="../_images/data3.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 46 </span><span class="caption-text">BBOX</span><a class="headerlink" href="#id5" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="pridani-nove-vrstvy-z-uloziste-esri-shapefile">
+<h2>Přidání nové vrstvy z úložiště ESRI Shapefile<a class="headerlink" href="#pridani-nove-vrstvy-z-uloziste-esri-shapefile" title="Permalink to this heading">¶</a></h2>
+<p>Klikneme na <cite>Add a new resource</cite> a vybereme si úložiště z kterého chceme přidat vrstvu. Geoserver nám nabídne seznam vrstev, které můžeme přidat. Vrstvy, které nebyly ještě použité mají ve sloupci <cite>Action</cite> napsané <cite>Publish</cite>. Po kliknutí se dostaneme do okna Edit Layer, které bylo popsané na začátku této kapitoly.</p>
+<figure class="align-center" id="id6">
+<img alt="../_images/new_layer_shp.png" src="../_images/new_layer_shp.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 47 </span><span class="caption-text">Přidání nové vrstvy z úložiště ESRI Shapefile</span><a class="headerlink" href="#id6" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Každá vrstva může být publikovaná jenom jednou. Když klikneme na <cite>Publish again</cite> tak přepíšeme už vypublikovanou vrstvu.</p>
+</div>
+</section>
+<section id="pridani-nove-vrstvy-z-uloziste-postgis">
+<h2>Přidání nové vrstvy z úložiště PostGIS<a class="headerlink" href="#pridani-nove-vrstvy-z-uloziste-postgis" title="Permalink to this heading">¶</a></h2>
+<p>Po kliknutí na <cite>Add a new resource</cite> a výběre úložiště, z kterého chceme přidat vrstvu, máme u PostGIS úložiště dvě možnosti. První možnost je stejná jako u ESRI Shapefile úložiště přes Publish. Druhá možnost je publikovat vytvořený SQL pohled. Tuto možnost získáme po kliknutí na Configure new SQL view… .</p>
+<section id="view-name">
+<h3>View Name<a class="headerlink" href="#view-name" title="Permalink to this heading">¶</a></h3>
+<p>Jméno publikované vrstvy</p>
+</section>
+<section id="sql-statement">
+<h3>SQL statement<a class="headerlink" href="#sql-statement" title="Permalink to this heading">¶</a></h3>
+<p>Místo na napsání SQL dotazu. Na konci dotazu nepíšeme znak ;</p>
+<p>Například můžeme sestavit pohled, který vybere parcely v základní sídelní jednotce v Praze nazvané Baba s kódem 129470.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">geom</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">zpusobyvyuzitipozemku</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">ruian_praha</span><span class="p">.</span><span class="n">parcely</span><span class="w"> </span><span class="n">p</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">ruian_praha</span><span class="p">.</span><span class="n">zsj</span><span class="w"> </span><span class="n">z</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">geom</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">.</span><span class="n">geom</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">z</span><span class="p">.</span><span class="n">kod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">129470</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pohledy je také možno parametrizovat a vytvářet tak dynamicky výstupy z databáze včetně animací.</p>
+</div>
+<p>Parametry se zadávají do procent přímo do SQL. Např. AND ST_Area(p.geom) &gt; %MIN_AREA%
+Volání přes WMS pak jako atribut &amp;viewparams=MIN_AREA:20000
+Pokud je parametrů více oddělují se středníkem.
+Tomu se věnuje školení pro pokročilé.</p>
+</section>
+<section id="sql-view-parameters">
+<h3>SQL view parameters<a class="headerlink" href="#sql-view-parameters" title="Permalink to this heading">¶</a></h3>
+<p>Slouží na definování možností filtrování.</p>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">¶</a></h3>
+<p>Zde se nám po kliknutí na Refresh zobrazí seznam atributů. U sloupce s geometrii můžeme určit souřadnicový systém. Taky tady zadefinujeme, který atribut je identifikátor.</p>
+<p>Po kliknutí na Save se dostaneme na okno Edit Layer.</p>
+<figure class="align-center" id="id7">
+<img alt="../_images/new_layer_postgis.png" src="../_images/new_layer_postgis.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 48 </span><span class="caption-text">Přidání nove vrstvy z uložiště PostGIS</span><a class="headerlink" href="#id7" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="s-jtsk">
+<h2>S-JTSK<a class="headerlink" href="#s-jtsk" title="Permalink to this heading">¶</a></h2>
+<p>Opakovaně se můžete v různých verzích GeoServeru setkat s problémy při publikování geodat v prostorovém referenčním systému S-JTSK označeném kódem EPSG:5514. V případě, že GeoServer nevypočítá korektně souřadnice ohraničujícího obdélníka pro Lat/Lon, případně chybně identifikuje souřadnicový systém, je možné přepsat jeho definici.</p>
+<p>Přepsání se realizuje pomocí deklarace v souboru <a class="reference download internal" download="" href="../_downloads/39e36299d801d6418f85fa4a451bbcfb/epsg_overrides.properties"><code class="xref download docutils literal notranslate"><span class="pre">epsg_overrides.properties</span></code></a>. Tento soubor se umisťuje do adresáře <code class="file docutils literal notranslate"><span class="pre">data_dir/user_projections</span></code>. Pro aktivování je nutné server restartovat.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud chceme přidat systém, který není nakonfigurován, pak deklaraci umisťujeme do souboru <code class="file docutils literal notranslate"><span class="pre">epsg.properties</span></code>. Na stránce <a class="reference external" href="http://epsg.io/">epsg.io</a> si najdeme definici vybraného souřadnicového systému pro Geoserver. Text vykopírujeme a přidáme ho do souboru <code class="file docutils literal notranslate"><span class="pre">epsg.properties</span></code>. Změna se projeví po restartování Geoserveru.</p>
+</div>
+</section>
+<section id="ukoly">
+<h2>Úkoly<a class="headerlink" href="#ukoly" title="Permalink to this heading">¶</a></h2>
+<section id="esri-shapefile">
+<h3>ESRI Shapefile<a class="headerlink" href="#esri-shapefile" title="Permalink to this heading">¶</a></h3>
+<p>Vypublikujte vrstvu <span class="map">kraje</span> z <a class="reference external" href="http://training.gismentors.eu/geodata/qgis/data.zip">datové sady GISMentors</a>. Vrstvu
+nakopírujte do adresáře <code class="file docutils literal notranslate"><span class="pre">data_dir/data/gismentors</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Tento adresář neexistuje, musíte jej vytvořit.</p>
+</div>
+<p>Pak vytvořte nový Worskspace a nový Storage.</p>
+</section>
+<section id="postgis-pohled">
+<h3>PostGIS pohled<a class="headerlink" href="#postgis-pohled" title="Permalink to this heading">¶</a></h3>
+<p>Vytvořte pohled na data z PostGIS který vybere parcely v základní sídelní jednotce v Praze nazvané Baba s kódem 129470. Vytvořte styl, který klasifikuje parcely dle způsobu využití.</p>
+</section>
+</section>
+<section id="reseni-ukolu">
+<h2>Řešení úkolů<a class="headerlink" href="#reseni-ukolu" title="Permalink to this heading">¶</a></h2>
+<section id="vrstva-kraje">
+<h3>Vrstva kraje<a class="headerlink" href="#vrstva-kraje" title="Permalink to this heading">¶</a></h3>
+<p>Pokud jste data nakopírovali správně, pak v rámci definice vrstvy musíte pouze nastavit <cite>Declared SRS</cite> na <cite>EPSG:5514</cite> a spočítat BBOX.</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/kraje_pseudo.png" src="../_images/kraje_pseudo.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 49 </span><span class="caption-text">Nastavení BBOX a SRS pro kraje_pseudo.</span><a class="headerlink" href="#id8" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Předtím však musíte projít kroky vytvoření <cite>Workspace</cite> (nepovinné) a <cite>Store</cite> (povinné).</p>
+<figure class="align-center" id="id9">
+<img alt="../_images/cr.png" src="../_images/cr.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 50 </span><span class="caption-text">Nový pracovní prostor gismentors_shp.</span><a class="headerlink" href="#id9" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Prostor můžete zvolit jako <cite>Default</cite>. Vše pak od této chvíle bude realizováno v tomto prostoru.</p>
+</div>
+<figure class="align-center" id="id10">
+<img alt="../_images/storeshp.png" src="../_images/storeshp.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 51 </span><span class="caption-text">Typy úložišť.</span><a class="headerlink" href="#id10" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id11">
+<img alt="../_images/storecrwgs84.png" src="../_images/storecrwgs84.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 52 </span><span class="caption-text">Úložiště cr-shp-wgs84.</span><a class="headerlink" href="#id11" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>U úložiště můžete zvolit <cite>kódování diakritiky</cite>, kvůli popiskům v mapě.</p>
+</div>
+<figure class="align-center" id="id12">
+<img alt="../_images/storecrwgs84list.png" src="../_images/storecrwgs84list.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 53 </span><span class="caption-text">Seznam vrstev v úložišti cr-shp-wgs84.</span><a class="headerlink" href="#id12" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id1">
+<h3>PostGIS pohled<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<p>Pomocí Create new view vytvoříme pohled parcely_baba. Jako definici zadáme</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">geom</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">zpusobyvyuzitipozemku</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">ruian_praha</span><span class="p">.</span><span class="n">parcely</span><span class="w"> </span><span class="n">p</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">ruian_praha</span><span class="p">.</span><span class="n">zsj</span><span class="w"> </span><span class="n">z</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">geom</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">.</span><span class="n">geom</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">z</span><span class="p">.</span><span class="n">kod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">129470</span>
+</pre></div>
+</div>
+<p>Následně sestavíme styl a přiřadíme k vrstvě.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.1.0&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld</span>
+<span class="s"> http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd&quot;</span>
+<span class="w"> </span><span class="na">xmlns:se=</span><span class="s">&quot;http://www.opengis.net/se&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w"> </span><span class="nt">&lt;se:Name&gt;</span>QueryLayer<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w"> </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">   </span><span class="nt">&lt;se:Name&gt;</span>QueryLayer<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">   </span><span class="nt">&lt;se:FeatureTypeStyle&gt;</span>
+<span class="w">     </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Name&gt;</span>12<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Description&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Title&gt;</span>12<span class="nt">&lt;/se:Title&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:Description&gt;</span>
+<span class="w">       </span><span class="nt">&lt;ogc:Filter</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:PropertyName&gt;</span>zpusobyvyuzitipozemku<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:Literal&gt;</span>12<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:PolygonSymbolizer&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#74ddef<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#000001<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-linejoin&quot;</span><span class="nt">&gt;</span>bevel<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:PolygonSymbolizer&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">     </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Name&gt;</span>16<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Description&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Title&gt;</span>16<span class="nt">&lt;/se:Title&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:Description&gt;</span>
+<span class="w">       </span><span class="nt">&lt;ogc:Filter</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:PropertyName&gt;</span>zpusobyvyuzitipozemku<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:Literal&gt;</span>16<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:PolygonSymbolizer&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#8ee9c0<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#000001<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-linejoin&quot;</span><span class="nt">&gt;</span>bevel<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:PolygonSymbolizer&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">     </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Name&gt;</span>17<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Description&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Title&gt;</span>17<span class="nt">&lt;/se:Title&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:Description&gt;</span>
+<span class="w">       </span><span class="nt">&lt;ogc:Filter</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:PropertyName&gt;</span>zpusobyvyuzitipozemku<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:Literal&gt;</span>17<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:PolygonSymbolizer&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#dd7be2<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#000001<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-linejoin&quot;</span><span class="nt">&gt;</span>bevel<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:PolygonSymbolizer&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">     </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Name&gt;</span>19<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Description&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Title&gt;</span>19<span class="nt">&lt;/se:Title&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:Description&gt;</span>
+<span class="w">       </span><span class="nt">&lt;ogc:Filter</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:PropertyName&gt;</span>zpusobyvyuzitipozemku<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:Literal&gt;</span>19<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:PolygonSymbolizer&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#e969a5<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#000001<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-linejoin&quot;</span><span class="nt">&gt;</span>bevel<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:PolygonSymbolizer&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">     </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Name&gt;</span>20<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Description&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Title&gt;</span>20<span class="nt">&lt;/se:Title&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:Description&gt;</span>
+<span class="w">       </span><span class="nt">&lt;ogc:Filter</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:PropertyName&gt;</span>zpusobyvyuzitipozemku<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:Literal&gt;</span>20<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:PolygonSymbolizer&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#dec26e<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#000001<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-linejoin&quot;</span><span class="nt">&gt;</span>bevel<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:PolygonSymbolizer&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">     </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Name&gt;</span>21<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Description&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Title&gt;</span>21<span class="nt">&lt;/se:Title&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:Description&gt;</span>
+<span class="w">       </span><span class="nt">&lt;ogc:Filter</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:PropertyName&gt;</span>zpusobyvyuzitipozemku<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:Literal&gt;</span>21<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:PolygonSymbolizer&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#7792e0<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#000001<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-linejoin&quot;</span><span class="nt">&gt;</span>bevel<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:PolygonSymbolizer&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">     </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Name&gt;</span>23<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Description&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Title&gt;</span>23<span class="nt">&lt;/se:Title&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:Description&gt;</span>
+<span class="w">       </span><span class="nt">&lt;ogc:Filter</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:PropertyName&gt;</span>zpusobyvyuzitipozemku<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:Literal&gt;</span>23<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:PolygonSymbolizer&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#72da6c<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#000001<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-linejoin&quot;</span><span class="nt">&gt;</span>bevel<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:PolygonSymbolizer&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">     </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Name&gt;</span>26<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Description&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Title&gt;</span>26<span class="nt">&lt;/se:Title&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:Description&gt;</span>
+<span class="w">       </span><span class="nt">&lt;ogc:Filter</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:PropertyName&gt;</span>zpusobyvyuzitipozemku<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:Literal&gt;</span>26<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:PolygonSymbolizer&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#a1cf4b<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#000001<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-linejoin&quot;</span><span class="nt">&gt;</span>bevel<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:PolygonSymbolizer&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">     </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Name&gt;</span>27<span class="nt">&lt;/se:Name&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Description&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Title&gt;</span>27<span class="nt">&lt;/se:Title&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:Description&gt;</span>
+<span class="w">       </span><span class="nt">&lt;ogc:Filter</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:PropertyName&gt;</span>zpusobyvyuzitipozemku<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:Literal&gt;</span>27<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:PolygonSymbolizer&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#9264e6<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#000001<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-linejoin&quot;</span><span class="nt">&gt;</span>bevel<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:PolygonSymbolizer&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">     </span><span class="nt">&lt;se:Rule&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Name&gt;&lt;/se:Name&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:Description&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Title&gt;</span>NULL&#39;<span class="nt">&lt;/se:Title&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:Description&gt;</span>
+<span class="w">       </span><span class="nt">&lt;ogc:Filter</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ogc:PropertyIsNull&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:PropertyName&gt;</span>zpusobyvyuzitipozemku<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/ogc:PropertyIsNull&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">       </span><span class="nt">&lt;se:PolygonSymbolizer&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Fill&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#d96452<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Fill&gt;</span>
+<span class="w">         </span><span class="nt">&lt;se:Stroke&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#000001<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;se:SvgParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-linejoin&quot;</span><span class="nt">&gt;</span>bevel<span class="nt">&lt;/se:SvgParameter&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/se:Stroke&gt;</span>
+<span class="w">       </span><span class="nt">&lt;/se:PolygonSymbolizer&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/se:Rule&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/se:FeatureTypeStyle&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">První kroky</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../styly/index.html">Styly</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vektorová data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ulozistev.html">Úložiště vektorových dat</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Definice vektorových dat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publikovaniv.html">Publikování vektorových dat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="ulozistev.html" title="Úložiště vektorových dat"
+              >předchozí</a> |
+            <a href="publikovaniv.html" title="Publikování vektorových dat"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

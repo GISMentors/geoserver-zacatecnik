@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Externí grafika &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Komplexní stylování" href="slozity.html" />
+    <link rel="prev" title="Jednoduchý styl" href="jednoduchy.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="jednoduchy.html" title="Jednoduchý styl"
+             accesskey="P">předchozí</a> |
+          <a href="slozity.html" title="Komplexní stylování"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="externi-grafika">
+<span id="externi"></span><span id="index-0"></span><h1>Externí grafika<a class="headerlink" href="#externi-grafika" title="Permalink to this heading">¶</a></h1>
+<p>Obvykle si se základními <cite>Well Known</cite> jmény nevystačíme. Pak je možné využívat obrázky
+jakožto externí zdroje grafiky.</p>
+<section id="jednoducha-externi-grafika">
+<h2>Jednoduchá externí grafika<a class="headerlink" href="#jednoducha-externi-grafika" title="Permalink to this heading">¶</a></h2>
+<p>Příkladem jednoduché externí grafiky je styl burg. Na ukázku tohto stylu se můžete podívat, tak
+že ve WMS dotazu na vrstvu sf:archsites zadáte hodnotu parametru <cite>STYLE</cite> jako <cite>burg</cite>.
+Výsledek pak vypadá jako na následující ukázce.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mi">158</span><span class="p">.</span><span class="mi">196</span><span class="p">.</span><span class="mi">143</span><span class="p">.</span><span class="mi">122</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">geoserver</span><span class="o">/</span><span class="n">sf</span><span class="o">/</span><span class="n">wms</span><span class="o">?</span>
+<span class="n">service</span><span class="o">=</span><span class="n">WMS</span><span class="o">&amp;</span>
+<span class="k">version</span><span class="o">=</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="o">&amp;</span>
+<span class="n">request</span><span class="o">=</span><span class="n">GetMap</span><span class="o">&amp;</span>
+<span class="n">layers</span><span class="o">=</span><span class="n">sf</span><span class="p">:</span><span class="n">archsites</span><span class="o">&amp;</span>
+<span class="n">styles</span><span class="o">=</span><span class="n">burg</span><span class="o">&amp;</span>
+<span class="n">bbox</span><span class="o">=</span><span class="mi">589851</span><span class="p">.</span><span class="mi">4376666048</span><span class="p">,</span><span class="mi">4914490</span><span class="p">.</span><span class="mi">882968263</span><span class="p">,</span><span class="mi">608346</span><span class="p">.</span><span class="mi">4603107043</span><span class="p">,</span><span class="mi">4926501</span><span class="p">.</span><span class="mi">8980334345</span><span class="o">&amp;</span>
+<span class="n">width</span><span class="o">=</span><span class="mi">768</span><span class="o">&amp;</span>
+<span class="n">height</span><span class="o">=</span><span class="mi">498</span><span class="o">&amp;</span>
+<span class="n">srs</span><span class="o">=</span><span class="n">EPSG</span><span class="p">:</span><span class="mi">26713</span><span class="o">&amp;</span>
+<span class="n">format</span><span class="o">=</span><span class="n">application</span><span class="o">/</span><span class="n">openlayers</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id1">
+<img alt="../_images/burg.png" src="../_images/burg.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 25 </span><span class="caption-text">Styl burg</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<span class="w"> </span><span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span>
+<span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld</span>
+<span class="s"> http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Name&gt;</span>redflag<span class="nt">&lt;/Name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Name&gt;</span>burg<span class="nt">&lt;/Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Title&gt;</span>A<span class="w"> </span>small<span class="w"> </span>red<span class="w"> </span>flag<span class="nt">&lt;/Title&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>sample<span class="w"> </span>of<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>an<span class="w"> </span>SVG<span class="w"> </span>based<span class="w"> </span>symbolizer<span class="nt">&lt;/Abstract&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>Red<span class="w"> </span>flag<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PointSymbolizer&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Graphic&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ExternalGraphic&gt;</span>
+<span class="w">              </span><span class="nt">&lt;OnlineResource</span><span class="w"> </span><span class="na">xlink:type=</span><span class="s">&quot;simple&quot;</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;burg02.svg&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Format&gt;</span>image/svg+xml<span class="nt">&lt;/Format&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ExternalGraphic&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Size&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>20<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/Size&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Graphic&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PointSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<p>Místo značky <cite>Mark</cite> je použita značka <cite>ExternalGraphic</cite>, kde je ve značce <cite>OnlineResource</cite> uvedena cesta k souboru
+s obrázkem. Ve značce <cite>Format</cite> je pak uveden formát obrázku (vhodný je SVG nebo PNG).</p>
+</section>
+<section id="ukoly">
+<h2>Úkoly<a class="headerlink" href="#ukoly" title="Permalink to this heading">¶</a></h2>
+<p>Vytvořte vlastní ikonu buď ve formátu SVG nebo PNG a změňte styl <cite>burg</cite>, tak aby se odkazoval na tento obrázek.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Nový obrázek musíte nakopírovat do adresáře data_dir/styles.</p>
+</div>
+</section>
+<section id="reseni-ukolu">
+<h2>Řešení úkolů<a class="headerlink" href="#reseni-ukolu" title="Permalink to this heading">¶</a></h2>
+<section id="nova-ikona">
+<h3>Nová ikona<a class="headerlink" href="#nova-ikona" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<span class="w"> </span><span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span>
+<span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span>
+<span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w"> </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld</span>
+<span class="s"> http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Name&gt;</span>redflag<span class="nt">&lt;/Name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Name&gt;</span>burg<span class="nt">&lt;/Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Title&gt;</span>A<span class="w"> </span>small<span class="w"> </span>red<span class="w"> </span>flag<span class="nt">&lt;/Title&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>sample<span class="w"> </span>of<span class="w"> </span>how<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>an<span class="w"> </span>SVG<span class="w"> </span>based<span class="w"> </span>symbolizer<span class="nt">&lt;/Abstract&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>Red<span class="w"> </span>flag<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PointSymbolizer&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Graphic&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ExternalGraphic&gt;</span>
+<span class="w">              </span><span class="nt">&lt;OnlineResource</span><span class="w"> </span><span class="na">xlink:type=</span><span class="s">&quot;simple&quot;</span><span class="w"> </span><span class="na">xlink:href=</span><span class="s">&quot;hrad.svg&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">              </span><span class="nt">&lt;Format&gt;</span>image/svg+xml<span class="nt">&lt;/Format&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ExternalGraphic&gt;</span>
+<span class="w">            </span><span class="nt">&lt;Size&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>30<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/Size&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Graphic&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PointSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id2">
+<img alt="../_images/hrad.png" src="../_images/hrad.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 26 </span><span class="caption-text">Ikona hrad</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
+<img alt="../_images/hrad.svg" src="../_images/hrad.svg" /><figcaption>
+<p><span class="caption-number">Obr. 27 </span><span class="caption-text">Ikona hrad ve formátu SVG.</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">První kroky</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Styly</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="jednoduchy.html">Jednoduchý styl</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Externí grafika</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slozity.html">Komplexní stylování</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kartogram.html">Kartogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prekryv.html">Stylování vrstev s překryvem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qgis.html">Vytvoření stylu v QGISu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="jednoduchy.html" title="Jednoduchý styl"
+              >předchozí</a> |
+            <a href="slozity.html" title="Komplexní stylování"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

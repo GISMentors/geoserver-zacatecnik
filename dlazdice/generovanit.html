@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Generování dlaždic &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="INSPIRE" href="../inspire/index.html" />
+    <link rel="prev" title="Vektorové dlaždice" href="vector_tiles.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="vector_tiles.html" title="Vektorové dlaždice"
+             accesskey="P">předchozí</a> |
+          <a href="../inspire/index.html" title="INSPIRE"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="generovani-dlazdic">
+<span id="generovanit"></span><span id="index-0"></span><h1>Generování dlaždic<a class="headerlink" href="#generovani-dlazdic" title="Permalink to this heading">¶</a></h1>
+<p>Genrování dlaždic můžeme spustit pomocí odkazu <cite>Tile Layers</cite> v sekci <cite>Tile Caching</cite>.
+Zde pak u vrstvy volíme možnost <cite>Seed/Truncate</cite>.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/seedt.png" src="../_images/seedt.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 66 </span><span class="caption-text">Genrování dlaždic.</span><a class="headerlink" href="#id1" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<section id="nastaveni-generovani">
+<h2>Nastavení generování<a class="headerlink" href="#nastaveni-generovani" title="Permalink to this heading">¶</a></h2>
+<p>Nastavení generování můžeme volit několik možností. Pokud máme více jader může se hodit zvolit více úloh
+<cite>Number of tasks to use</cite>. Můžeme volit úrovně přiblížení na data (0 - celý svět, 15 - část obce) <cite>Zoom start</cite> a <cite>Zoom end</cite>.  Můžeme zvolit také jiný styl pro vykreselní <cite>Modifiable Parameters</cite>. Také můžeme omezit generování na výbrané území <cite>Bounding box</cite>. V neposlední řadě můžeme zvolit <cite>Grid Set</cite>. Také můžeme volit zda chceme jen vygenerovat chybějící dlaždice nebo kompletně přegeneovat můžeme zvolit v možnosti <cite>Type of operation</cite>.</p>
+<figure class="align-center" id="id2">
+<img alt="../_images/spustenit.png" src="../_images/spustenit.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 67 </span><span class="caption-text">Nastavení generování.</span><a class="headerlink" href="#id2" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Po spuštění tlačítkem Submit se na pozadí spustí generování. Jeho průběh můžeme sledovat buď v konzoli, kde je geoserver
+spuštěn nebo v prohlížeči.</p>
+<figure class="align-center" id="id3">
+<img alt="../_images/stavtkonzole.png" src="../_images/stavtkonzole.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 68 </span><span class="caption-text">Stav generování v konzoli.</span><a class="headerlink" href="#id3" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Na statickém obrázku to není vidět, ale server získává stovky požadavků za minutu a výsledky ukládá jako dlaždice do souborů.</p>
+</div>
+<figure class="align-center" id="id4">
+<img alt="../_images/stavtprohlizec.png" src="../_images/stavtprohlizec.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 69 </span><span class="caption-text">Stav generování v prohlížeči.</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<p>Také je možné sledovat stav na disku. Data se ukládají do adresáře data_dir/gwc/názevvrstvy/souřsystém_úroveňpřiblížení/.</p>
+<figure class="align-center" id="id5">
+<img alt="../_images/stavtdisk.png" src="../_images/stavtdisk.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 70 </span><span class="caption-text">Stav generování na disku.</span><a class="headerlink" href="#id5" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="vystup">
+<h2>Výstup<a class="headerlink" href="#vystup" title="Permalink to this heading">¶</a></h2>
+<p>V případě, že se vše podaří je daná vrstva v podobě dlaždic k dispozici přes služby vybrané v konfiguraci.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">První kroky</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../styly/index.html">Styly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Dlaždice</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nastavenit.html">Rastrové dlaždice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_tiles.html">Vektorové dlaždice</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Generování dlaždic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="vector_tiles.html" title="Vektorové dlaždice"
+              >předchozí</a> |
+            <a href="../inspire/index.html" title="INSPIRE"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

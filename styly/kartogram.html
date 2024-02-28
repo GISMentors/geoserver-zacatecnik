@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Kartogram &#8212; Školení GeoServer pro začátečníky</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gismentors.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Stylování vrstev s překryvem" href="prekryv.html" />
+    <link rel="prev" title="Komplexní stylování" href="slozity.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Školení GeoServer pro začátečníky</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="slozity.html" title="Komplexní stylování"
+             accesskey="P">předchozí</a> |
+          <a href="prekryv.html" title="Stylování vrstev s překryvem"
+             accesskey="N">další</a> |
+          <a href="../genindex.html" title="Obecný rejstřík"
+             accesskey="I">rejstřík</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="kartogram">
+<span id="index-0"></span><span id="id1"></span><h1>Kartogram<a class="headerlink" href="#kartogram" title="Permalink to this heading">¶</a></h1>
+<p>Jednoduchý pseudokartogram je možné vytvořit pomocí filtrace dat a přiřazením stylu
+takto filtrovaným datům. V principu se vytvoří několik pravidel, pro každý filtr jedno.</p>
+<section id="jednoduchy-pseudokartogram">
+<h2>Jednoduchý pseudokartogram<a class="headerlink" href="#jednoduchy-pseudokartogram" title="Permalink to this heading">¶</a></h2>
+<p>Příkladem jednoduchého pseudokartogramu je styl <cite>population</cite>. Na ukázku tohto stylu se můžete
+podívat, tak že si v náhledu vrstev vyberete vrstu <cite>USA population</cite> (<cite>topp:states</cite>).
+Výsledek pak vypadá jako na následující ukázce.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/population.png" src="../_images/population.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 30 </span><span class="caption-text">Styl population</span><a class="headerlink" href="#id4" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<span class="w">  </span><span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span>
+<span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w"> </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span>
+<span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld</span>
+<span class="s">http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Name&gt;</span>USA<span class="w"> </span>states<span class="w"> </span>population<span class="nt">&lt;/Name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Name&gt;</span>population<span class="nt">&lt;/Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Title&gt;</span>Population<span class="w"> </span>in<span class="w"> </span>the<span class="w"> </span>United<span class="w"> </span>States<span class="nt">&lt;/Title&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>sample<span class="w"> </span>filter<span class="w"> </span>that<span class="w"> </span>filters<span class="w"> </span>the<span class="w"> </span>United<span class="w"> </span>States<span class="w"> </span>into<span class="w"> </span>three
+<span class="w">      </span>categories<span class="w"> </span>of<span class="w"> </span>population,<span class="w"> </span>drawn<span class="w"> </span>in<span class="w"> </span>different<span class="w"> </span>colors<span class="nt">&lt;/Abstract&gt;</span>
+<span class="w">    </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span><span class="ni">&amp;lt;</span><span class="w"> </span>2M<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;ogc:PropertyIsLessThan&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:Literal&gt;</span>2000000<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:PropertyIsLessThan&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#4DFF4D<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>2M<span class="w"> </span>-<span class="w"> </span>4M<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;ogc:PropertyIsBetween&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:LowerBoundary&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>2000000<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:LowerBoundary&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:UpperBoundary&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>4000000<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:UpperBoundary&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:PropertyIsBetween&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#FF4D4D<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span><span class="ni">&amp;gt;</span><span class="w"> </span>4M<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- like a linesymbolizer but with a fill too --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">           </span><span class="nt">&lt;ogc:Literal&gt;</span>4000000<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#4D4DFF<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>Boundary<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;LineSymbolizer&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Stroke&gt;</span>
+<span class="w">            </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>0.2<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Stroke&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/LineSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;TextSymbolizer&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyName&gt;</span>STATE_ABBR<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Label&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Font&gt;</span>
+<span class="w">            </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;font-family&quot;</span><span class="nt">&gt;</span>Times<span class="w"> </span>New<span class="w"> </span>Roman<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;font-style&quot;</span><span class="nt">&gt;</span>Normal<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;font-size&quot;</span><span class="nt">&gt;</span>14<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Font&gt;</span>
+<span class="w">          </span><span class="nt">&lt;LabelPlacement&gt;</span>
+<span class="w">            </span><span class="nt">&lt;PointPlacement&gt;</span>
+<span class="w">              </span><span class="nt">&lt;AnchorPoint&gt;</span>
+<span class="w">                </span><span class="nt">&lt;AnchorPointX&gt;</span>0.5<span class="nt">&lt;/AnchorPointX&gt;</span>
+<span class="w">                </span><span class="nt">&lt;AnchorPointY&gt;</span>0.5<span class="nt">&lt;/AnchorPointY&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/AnchorPoint&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/PointPlacement&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/LabelPlacement&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/TextSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<p>Filtrace se realizuje pomocí nástroje <cite>ogc:Filter</cite>. Tento nástroj je poměrně bohatý. V našem případě
+se filtrují data na základě atributu <cite>PERSONS</cite> (počet obyvatel) pomocí značky <cite>ogc:PropertyName</cite>.
+Porovnání se realizuje definicí operátoru např. pro první pravidlo je použit operátor
+<cite>ogc:PropertyIsLessThan</cite> (menší než) a zadání hodnoty pro porovnání <cite>ogc:Literal</cite>.</p>
+</section>
+<section id="ukoly">
+<h2>Úkoly<a class="headerlink" href="#ukoly" title="Permalink to this heading">¶</a></h2>
+<p>Editujte styl v rámci WWW editoru. Změňte následující parametry. Styl uložte a zkuste
+přes Layer Preview obnovit mapu.</p>
+<section id="nezamestnani">
+<h3>Nezaměstnaní<a class="headerlink" href="#nezamestnani" title="Permalink to this heading">¶</a></h3>
+<p>Upravte styl population tak aby rozdělil státy USA do pěti kategorií podle počtu nezaměstnaných (<cite>UNEMPLOY</cite>).</p>
+</section>
+<section id="procento-nezamestnanych-na-pocet-obyvatel">
+<h3>Procento nezaměstnaných na počet obyvatel<a class="headerlink" href="#procento-nezamestnanych-na-pocet-obyvatel" title="Permalink to this heading">¶</a></h3>
+<p>Upravte styl population tak aby rozdělil státy USA do pěti kategorií podle procenta nezaměstnaných (<cite>UNEMPLOY</cite>)
+na celkový počet obyvatel (<cite>PERSONS</cite>).</p>
+</section>
+</section>
+<section id="reseni-ukolu">
+<h2>Řešení úkolů<a class="headerlink" href="#reseni-ukolu" title="Permalink to this heading">¶</a></h2>
+<section id="id2">
+<h3>Nezaměstnaní<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span>
+<span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w"> </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span>
+<span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld</span>
+<span class="s">http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Name&gt;</span>USA<span class="w"> </span>states<span class="w"> </span>unemployed<span class="nt">&lt;/Name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Name&gt;</span>unemployed<span class="nt">&lt;/Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Title&gt;</span>Unemployed<span class="w"> </span>in<span class="w"> </span>the<span class="w"> </span>United<span class="w"> </span>States<span class="nt">&lt;/Title&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>sample<span class="w"> </span>filter<span class="w"> </span>that<span class="w"> </span>filters<span class="w"> </span>the<span class="w"> </span>United<span class="w"> </span>States<span class="w"> </span>into<span class="w"> </span>five
+<span class="w">      </span>categories<span class="w"> </span>of<span class="w"> </span>unemployed,<span class="w"> </span>drawn<span class="w"> </span>in<span class="w"> </span>different<span class="w"> </span>colors<span class="nt">&lt;/Abstract&gt;</span>
+<span class="w">    </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>13100<span class="w"> </span>-<span class="w"> </span>72079<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:And&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>13100<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>72079<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:And&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#f7fbff<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>72079<span class="w"> </span>-<span class="w"> </span>218598<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;ogc:And&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>72079<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>218598<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:And&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#c7dcef<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+
+<span class="w">       </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>218598<span class="w"> </span>-<span class="w"> </span>385040<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;ogc:And&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>218598<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>385040<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:And&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#72b2d7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>385040<span class="w"> </span>-<span class="w"> </span>636280<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;ogc:And&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>385040<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>636280<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:And&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#2878b8<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>636280<span class="w"> </span>-<span class="w"> </span>996502<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;ogc:And&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>636280<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>996502<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:And&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#08306b<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>Boundary<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;LineSymbolizer&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Stroke&gt;</span>
+<span class="w">            </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>0.2<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Stroke&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/LineSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;TextSymbolizer&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyName&gt;</span>STATE_ABBR<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Label&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Font&gt;</span>
+<span class="w">            </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;font-family&quot;</span><span class="nt">&gt;</span>Times<span class="w"> </span>New<span class="w"> </span>Roman<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;font-style&quot;</span><span class="nt">&gt;</span>Normal<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;font-size&quot;</span><span class="nt">&gt;</span>14<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Font&gt;</span>
+<span class="w">          </span><span class="nt">&lt;LabelPlacement&gt;</span>
+<span class="w">            </span><span class="nt">&lt;PointPlacement&gt;</span>
+<span class="w">              </span><span class="nt">&lt;AnchorPoint&gt;</span>
+<span class="w">                </span><span class="nt">&lt;AnchorPointX&gt;</span>0.5<span class="nt">&lt;/AnchorPointX&gt;</span>
+<span class="w">                </span><span class="nt">&lt;AnchorPointY&gt;</span>0.5<span class="nt">&lt;/AnchorPointY&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/AnchorPoint&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/PointPlacement&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/LabelPlacement&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/TextSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id5">
+<img alt="../_images/unemployed.png" src="../_images/unemployed.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 31 </span><span class="caption-text">Styl unemployed</span><a class="headerlink" href="#id5" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id3">
+<h3>Procento nezaměstnaných na počet obyvatel<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<span class="nt">&lt;StyledLayerDescriptor</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span>
+<span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/sld&quot;</span><span class="w"> </span><span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+<span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w"> </span><span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span>
+<span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/sld</span>
+<span class="s">http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;NamedLayer&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Name&gt;</span>USA<span class="w"> </span>states<span class="w"> </span>unemployed<span class="nt">&lt;/Name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;UserStyle&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Name&gt;</span>unemployed<span class="nt">&lt;/Name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Title&gt;</span>Unemployed<span class="w"> </span>in<span class="w"> </span>the<span class="w"> </span>United<span class="w"> </span>States<span class="nt">&lt;/Title&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Abstract&gt;</span>A<span class="w"> </span>sample<span class="w"> </span>filter<span class="w"> </span>that<span class="w"> </span>filters<span class="w"> </span>the<span class="w"> </span>United<span class="w"> </span>States<span class="w"> </span>into<span class="w"> </span>five
+<span class="w">      </span>categories<span class="w"> </span>of<span class="w"> </span>unemployed,<span class="w"> </span>drawn<span class="w"> </span>in<span class="w"> </span>different<span class="w"> </span>colors<span class="nt">&lt;/Abstract&gt;</span>
+<span class="w">    </span><span class="nt">&lt;FeatureTypeStyle&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>1.8<span class="w"> </span>-<span class="w"> </span>2<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:And&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Mul&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Div&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/ogc:Div&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Literal&gt;</span>100<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/ogc:Mul&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>1.8<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Mul&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Div&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/ogc:Div&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Literal&gt;</span>100<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/ogc:Mul&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>2<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:And&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#f7fbff<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>2<span class="w"> </span>-<span class="w"> </span>2.5<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;ogc:And&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Mul&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Div&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/ogc:Div&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Literal&gt;</span>100<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/ogc:Mul&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>2<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Mul&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Div&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/ogc:Div&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Literal&gt;</span>100<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/ogc:Mul&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>2.5<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:And&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#c7dcef<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+
+<span class="w">       </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>2.5<span class="w"> </span>-<span class="w"> </span>3<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;ogc:And&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Mul&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Div&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/ogc:Div&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Literal&gt;</span>100<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/ogc:Mul&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>2.5<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Mul&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Div&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/ogc:Div&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Literal&gt;</span>100<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/ogc:Mul&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>3<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:And&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#72b2d7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>3<span class="w"> </span>-<span class="w"> </span>3.5<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;ogc:And&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Mul&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Div&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/ogc:Div&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Literal&gt;</span>100<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/ogc:Mul&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>3<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Mul&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Div&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/ogc:Div&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Literal&gt;</span>100<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/ogc:Mul&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>3.5<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:And&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#2878b8<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>3.5<span class="w"> </span>-<span class="w"> </span>4.2<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;ogc:And&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Mul&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Div&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/ogc:Div&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Literal&gt;</span>100<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/ogc:Mul&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>3.5<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsGreaterThan&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Mul&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Div&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>UNEMPLOY<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;ogc:PropertyName&gt;</span>PERSONS<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/ogc:Div&gt;</span>
+<span class="w">                </span><span class="nt">&lt;ogc:Literal&gt;</span>100<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/ogc:Mul&gt;</span>
+<span class="w">              </span><span class="nt">&lt;ogc:Literal&gt;</span>4.2<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/ogc:PropertyIsLessThanOrEqualTo&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/ogc:And&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;PolygonSymbolizer&gt;</span>
+<span class="w">           </span><span class="nt">&lt;Fill&gt;</span>
+<span class="w">              </span><span class="cm">&lt;!-- CssParameters allowed are fill (the color) and fill-opacity --&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill&quot;</span><span class="nt">&gt;</span>#08306b<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">              </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fill-opacity&quot;</span><span class="nt">&gt;</span>0.7<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">           </span><span class="nt">&lt;/Fill&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/PolygonSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+
+<span class="w">      </span><span class="nt">&lt;Rule&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Title&gt;</span>Boundary<span class="nt">&lt;/Title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;LineSymbolizer&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Stroke&gt;</span>
+<span class="w">            </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>0.2<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Stroke&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/LineSymbolizer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;TextSymbolizer&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Label&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ogc:PropertyName&gt;</span>STATE_ABBR<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Label&gt;</span>
+<span class="w">          </span><span class="nt">&lt;Font&gt;</span>
+<span class="w">            </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;font-family&quot;</span><span class="nt">&gt;</span>Times<span class="w"> </span>New<span class="w"> </span>Roman<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;font-style&quot;</span><span class="nt">&gt;</span>Normal<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;font-size&quot;</span><span class="nt">&gt;</span>14<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/Font&gt;</span>
+<span class="w">          </span><span class="nt">&lt;LabelPlacement&gt;</span>
+<span class="w">            </span><span class="nt">&lt;PointPlacement&gt;</span>
+<span class="w">              </span><span class="nt">&lt;AnchorPoint&gt;</span>
+<span class="w">                </span><span class="nt">&lt;AnchorPointX&gt;</span>0.5<span class="nt">&lt;/AnchorPointX&gt;</span>
+<span class="w">                </span><span class="nt">&lt;AnchorPointY&gt;</span>0.5<span class="nt">&lt;/AnchorPointY&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/AnchorPoint&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/PointPlacement&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/LabelPlacement&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/TextSymbolizer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/Rule&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/FeatureTypeStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/UserStyle&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/NamedLayer&gt;</span>
+<span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id6">
+<img alt="../_images/unemployed2.png" src="../_images/unemployed2.png" />
+<figcaption>
+<p><span class="caption-number">Obr. 32 </span><span class="caption-text">Styl unemployed2</span><a class="headerlink" href="#id6" title="Permalink k tomuto obrázku">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">První kroky</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Styly</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="jednoduchy.html">Jednoduchý styl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="externi.html">Externí grafika</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slozity.html">Komplexní stylování</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kartogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prekryv.html">Stylování vrstev s překryvem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qgis.html">Vytvoření stylu v QGISu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../vektor/index.html">Vektorová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rastr/index.html">Rastrová data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dlazdice/index.html">Dlaždice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inspire/index.html">INSPIRE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ruzne/index.html">Různé</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Vyhledávání</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="OK" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="slozity.html" title="Komplexní stylování"
+              >předchozí</a> |
+            <a href="prekryv.html" title="Stylování vrstev s překryvem"
+              >další</a> |
+            <a href="../genindex.html" title="Obecný rejstřík"
+              >rejstřík</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016-2024 GISMentors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
