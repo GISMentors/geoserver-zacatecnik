@@ -57,7 +57,7 @@ by měla pro běh serveru dostačovat.</p>
 <p>Instalace v terminálu, předpokládá zadání pouze jednoho příkazu.</p>
 <div class="notecmd admonition">
 <p class="admonition-title">Instalace JRE z příkazové řádky</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openjdk-8-jre
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openjdk-11-jre
 </pre></div>
 </div>
 </div>
@@ -66,7 +66,7 @@ by měla pro běh serveru dostačovat.</p>
 <p>Je možné, že JRE nebude v repozitáři. Pak je nutné repozitář přidat.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:openjdk-r/ppa
 sudo<span class="w"> </span>apt<span class="w"> </span>update
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openjdk-8-jre
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openjdk-11-jre
 </pre></div>
 </div>
 </div>
@@ -91,7 +91,7 @@ spouštěč <code class="file docutils literal notranslate"><span class="pre">st
 <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>.</p>
 <p>V souboru <code class="file docutils literal notranslate"><span class="pre">geoserver-verze/bin/startup.sh</span></code> nastavíme cestu k
 instalaci JRE, např.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-8-openjre-amd64
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-11-openjdk-amd64
 </pre></div>
 </div>
 </section>
