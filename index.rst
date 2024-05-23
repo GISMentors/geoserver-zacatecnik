@@ -45,7 +45,7 @@ vypublikovány.
 
 .. only:: html
 
-.. important:: Školení je zaměřeno na verzi `GeoServer 2.16
+.. important:: Školení je zaměřeno na verzi `GeoServer 2.25
    <http://geoserver.org/release/stable/>`__. V jiných verzích není
    zaručena funkčnost uvedených příkladů.
 

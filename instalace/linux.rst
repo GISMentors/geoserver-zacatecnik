@@ -31,7 +31,7 @@ Instalace v terminálu, předpokládá zadání pouze jednoho příkazu.
                
    .. code-block:: bash
 
-      sudo apt install openjdk-8-jre
+      sudo apt install openjdk-11-jre
 
 .. note:: Je možné, že JRE nebude v repozitáři. Pak je nutné repozitář přidat.
 
@@ -39,7 +39,7 @@ Instalace v terminálu, předpokládá zadání pouze jednoho příkazu.
 
       sudo add-apt-repository ppa:openjdk-r/ppa
       sudo apt update
-      sudo apt install openjdk-8-jre  
+      sudo apt install openjdk-11-jre
       
 
 Instalace GeoServer
@@ -73,7 +73,7 @@ instalaci JRE, např.
 
 .. code:: bash
 
-   JAVA_HOME=/usr/lib/jvm/java-8-openjre-amd64
+   JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
    
 Další možnosti instalace
