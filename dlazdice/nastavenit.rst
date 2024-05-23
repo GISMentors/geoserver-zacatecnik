@@ -6,7 +6,7 @@
 Rastrové dlaždice
 -----------------
 
-Nastavení rastrovích dlaždic
+Nastavení rastrových dlaždic
 =============================
 
 Nastavení dlaždic je poměrně rozsáhlé, ale pro začátečníka není zas tak složité.
